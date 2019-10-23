@@ -1,0 +1,33 @@
+TAD couleur
+
+Nom :		couleur
+Utilise :	pion
+Opérations :	definirCouleur : pion -/-> couleur
+		changerCouleur : pion -/-> pion
+
+
+TAD position
+
+Nom : 		position
+Utilise :	pion
+Opérations :	defPosition : caractère x caractère -/-> position
+		defAbs : position -/-> caractère
+		defOrd : position -/-> caractère
+
+
+TAD pion 
+
+Nom : 		pion
+Utilise :	couleur
+Opération :	creerPion : position x couleur -/-> pion 
+		obtenirCouleur : pion -/-> couleur
+		obtenirPosition : pion -/-> position
+
+
+TAD coup
+
+Nom : 		coup
+Utilise : 	plateau, pion
+Opération :	placerPion : pion x plateau --> plateau
+		estValide : coup x plateau --> booléen
+		
