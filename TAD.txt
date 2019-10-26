@@ -19,7 +19,7 @@ TAD pion
 
 Nom : 		pion
 Utilise :	couleur
-Opération :	creerPion : position x couleur -/-> pion 
+Opérations :	creerPion : position x couleur -/-> pion 
 		obtenirCouleur : pion -/-> couleur
 		obtenirPosition : pion -/-> position
 
@@ -28,6 +28,23 @@ TAD coup
 
 Nom : 		coup
 Utilise : 	plateau, pion
-Opération :	placerPion : pion x plateau --> plateau
-		estValide : coup x plateau --> booléen
-		
+Opérations :	placerPion : pion x plateau --> plateau
+		estValide : coup x plateau --> booleen
+
+TAD coups 
+
+Nom : 		coups
+Utilise : 	coup, plateau
+Opérations : 	aGagne : plateau --> booleen
+		coupsPossibles : plateau --> coups 
+
+TAD plateau
+
+Nom : 		plateau
+Utilise :	coup
+Opérations :	initPlateau : --> plateau
+		miseAJourPlateau : coup x plateau --> plateau
+		estPlein : plateau --> booleen 
+		afficherPlateau : --> plateau 
+		viderPlateau : --> plateau
+
