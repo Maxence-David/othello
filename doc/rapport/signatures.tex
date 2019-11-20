@@ -1,0 +1,140 @@
+\section{Signatures}
+	\subsection{affichagePlateau}
+		\begin{algorithme}
+			\signatureprocedure
+				{affichagePlateau}
+				{\paramEntree{pl : Plateau}}
+		\end{algorithme}
+	\subsection{creerPlateau}
+		\begin{algorithme}
+			\signaturefonction
+				{creerPlateau}
+				{}
+				{Plateau}
+		\end{algorithme}
+	\subsection{majPlateau}
+		\begin{algorithme}
+			\signaturefonction
+				{majPlateau}
+				{lePlateau : Plateau, leCoup : Coup}
+				{Plateau}
+		\end{algorithme}
+	\subsection{testLignes}
+		\begin{algorithme}
+			\signaturefonction
+				{testLignes}
+				{laPosition : Position}
+				{Position}
+		\end{algorithme}
+	\subsection{testColonnes}
+		\begin{algorithme}
+			\signaturefonction
+				{testColonnes}
+				{laPosition : Position}
+				{Position}
+		\end{algorithme}
+	\subsection{testDiagonales}
+		\begin{algorithme}
+			\signaturefonction
+				{testDiagonales}
+				{laPosition : Position}
+				{Position}
+		\end{algorithme}
+	\subsection{flipPion}
+		\begin{algorithme}
+			\signaturefonction
+				{flipPion}
+				{p : Pion}
+				{Pion}
+		\end{algorithme}
+	\subsection{changerCouleur}
+		\begin{algorithme}
+			\signaturefonction
+				{changerCouleur}
+				{laCouleur : Couleur}
+				{Couleur}
+		\end{algorithme}
+
+	\subsection{placerCoup}
+		\begin{algorithme}
+			\signaturefonction
+				{placerCoup}
+				{lePion : Pion,laPosition : Position}
+				{Coup}
+		\end{algorithme}
+	\subsection{definirCouleurNouveauJoueur}
+		\begin{algorithme}
+			\signaturefonction
+				{definirCouleurNouveauJoueur}
+				{dernierPionPlace : Pion}
+				{Couleur}
+		\end{algorithme}
+	\subsection{placerPion}
+		\begin{algorithme}
+			\signatureprocedure
+				{placerPion}
+				{\paramEntree{lePlateau : Plateau, laPosition : Position}		\paramSortie{lePion : Pion}}
+		\end{algorithme}
+	\subsection{definirPosition}
+		\begin{algorithme}
+			\signaturefonction
+				{definirPosition}
+				{abcisse, ordonnee : \caractere}
+				{Postition}
+		\end{algorithme}
+	\subsection{coupValide}
+		\begin{algorithme}
+			\signaturefonction
+				{coupValide}
+				{lePion : Pion, positionCoup : Position, lePlateau : Plateau}
+				{\booleen}
+		\end{algorithme}
+	\subsection{caseVide}
+		\begin{algorithme}
+			\signaturefonction
+				{ceseVide}
+				{pl : Plateau, positionCoup : Position}
+				{\booleen}
+		\end{algorithme}
+	\subsection{auMoinsUneModification}
+		\begin{algorithme}
+			\signaturefonction
+				{auMoinsUneModification}
+				{pl : Plateau, leCoup : Coup}
+				{\booleen}
+		\end{algorithme}
+	\subsection{partieTerminee}
+		\begin{algorithme}
+			\signaturefonction
+				{partieTerminee}
+				{pl : Plateau}
+				{\booleen}
+		\end{algorithme}
+	\subsection{plateauPlein}
+		\begin{algorithme}
+			\signaturefonction
+				{plateauPlein}
+				{lePlateau : Plateau}
+				{\booleen}
+		\end{algorithme}
+	\subsection{estGagant}
+		\begin{algorithme}
+			\signaturefonction
+				{estGagnant}
+				{pl : Plateau, lePion : Pion}
+				{\booleen, Couleur}
+		\end{algorithme}
+	\subsection{obtenirCouleur}
+		\begin{algorithme}
+			\signaturefonction
+				{obtenirCouleur}
+				{p : Pion}
+				{Couleur}
+		\end{algorithme}
+	\subsection{plusDeCoups}
+		\begin{algorithme}
+			\signaturefonction
+				{plusDeCoups}
+				{pl : Plateau}
+				{\booleen}
+		\end{algorithme}
