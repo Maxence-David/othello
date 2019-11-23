@@ -1,8 +1,7 @@
-\documentclass[11pt,a4paper]{report}
-
+\documentclass[a4paper,12pt]{article}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
+\usepackage[latin1]{inputenc}
 
 \usepackage{algorithme}
 \usepackage{listings}
@@ -18,26 +17,30 @@
 \maketitle
 \tableofcontents
 
-\input{Introduction}
+%\input{Introduction}
 
 \input{TAD.tex}
 
-\chapter{Analyse descendante}
+\input{signatures.tex}
 
-\begin{figure}[h]
-\centering
-\caption{Analyse descendante du projet}
-\rotatebox{270}{\includegraphics[scale=0.3]{analyse_descendante.png}}
-\end{figure}
+\input{algos.tex}
+
+%\chapter{Analyse descendante}
+
+%\begin{figure}[h]
+%\centering
+%\caption{Analyse descendante du projet}
+%\rotatebox{270}{\includegraphics[scale=0.3]{analyse_descendante.png}}
+%\end{figure}
 
 
-\input{ConceptionPreliminaire.tex}
+%\input{ConceptionPreliminaire.tex}
 
-\input{ConceptionDetaillee.tex}
+%\input{ConceptionDetaillee.tex}
 
-\input{CahierDeSuivi}
+%\input{CahierDeSuivi}
 
-\input{Conclusion}
+%\input{Conclusion}
 
-\input{CodeC.tex}
+%\input{CodeC.tex}
 \end{document}
