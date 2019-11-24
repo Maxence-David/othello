@@ -8,4 +8,153 @@
                 {}
                 {\retourner{(Inactif = obtenirCpion(pl[obtenirX(positionCoup)][obtenirY(positionCoup)]))}}
         \end{algorithme}
+
+        \subsection{obtenirCouleurGagnant}
+        \begin{algorithme}
+            \fonction
+                {obtenirCouleurGagnant}
+                {pl : Plateau}
+                {Couleur}
+                {nbPionsNoirs, nbPionsBlancs, i, j : \naturel}
+                {
+                    \affecter{nbPionsNoirs}{0}
+                    \affecter{nbPionsBlancs}{0}
+                    \pour{i}{1}{8}{}
+                    {
+                        \pour{j}{1}{8}{}
+                        {
+                            \sialorssinon{obtenirCouleur(obtenirPion(defPosition(i,j),pl))=Noir}
+                            {
+                                \affecter{nbPionsNoirs}{nbPionsNoirs+1}   
+                            }
+                            {
+                                \sialors{obtenirCouleur(obtenirPion(defPosition(i,j),pl))=Blanc}
+                                {
+                                    \affecter{nbPionsBlancs}{nbPionsBlancs+1}
+                                }
+                            }
+                        }
+                    }
+                    \sialorssinon{nbPionsNoirs $>$ nbPionsBlancs}
+                    {
+                        \retourner{Noir}
+                    }
+                    {
+                        \sialorssinon{nbPionsNoirs $<$ nbPionsBlancs}
+                        {
+                            \retourner{Blanc}
+                        }
+                        {
+                            \retourner{Inactif}
+                        }
+                    }
+                }
+        \end{algorithme}
+
+    \subsection{plusDeCoups}
+        \begin{algorithme}
+            \fonction
+                {plusDeCoups}
+                {pl : Plateau, couleurJoueurCourant : Couleur}
+                {\booleen}
+                {i, j : \naturelNonNul ; coupOK : \booleen}
+                {
+                    \affecter{coupOK}{FAUX}
+                    \affecter{i}{1}
+                    \tantque{non(coupOK) et i $\leq$ 8}
+                    {
+                        \affecter{j}{1}
+                        \tantque{non(coupOK) et j $\leq$ 8}
+                        {
+                            \sialors{coupValide(creerPion(couleurJoueurCourant),defPosition(i,j),pl)}
+                            {
+                                \affecter{coupOK}{VRAI}
+                            }
+                            \affecter{j}{j+1}
+                        }
+                        \affecter{i}{i+1}
+                    }
+                    \retourner{non(coupOK)}
+                }
+        \end{algorithme}
+
+    \subsection{auMoinsUneModif}
+        \begin{algorithme}
+            \fonction
+                {auMoinsUneModif}
+                {pl : Plateau, leCoup : Coup}
+                {\booleen}
+                {modifHG, modifH, modifD, modifBD, modifB, modifBG, modifG : \booleen}
+                {
+                    \affecter{modifHG}{testModifDirection(leCoup,HG)}
+                    \affecter{modifH}{testModifDirection(leCoup,H)}
+                    \affecter{modifHD}{testModifDirection(leCoup,HD)}
+                    \affecter{modifD}{testModifDirection(leCoup,D)}
+                    \affecter{modifBD}{testModifDirection(leCoup,BD)}
+                    \affecter{modifB}{testModifDirection(leCoup,B)}
+                    \affecter{modifBG}{testModifDirection(leCoup,BG)}
+                    \affecter{modifG}{testModifDirection(leCoup,G)}
+                    \retourner{modifHG ou modifH ou modifHD ou modifD ou modifBD ou modifB ou modifBG ou modfigG}
+                }
+        \end{algorithme}
+        \begin{algorithme}
+            \fonction
+                {testModifDirection}
+                {pl : Plateau, leCoup : Coup, direction : \{HG,h,HD,D,BD,B,BG,G\}}
+                {\booleen}
+                {incrementX, incrementY : \entier ; positionAtester : Position}
+                {
+                    % \casou{direction}
+                    % {
+                    %     HG : 
+                    %         \affecter{incrementX}{-1}
+                    %         \affecter{incrementY}{1}
+                    %     H : 
+                    %         \affecter{incrementX}{0}
+                    %         \affecter{incrementY}{1}
+                    %     HD : 
+                    %         \affecter{incrementX}{1}
+                    %         \affecter{incrementY}{1}
+                    %     D : 
+                    %         \affecter{incrementX}{1}
+                    %         \affecter{incrementY}{0}
+                    %     BD : 
+                    %         \affecter{incrementX}{1}
+                    %         \affecter{incrementY}{-1}
+                    %     B : 
+                    %         \affecter{incrementX}{0}
+                    %         \affecter{incrementY}{-1}
+                    %     BG : 
+                    %         \affecter{incrementX}{-1}
+                    %         \affecter{incrementY}{-1}
+                    %     G : 
+                    %         \affecter{incrementX}{-1}
+                    %         \affecter{incrementY}{0}
+                    % }
+                    \affecter{positionAtester}{defPosition(obtenirX(obtenirPosCoup(leCoup)+incrementX, obtenirY(obtenirPosCoup(leCoup)+incrementY)))}
+                    \sialorssinon{obtenirCouleurCoup(leCoup)=Noir}
+                    {
+                        \affecter{couleurAdverse}{Blanc}
+                    }
+                    {
+                        \affecter{couleurAdverse}{Noir}
+                    }
+                    \tantque{obtenirCouleur((obtenirPion(positionAtester,pl)) = couleurAdverse) et (0 $\leq$ obtenirX(positionAtester) $\leq$ 8) et (0 $\leq$ obtenirY(positionAtester) $\leq$ 8)}
+                    {
+                        \affecter{positionAtester}{defPosition(obtenirX(positionAtester) + incrementX, obtenirY(positionAtester) + incrementY)}
+                    }
+                    \sialorssinon{obtenirCouleur(obtenirPion(positionAtester,pl)) = obtenirCouleurCoup(leCoup)}
+                    {
+                        \retourner{VRAI}
+                    }
+                    {
+                        \retourner{FAUX}
+                    }
+                }
+        \end{algorithme}
+        
+    
+        
+
+
             
