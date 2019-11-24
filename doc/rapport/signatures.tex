@@ -1,3 +1,8 @@
+\documentclass{article}
+\usepackage{algorithmeUTF8}
+
+\begin{document}
+
 \section{Signatures}
 	\subsection{affichagePlateau}
 		\begin{algorithme}
@@ -24,28 +29,27 @@
 			\signaturefonction
 				{testLignes}
 				{laPosition : Position}
-				{Position}
+				{Position, Booleen}
 		\end{algorithme}
 	\subsection{testColonnes}
 		\begin{algorithme}
 			\signaturefonction
 				{testColonnes}
 				{laPosition : Position}
-				{Position}
+				{Position, Booleen}
 		\end{algorithme}
 	\subsection{testDiagonales}
 		\begin{algorithme}
 			\signaturefonction
 				{testDiagonales}
 				{laPosition : Position}
-				{Position}
+				{Position, Booleen}
 		\end{algorithme}
-	\subsection{flipPion}
+	\subsection{retournerPion}
 		\begin{algorithme}
-			\signaturefonction
-				{flipPion}
-				{p : Pion}
-				{Pion}
+			\signatureprocedure
+				{retournerPion}
+				{p : Pion, lePlateau : Plateau, laPosition : Position}
 		\end{algorithme}
 	\subsection{changerCouleur}
 		\begin{algorithme}
@@ -59,7 +63,7 @@
 		\begin{algorithme}
 			\signaturefonction
 				{placerCoup}
-				{lePion : Pion,laPosition : Position}
+				{lePion : Pion,laPosition : Position, lePlateau : Plateau}
 				{Coup}
 		\end{algorithme}
 	\subsection{definirCouleurNouveauJoueur}
@@ -68,12 +72,6 @@
 				{definirCouleurNouveauJoueur}
 				{dernierPionPlace : Pion}
 				{Couleur}
-		\end{algorithme}
-	\subsection{placerPion}
-		\begin{algorithme}
-			\signatureprocedure
-				{placerPion}
-				{\paramEntree{lePlateau : Plateau, laPosition : Position}		\paramSortie{lePion : Pion}}
 		\end{algorithme}
 	\subsection{definirPosition}
 		\begin{algorithme}
@@ -89,17 +87,17 @@
 				{lePion : Pion, positionCoup : Position, lePlateau : Plateau}
 				{\booleen}
 		\end{algorithme}
-	\subsection{caseVide}
+	\subsection{estVide}
 		\begin{algorithme}
 			\signaturefonction
-				{ceseVide}
+				{estVide}
 				{pl : Plateau, positionCoup : Position}
 				{\booleen}
 		\end{algorithme}
-	\subsection{auMoinsUneModification}
+	\subsection{retournerAuMoinsUnPion}
 		\begin{algorithme}
 			\signaturefonction
-				{auMoinsUneModification}
+				{retournerAuMoinsUnPion}
 				{pl : Plateau, leCoup : Coup}
 				{\booleen}
 		\end{algorithme}
@@ -117,7 +115,7 @@
 				{lePlateau : Plateau}
 				{\booleen}
 		\end{algorithme}
-	\subsection{estGagant}
+	\subsection{estGagnant}
 		\begin{algorithme}
 			\signaturefonction
 				{estGagnant}
@@ -138,3 +136,64 @@
 				{pl : Plateau}
 				{\booleen}
 		\end{algorithme}
+	\subsection{faireUnePartie}
+\begin{algorithme}
+	\signaturefonction
+	{faireUnePartie}
+	{}
+	{Couleur}
+\end{algorithme}
+	\subsection{moduleIA}
+\begin{algorithme}
+	\signaturefonction
+	{moduleIA}
+	{pl : Plateau}
+	{Coup}
+\end{algorithme}
+	\subsection{scoreDUnCoup}
+\begin{algorithme}
+	\signaturefonction
+	{scoreDUnCoup}
+	{lesCoups : Coups}
+	{\naturel}
+\end{algorithme}
+	\subsection{minMax}
+\begin{algorithme}
+	\signaturefonction
+	{minMax}
+	{lesCoups : Coups}
+	{Coup}
+\end{algorithme}
+
+	\subsection{evaluer}
+\begin{algorithme}
+	\signaturefonction
+	{evaluer}
+	{leCoupAEvaluer : Coup}
+	{\naturel}
+\end{algorithme}
+
+	\subsection{coupsPossibles}
+\begin{algorithme}
+	\signaturefonction
+	{coupsPossibles}
+	{lePlateau : plateau}
+	{Coups}
+\end{algorithme}
+
+	\subsection{nbCoups}
+\begin{algorithme}
+	\signaturefonction
+	{nbCoups}
+	{lesCoups : Coups}
+	{\naturel}
+\end{algorithme}
+
+	\subsection{iemeCoup}
+\begin{algorithme}
+	\signaturefonction
+	{iemeCoup}
+	{lesCoups : Coups, indice : \naturelNonNul}
+	{Coup}
+\end{algorithme}
+\end{document}
