@@ -1,3 +1,7 @@
+\documentclass{article}
+\usepackage{algorithmeUTF8}
+
+\begin{document}
 
   \section{TAD}
     \subsection{Couleur}
@@ -8,7 +12,7 @@
         \begin{tadOperations}{Couleur}
             \tadOperation{Blanc}{}{\tadUnParam{Couleur}}
             \tadOperation{Noir}{}{\tadUnParam{Couleur}}
-            \tadOperation{ChangeC}{\tadUnParam{Couleur}}{\tadUnParam{Couleur}}
+            \tadOperation{ChangerCouleur}{\tadUnParam{Couleur}}{\tadUnParam{Couleur}}
         \end{tadOperations}
         % \begin{tadSemantiques}{Couleur}
         %     \tadSemantique{dictionnaire}{l’op´eration qui permet de construire un Couleur `a partir de sa partie r´eelle et imaginaire}
@@ -20,15 +24,15 @@
             \tadAxiome{ChangeC(Noir)=Blanc}
         \end{tadAxiomes}
     \end{tad}
-    \subsection{Pions}
+    \subsection{Pion}
     \begin{tad}
-        \tadNom{Pions}
+        \tadNom{Pion}
         %\tadParametres{Element,Clef}
-        \tadDependances{Couleur}
-        \begin{tadOperations}{Pions}
+        \tadDependances{Couleur, Coup}
+        \begin{tadOperations}{Pion}
             \tadOperation{CreerPion}{\tadUnParam{Couleur}}{\tadUnParam{Pion}}
             \tadOperation{FlipPion}{\tadUnParam{Pion}}{\tadUnParam{Pion}}
-            \tadOperation{ObtenirCpion}{\tadUnParam{Pion}}{\tadUnParam{Couleur}}
+            \tadOperation{ObtenirCouleurPion}{\tadUnParam{Pion}}{\tadUnParam{Couleur}}
         \end{tadOperations}
         % \begin{tadSemantiques}{Couleur}
         %     \tadSemantique{dictionnaire}{l’op´eration qui permet de construire un Couleur `a partir de sa partie r´eelle et imaginaire}
@@ -36,7 +40,7 @@
         %     \tadSemantique{retirer}{L’op´eration qui permet de retirer un ´element du Couleur}
         % \end{tadSemantiques}
         \begin{tadAxiomes}
-            \tadAxiome{ObtenirCpion(Pion(a))=a}
+            \tadAxiome{ObtenirCouleurPion(Pion(a))=a}
             \tadAxiome{FlipPion(FlipPion(a))=a}
         \end{tadAxiomes}
     \end{tad}
@@ -44,11 +48,12 @@
     \begin{tad}
         \tadNom{Position}
         %\tadParametres{Element,Clef}
-        \tadDependances{\caractere}
+        \tadDependances{\caractere, \booleen}
         \begin{tadOperations}{Position}
-            \tadOperation{DefPosition}{\tadDeuxParams{\caractere}{caractere}}{\tadUnParam{Position}}
+            \tadOperation{DefPosition}{\tadDeuxParams{\caractere}{\caractere}}{\tadUnParam{Position}}
             \tadOperation{Obtenirx}{\tadUnParam{Position}}{\tadUnParam{\caractere}}
             \tadOperation{Obteniry}{\tadUnParam{Position}}{\tadUnParam{\caractere}}
+            \tadOperation{EstValide}{\tadDeuxParams{\caractere}{}\caractere}{\tadUnParam{Booleen}}
         \end{tadOperations}
         % \begin{tadSemantiques}{Couleur}
         %     \tadSemantique{dictionnaire}{l’op´eration qui permet de construire un Couleur `a partir de sa partie r´eelle et imaginaire}
@@ -59,17 +64,19 @@
             \tadAxiome{Obtenirx(DefPosition(x,y))=x}
             \tadAxiome{Obteniry(DefPosition(x,y))=y}
         \end{tadAxiomes}
+   	\begin{tadPreconditions}/\tadPrecondition{DefPosition(car,car)}{EstValide(car, car)}
+   	\end{tadPreconditions}
     \end{tad}
     \subsection{Coup}
     \begin{tad}
         \tadNom{Coup}
         %\tadParametres{Element,Clef}
-        \tadDependances{\booleen,Pion,Position}
+        \tadDependances{\booleen,Pion,Position, Plateau, Couleur}
         \begin{tadOperations}{Coup}
-            \tadOperation{PlacerCoup}{\tadDeuxParams{Pion}{Position}}{\tadUnParam{Coup}}
+            \tadOperation{PlacerCoup}{\tadTroisParams{Pion}{Plateau}{Position}}{\tadUnParam{Coup}}
             \tadOperation{ObtenirPosCoup}{\tadUnParam{Coup}}{\tadUnParam{Position}}
             \tadOperation{ObtenirCouleurCoup}{\tadUnParam{Coup}}{\tadUnParam{Couleur}}
-            \tadOperation{CoupValide}{\tadDeuxParams{Pion}{Position}}{\tadUnParam{\booleen}}
+            \tadOperation{CoupValide}{\tadTroisParams{Pion}{Plateau}{Position}}{\tadUnParam{\booleen}}
         \end{tadOperations}
         % \begin{tadSemantiques}{Couleur}
         %     \tadSemantique{dictionnaire}{l’op´eration qui permet de construire un Couleur `a partir de sa partie r´eelle et imaginaire}
@@ -77,23 +84,50 @@
         %     \tadSemantique{retirer}{L’op´eration qui permet de retirer un ´element du Couleur}
         % \end{tadSemantiques}
         \begin{tadAxiomes}
-            \tadAxiome{ObtenirPosCoup(PlacerCoup(p,ps))=ps}
-            \tadAxiome{ObtenirCouleurCoup(PlacerCoup(p,ps))=p} %à revoir palcerCoup(p,ps)=obtenirCpion(p)
+            \tadAxiome{ObtenirPosCoup(PlacerCoup(p,pl,ps))=ps}
+            \tadAxiome{ObtenirCouleurCoup(PlacerCoup(p,pl,ps))=p} %à revoir placerCoup(p,ps)=obtenirCpion(p)
         \end{tadAxiomes}
-    \end{tad}
+   	\begin{tadPreconditions}/\tadPrecondition{PlacerCoup(p, pl, ps) : CoupValide(p, pl, ps)}
+   	\end{tadPreconditions}
+   	        \end{tad}
     \subsection{Plateau}
     \begin{tad}
         \tadNom{Plateau}
         %\tadParametres{Element,Clef}
-        \tadDependances{\booleen,Pion,Position}
+        \tadDependances{\booleen,Pion,Position, Coup}
         \begin{tadOperations}{Plateau}
             \tadOperation{CreerPlateau}{}{\tadUnParam{Plateau}}
             %\tadOperation{PoserPion}{\tadTroisParams{}}{\tadUnParam{Position}}
             \tadOperation{ObtenirPion}{\tadDeuxParams{Position}{Plateau}}{\tadUnParam{Pion}}
-            \tadOperation{RetournerPion}{\tadDeuxParams{Position}{Plateau}}{\tadUnParam{Plateau}}
+            \tadOperation{RetournerPion}{\tadTroisParams{Position}{Plateau}{Coup}}{\tadUnParam{Plateau}}
             \tadOperation{EstVide}{\tadDeuxParams{Position}{Plateau}}{\tadUnParam{\booleen}}
             \tadOperation{ViderPlateau}{\tadUnParam{Plateau}}{\tadUnParam{Plateau}}
-            \tadOperation{EstGagnant}{\tadUnParam{Plateau}}{\tadUnParam{\booleen}}
+            \tadOperation{EstGagnant}{\tadDeuxParams{Coup}{Plateau}}{\tadUnParam{\booleen}}
         \end{tadOperations}
+    
+   	\begin{tadPreconditions}/\tadPrecondition{ObtenirPion(ps, pl) : 	non(EstVide(pl))}\tadPrecondition{RetournerPion(ps, pl, c) : non(EstVide(pl))}
+   		\tadPrecondition{ViderPlateau(pl) : non(estVide(pl))}
+   		\tadPrecondition{EstGagnant(pl) : non(estVide(pl))}
+\end{tadPreconditions}
     \end{tad}
-
+    \subsection{Coups}
+\begin{tad}
+	\tadNom{Coups}
+	\tadDependances{\naturel, \naturelNonNul, Coup, \booleen}
+	\begin{tadOperations}{Coups}
+		\tadOperation{InitCoups}{}{\tadUnParam{Coups}}
+		\tadOperation{EstVide}{\tadUnParam{Coups}}{\tadUnParam{\booleen}}
+		\tadOperation{AjouterCoup}{\tadDeuxParams{Coups}{Coup}}{\tadUnParam{Coups}}
+		\tadOperation{IemeCoup}{\tadDeuxParams{Coups}{\naturelNonNul}}{\tadUnParam{Coup}}
+		\tadOperation{NbCoups}{\tadUnParam{Coups}}{\tadUnParam{\naturel}}
+		\tadOperation{EstPresent}{\tadUnParam{Coups}}{\tadUnParam{\naturel}}
+	\end{tadOperations}
+\begin{tadAxiomes}
+	\tadAxiome{estVide(InitCoups())}
+	\tadAxiome{nbCoups(InitCoups()) = 0}
+	\tadAxiome {ajouter(cs,c) = nbCoups(cs)+1}
+\end{tadAxiomes}
+\begin{tadPreconditions}/\tadPrecondition{IemeCoup(c,i): i $\leq$ nbCoups(c)}
+		\end{tadPreconditions}
+\end{tad}
+\end{document}
