@@ -2,7 +2,7 @@
 #define __COUP_OTHELLO__
 
 #include "pion.h"
-#include "position"
+#include "position.h"
 
 
 /**
