@@ -6,7 +6,7 @@
  * \brief Le type OTH_Couleur permet de représenter la couleur 
  *
  */
-typedef enum OTH_Couleur {BLANC,NOIR,INACTIF};
+typedef enum {BLANC,NOIR} OTH_Couleur;
 
 
 

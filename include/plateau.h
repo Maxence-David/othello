@@ -17,10 +17,10 @@
  *
  */
 typedef struct {
-    int largeur; /**< largeur du plateau */
-    int hauteur;    /**< hauteur du plateau */
-    OTH_Pion cases[largeur][hauteur]  /**< tableau dynamique taille = longeur*largeur  */
-}OTH_Plateau;
+    unsigned int largeur; /**< largeur du plateau */
+    unsigned int hauteur;    /**< hauteur du plateau */
+    OTH_Pion *cases  /**< tableau dynamique taille = longeur*largeur  */
+} OTH_Plateau;
 
 /**
  * \fn  OTH_CreerPlateau(int largeur, int hauteur)
