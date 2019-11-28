@@ -6,7 +6,7 @@
                 {pl : Plateau, positionCoup : Position}
                 {\booleen}
                 {}
-                {\retourner{(Inactif = obtenirCpion(pl[obtenirX(positionCoup)][obtenirY(positionCoup)]))}}
+                {\retourner{etatPion(obtenirPion(positionCoup,pl))}}
         \end{algorithme}
 
         \subsection{obtenirCouleurGagnant}
@@ -14,7 +14,7 @@
             \fonction
                 {obtenirCouleurGagnant}
                 {pl : Plateau}
-                {Couleur}
+                {\booleen , Couleur}
                 {nbPionsNoirs, nbPionsBlancs, i, j : \naturel}
                 {
                     \affecter{nbPionsNoirs}{0}
@@ -37,15 +37,15 @@
                     }
                     \sialorssinon{nbPionsNoirs $>$ nbPionsBlancs}
                     {
-                        \retourner{Noir}
+                        \retourner{FAUX , Noir}
                     }
                     {
                         \sialorssinon{nbPionsNoirs $<$ nbPionsBlancs}
                         {
-                            \retourner{Blanc}
+                            \retourner{FAUX , Blanc}
                         }
                         {
-                            \retourner{Inactif}
+                            \retourner{VRAI , Blanc} $on retourne VRAI si egalite et une couleur par defaut$
                         }
                     }
                 }
