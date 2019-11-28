@@ -37,4 +37,6 @@ int OTH_ObtenirX(OTH_Position position);
  * \param OTH_Position 
  * \return char
  */
-char OTH_ObtenirX(OTH_Position position);
+char OTH_ObtenirY(OTH_Position position);
+
+#endif

@@ -6,7 +6,7 @@
 #include "position.h"
 #include "coup.h"
 #include "pion.h"
-#include <stdbool.h>
+/*#include <stdbool.h>*/
 
 
 
@@ -61,7 +61,7 @@ OTH_Plateau OTH_PoserPion(OTH_Pion pion, OTH_Position position, OTH_Plateau plat
  * \param OTH_Plateau
  * \return int (O si vide autre sinon)
  */
-int OTH_estVIde(OTH_Position position, OTH_Plateau plateau);
+int OTH_estVide(OTH_Position position, OTH_Plateau plateau);
 
 /**
  * \fn OTH_ViderPlateau()
@@ -70,3 +70,5 @@ int OTH_estVIde(OTH_Position position, OTH_Plateau plateau);
  * \return OTH_Plateau
  */
 OTH_Plateau OTH_ViderPlateau(OTH_Plateau plateau);
+
+#endif

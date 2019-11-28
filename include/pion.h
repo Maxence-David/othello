@@ -48,3 +48,5 @@ OTH_Couleur OTH_ObtenirCouleurPion(OTH_Pion pion);
  * \return int
  */
 int OTH_ObtenirEtatPion(OTH_Pion pion);
+
+#endif

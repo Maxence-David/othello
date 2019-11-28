@@ -33,3 +33,5 @@ OTH_Couleur OTH_Noir();
  * \return OTH_Couleur
  */
 OTH_Couleur OTH_ChangerCouleur(OTH_Couleur CouleurActuel );
+
+#endif

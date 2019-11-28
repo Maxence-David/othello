@@ -47,3 +47,5 @@ OTH_Couleur OTH_Obtenir_Couleur_Coup(OTH_Coup Coup);
  * \return int
  */
 int OTH_Coup_Valide(OTH_Coup Coup);
+
+#endif
