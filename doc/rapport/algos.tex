@@ -57,14 +57,14 @@
                 {plusDeCoups}
                 {pl : Plateau, couleurJoueurCourant : Couleur}
                 {\booleen}
-                {i, j : \naturelNonNul ; coupOK : \booleen}
+                {i, j : \naturelNonNul \\ coupOK : \booleen}
                 {
                     \affecter{coupOK}{FAUX}
                     \affecter{i}{1}
-                    \tantque{non(coupOK) et i $\leq$ 8}
+                    \tantque{non(coupOK) et i $\leqslant$ 8}
                     {
                         \affecter{j}{1}
-                        \tantque{non(coupOK) et j $\leq$ 8}
+                        \tantque{non(coupOK) et j $\leqslant$ 8}
                         {
                             \sialors{coupValide(creerPion(couleurJoueurCourant),defPosition(i,j),pl)}
                             {
@@ -102,7 +102,7 @@
                 {testModifDirection}
                 {pl : Plateau, leCoup : Coup, direction : \{HG,h,HD,D,BD,B,BG,G\}}
                 {\booleen}
-                {incrementX, incrementY : \entier ; positionAtester : Position}
+                {incrementX, incrementY : \entier \\ positionAtester : Position}
                 {
                     % \casou{direction}
                     % {
@@ -139,7 +139,7 @@
                     {
                         \affecter{couleurAdverse}{Noir}
                     }
-                    \tantque{obtenirCouleur((obtenirPion(positionAtester,pl)) = couleurAdverse) et (0 $\leq$ obtenirX(positionAtester) $\leq$ 8) et (0 $\leq$ obtenirY(positionAtester) $\leq$ 8)}
+                    \tantque{obtenirCouleur((obtenirPion(positionAtester,pl)) = couleurAdverse) et (0 $\leqslant$ obtenirX(positionAtester) $\leqslant$ 8) et (0 $\leqslant$ obtenirY(positionAtester) $\leqslant$ 8)}
                     {
                         \affecter{positionAtester}{defPosition(obtenirX(positionAtester) + incrementX, obtenirY(positionAtester) + incrementY)}
                     }
@@ -155,12 +155,38 @@
 
     \subsection{partieTerminee}
         \begin{algorithme}
-            \fonction
-                {partieTerminee}
+            \fonction{partieTerminee}
                 {pl : Plateau}
                 {\booleen}
                 {}
-                {\retourner{plateauPlein ou plusDeCoups}
+                {\retourner{(plateauPlein ou plusDeCoups)}}
+        \end{algorithme}
+   
+    \subsection{plateauPlein}
+        \begin{algorithme}
+            \fonction{plateauPlein}
+                {pl : Plateau}
+                {\booleen}
+                {i,j : \naturelNonNul \\ caseVide : \booleen \\ pos : Position}
+                {
+                    \affecter{caseVide}{FAUX}
+                    \affecter{i}{1}
+                    \tantque{non(caseVide) et i $\leqslant$ 8}
+                    {
+                        \affecter{j}{1}
+                        \tantque{non(caseVide) et j $\leqslant$ 8}
+                        {
+                            \affecter{pos}{defPosition(i,j)}
+                            \sialors{estVide(pl,pos)}
+                            {
+                                \affecter{caseVide}{VRAI}
+                            }
+                            \affecter{j}{j + 1}
+                        }
+                        \affecter{i}{i + 1}
+                    }
+                    \retourner{non(caseVide)}
+                }
         \end{algorithme}
         
     
