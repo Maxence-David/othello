@@ -39,7 +39,7 @@ OTH_Plateau OTH_CreerPlateau();
  * \param OTH_Plateau
  * \return OTH_Pion
  */
-OTH_Pion OTH_CreerPlateau(OTH_Position position, OTH_Plateau plateau);
+OTH_Pion OTH_ObtenirPion(OTH_Position position, OTH_Plateau plateau);
 
 
 /**

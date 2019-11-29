@@ -8,7 +8,7 @@
  */
 
 typedef struct {
-    char positiony; /**< position y */
+    int positiony; /**< position y */
     int positionx; /**< position x*/
 }OTH_Position;
 
@@ -17,11 +17,11 @@ typedef struct {
 /**
  * \fn  OTH_Defposition()
  * \brief Fonction pour definir la position
- * \param char position y
+ * \param int position y
  * \param int position x
  * \return OTH_Position
  */
-OTH_Position OTH_Defposition(char y, int x);
+OTH_Position OTH_Defposition(int y, int x);
 
 /**
  * \fn  OTH_ObtenirX()
@@ -35,8 +35,8 @@ int OTH_ObtenirX(OTH_Position position);
  * \fn  OTH_ObtenirY()
  * \brief Fonction pour obtenir la position y
  * \param OTH_Position 
- * \return char
+ * \return int
  */
-char OTH_ObtenirY(OTH_Position position);
+int OTH_ObtenirY(OTH_Position position);
 
 #endif

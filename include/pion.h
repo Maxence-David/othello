@@ -22,7 +22,7 @@ typedef struct {
 
  * \return OTH_Pion
  */
-OTH_Pion OTH_CreerPion();
+OTH_Pion OTH_CreerPion(OTH_Couleur couleur);
 
 /**
  * \fn  OTH_ChangerEtat()

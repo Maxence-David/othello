@@ -32,6 +32,6 @@ OTH_Couleur OTH_Noir();
  * \param OTH_Couleur on donne la couleur actuel
  * \return OTH_Couleur
  */
-OTH_Couleur OTH_ChangerCouleur(OTH_Couleur CouleurActuel );
+OTH_Couleur OTH_ChangerCouleur(OTH_Couleur CouleurActuelle );
 
 #endif
