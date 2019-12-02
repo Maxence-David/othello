@@ -331,3 +331,111 @@
      		\retourner{lePlateau[obtenirx(laPosition)][obteniry(laPosition)]}
      	}	
      \end{algorithme}
+
+
+
+
+    \subsection{CoupIA}
+    \begin{algorithme}
+        \fonction{CoupIA}
+        {pl : plateau, CouleurReference : Couleur }
+        {Coup}
+        {estPossible \booleen \\CoupsATester : coups \\ CoupTest,BestCoup : Coup\\ Alpha,Beta :\reel \\ BestScoreCoup, ScoreTemp : \Naturel }
+        {
+            \affecter{CoupsATester}{ObtenirCoupPossible(pl,CouleurReference)}
+            \affecter{profondeur}{6}
+            \affecter {estPossible}{non(estVide(CoupsATester))}
+            \affecter {Alpha}{-infini}
+            \affecter {Beta}{+infini}
+            \sialors{estPossible}
+            {
+                \affecter{BestScoreCoup}{0}
+                \tantque{non(estVide(CoupsATester))}
+                {
+                    \affecter{ScoreTemp}{ScoreDUnCoup(pl,CouleurReference,CoupTest,profondeur,Alpha,Beta)}
+                    \sialors{BestScoreCoup<ScoreTemp}
+                    {
+                        \affecter{BestScoreCoup}{ScoreTemp}
+                        \affecter{CoupIA}{CoupTest}
+
+                    }
+                    \affecter{CoupsATester}{CoupsATester-CoupTest}
+
+                }
+            }
+        
+            \retourner{CoupIA}
+        }
+    \end{algorithme}
+    \end{subsection}
+
+    \subsection{ScoreDUnCoup}
+    \begin{algorithme}
+        \fonction{ScoreDUnCoup}
+        {pl:plateau,CouleurReference:Couleur,coup:Coup,profondeur:\Naturel,Alpha:\Reel, Beta:\Real}
+        {\Entier}
+        {TestFin : \Booleen \\ GrilleTemp: plateau \\ AutreCouleur : Couleur \\ score :\Entier}
+        {
+            \affecter{GrilleTemp}{CopierGrille(pl)}
+            \affecter{AutreCouleur}{ChangerCouleur(CouleurReference)}
+            \affecter{TestFin}{(ObtenirCoupPossible(pl,CouleurReference)=0) et (ObtenirCoupPossible(pl,AutreCouleur)=0)}
+            \instruction{MiseAJourPateau(GrilleTemp,coup)}
+            \sialorssinon{(profondeur=0) et (TestFin)}
+            {
+                \affecter{score}{evalue(GrilleTemp,CouleurReference)}
+                \retourner{score}
+            }
+            {
+                \retourner{AlphaBeta(GrilleTemp,CouleurReference,AutreCouleur,Alpha,Beta,profondeur-1)}
+            }
+
+        }
+    \end{algorithme}
+
+
+
+
+
+
+    \subsection{AlphaBeta}
+    \begin{algorithme}
+        \fonction{AlphaBeta}
+        {pl:plateau,CouleurReference:Couleur,CouleurActuel:Couleur,Alpha : \Reel,Beta: \Reel,profondeur :\Naturel}
+        {\Entier}
+        {CoupsPossible : Coups \\ res : \Entier \\ score : \Entier \\i : \Entier}
+        {
+            \affecter{CoupsPossible}{ObtenirCoupPossible(pl,CouleurActuel)}
+            \sialors{non(estVide(CoupsPossible))}
+            {
+                \affecter{res}{ScoreDUnCoup(pl,CouleurReference,iemeCoup(CoupsPossible,1)profondeur,Alpha,Beta)}
+            }
+            \pour{i}{2}{nbCoups(CoupsPossible)}{}
+            {
+                \affecter{score}{ScoreDUnCoup(pl,CouleurReference,iemeCoup(CoupsPossible,i),profondeur,Alpha,Beta)}
+                \sialorssinon{CouleurReference<>CouleurActuel}
+                {
+                    \affecter{res}{max(score,res)}
+                    \sialors{res>Alpha}
+                    {
+                        \affecter{Alpha}{res}
+                        \sialors{ALpha>Beta}
+                        {
+                            \retourner{res}
+                        }
+                    }
+                }
+                {
+                    \affecter{res}{min(score,res)}
+                    \sialors{res<Beta}
+                    {
+                        \affecter{Beta}{res}
+                        \sialors{Beta<ALpha}
+                        {
+                            \retourner{res}
+                        }
+                    }
+                }
+            }
+            \retourner{res}
+        }
+    \end{algorithme}
