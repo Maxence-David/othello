@@ -7,46 +7,45 @@
 
 
 /**
- * \brief Le type OTH_Pion permet de représenter un pion
+ * \brief Le type PI_Pion permet de représenter un pion
  *
  */
 
 typedef struct {
-    OTH_Couleur couleurPion; /**< couleur du pion*/
+    CO_Couleur couleurPion; /**< couleur du pion*/
     int etatPion; /**< etat du pion : 0 = inactif, autre =actif*/
-}OTH_Pion;
+}PI_Pion;
 
 /**
- * \fn  OTH_CreerPion()
+ * \fn  PI_CreerPion()
  * \brief Fonction pour creer un pion
 
- * \return OTH_Pion
+ * \return PI_Pion
  */
-OTH_Pion OTH_CreerPion(OTH_Couleur couleur);
+PI_Pion PI_CreerPion(CO_Couleur couleur);
 
 /**
- * \fn  OTH_ChangerEtat()
- * \brief Fonction pour changer l'etat d'un pion 
- * \param OTH_Pion pion dont on change l'etat
- * \return OTH_Pion
+ * \fn  PI_ChangerEtat()
+ * \brief procedure pour changer l'etat d'un pion 
+ * \param PI_Pion pion dont on change l'etat
  */
-OTH_Pion OTH_ChangerEtat(OTH_Pion pion);
+void* PI_ChangerEtat(PI_Pion pion);
 
 /**
- * \fn  OTH_ObtenirCouleurPion()
+ * \fn  PI_ObtenirCouleurPion()
  * \brief Fonction pour obtenir la couleur d'un pion 
- * \param OTH_Pion pion dont on doit changer la couleur 
- * \return OTH_Couleur
+ * \param PI_Pion pion dont on doit changer la couleur 
+ * \return CO_Couleur
  */
-OTH_Couleur OTH_ObtenirCouleurPion(OTH_Pion pion);
+CO_Couleur PI_ObtenirCouleurPion(PI_Pion pion);
 
 
 /**
- * \fn  OTH_ObtenirEtatPion()
+ * \fn  PI_ObtenirEtatPion()
  * \brief Fonction pour obtenir l'etat d'un pion
- * \param OTH_Pion pion dont on veut l'etat
+ * \param PI_Pion pion dont on veut l'etat
  * \return int
  */
-int OTH_ObtenirEtatPion(OTH_Pion pion);
+int PI_ObtenirEtatPion(PI_Pion pion);
 
 #endif

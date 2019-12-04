@@ -3,35 +3,35 @@
 #define __COULEUR__
 
 /**
- * \brief Le type OTH_Couleur permet de représenter la couleur 
+ * \brief Le type CO_Couleur permet de représenter la couleur 
  *
  */
-typedef enum {BLANC,NOIR} OTH_Couleur;
+typedef enum {BLANC,NOIR} CO_Couleur;
 
 
 
 /**
- * \fn  OTH_Blanc()
+ * \fn  CO_Blanc()
  * \brief Fonction d'initialisation couleur a blanc
  *
- * \return OTH_Couleur
+ * \return CO_Couleur
  */
-OTH_Couleur OTH_Blanc();
+CO_Couleur CO_Blanc();
 
 /**
- * \fn  OTH_Noir()
+ * \fn  CO_Noir()
  * \brief Fonction d'initialisation de couleur a Noir
  *
- * \return OTH_Couleur
+ * \return CO_Couleur
  */
-OTH_Couleur OTH_Noir();
+CO_Couleur CO_Noir();
 
 /**
- * \fn  OTH_ChangerCouleur()
+ * \fn  CO_ChangerCouleur()
  * \brief Fonction de changement de couleur 
- * \param OTH_Couleur on donne la couleur actuel
- * \return OTH_Couleur
+ * \param CO_Couleur on donne la couleur actuel
+ * \return CO_Couleur
  */
-OTH_Couleur OTH_ChangerCouleur(OTH_Couleur CouleurActuelle );
+CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle );
 
 #endif

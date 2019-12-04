@@ -13,62 +13,62 @@
 
 
 /**
- * \brief Le type OTH_Plateau permet de représenter le plateau de jeu 
+ * \brief Le type PL_Plateau permet de représenter le plateau de jeu 
  *
  */
 typedef struct {
     unsigned int largeur; /**< largeur du plateau */
     unsigned int hauteur;    /**< hauteur du plateau */
-    OTH_Pion *cases  /**< tableau dynamique taille = longeur*largeur  */
-} OTH_Plateau;
+    PI_Pion *cases  /**< tableau dynamique taille = longeur*largeur  */
+} PL_Plateau;
 
 /**
- * \fn  OTH_CreerPlateau(int largeur, int hauteur)
+ * \fn  PL_CreerPlateau(int largeur, int hauteur)
  * \brief Fonction de création d'un plateau de cases inactive
  *
- * \return OTH_Plateau
+ * \return PL_Plateau
  */
-OTH_Plateau OTH_CreerPlateau();
+PL_Plateau PL_CreerPlateau();
 
 
 
 /**
- * \fn OTH_ObtenirPion()
+ * \fn PL_ObtenirPion()
  * \brief Fonction pour obtenir un pion d'un plateau
- * \param OTH_Position position dont on veut le pion
- * \param OTH_Plateau
- * \return OTH_Pion
+ * \param PO_Position position dont on veut le pion
+ * \param PL_Plateau
+ * \return PI_Pion
  */
-OTH_Pion OTH_ObtenirPion(OTH_Position position, OTH_Plateau plateau);
+PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau);
 
 
 /**
- * \fn OTH_PoserPion()
+ * \fn PL_PoserPion()
  * \brief Fonction pour poser un pion sur un plateau
- * \param OTH_Position position dont on veut le pion
- * \param OTH_Plateau
- * \param OTH_Pion
- * \return OTH_Plateau
+ * \param PO_Position position dont on veut le pion
+ * \param PL_Plateau
+ * \param PI_Pion
+ * \return PL_Plateau
  */
-OTH_Plateau OTH_PoserPion(OTH_Pion pion, OTH_Position position, OTH_Plateau plateau);
+PL_Plateau PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau plateau);
 
 
 
 /**
- * \fn OTH_estVide()
+ * \fn PL_estVide()
  * \brief Fonction pour savoir si une case est vide
- * \param OTH_Position pa evaluer
- * \param OTH_Plateau
+ * \param PO_Position pa evaluer
+ * \param PL_Plateau
  * \return int (O si vide autre sinon)
  */
-int OTH_estVide(OTH_Position position, OTH_Plateau plateau);
+int PL_estVide(PO_Position position, PL_Plateau plateau);
 
 /**
- * \fn OTH_ViderPlateau()
+ * \fn PL_ViderPlateau()
  * \brief Fonction pour vider le plateau
- * \param OTH_Plateau
- * \return OTH_Plateau
+ * \param PL_Plateau
+ * \return PL_Plateau
  */
-OTH_Plateau OTH_ViderPlateau(OTH_Plateau plateau);
+PL_Plateau PL_ViderPlateau(PL_Plateau plateau);
 
 #endif

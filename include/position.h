@@ -10,33 +10,33 @@
 typedef struct {
     int positiony; /**< position y */
     int positionx; /**< position x*/
-}OTH_Position;
+}PO_Position;
 
 
 
 /**
- * \fn  OTH_Defposition()
+ * \fn  PO_Defposition()
  * \brief Fonction pour definir la position
  * \param int position y
  * \param int position x
- * \return OTH_Position
+ * \return PO_Position
  */
-OTH_Position OTH_Defposition(int y, int x);
+PO_Position PO_Defposition(int y, int x);
 
 /**
- * \fn  OTH_ObtenirX()
+ * \fn  PO_ObtenirX()
  * \brief Fonction pour obtenir la position x
- * \param OTH_Position 
+ * \param PO_Position 
  * \return int
  */
-int OTH_ObtenirX(OTH_Position position);
+int PO_ObtenirX(PO_Position position);
 
 /**
- * \fn  OTH_ObtenirY()
+ * \fn  PO_ObtenirY()
  * \brief Fonction pour obtenir la position y
- * \param OTH_Position 
+ * \param PO_Position 
  * \return int
  */
-int OTH_ObtenirY(OTH_Position position);
+int PO_ObtenirY(PO_Position position);
 
 #endif
