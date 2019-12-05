@@ -2,6 +2,7 @@
 #define __COUPS_OTHELLO__
 
 #include "pion.h"
+#include "coup.h"
 
 /**
  * \brief Le type CS_Coups permet de représenter un coup
@@ -70,3 +71,4 @@ CS_Coups OTH_InitCoups();
  */
  int CS_EstPresent (CS_Coups coups);
 
+#endif

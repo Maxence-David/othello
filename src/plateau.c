@@ -4,15 +4,15 @@
 #include "pion.h"
 #include "plateau.h"
 
-OTH_Plateau OTH_CreerPlateau();
+PL_Plateau OTH_CreerPlateau();
 
-OTH_Pion OTH_ObtenirPion(OTH_Position position, OTH_Plateau plateau);
+PI_Pion OTH_ObtenirPion(PO_Position position, PL_Plateau plateau);
 
-OTH_Plateau OTH_PoserPion(OTH_Pion pion, OTH_Position position, OTH_Plateau plateau);
+PL_Plateau OTH_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau plateau);
 
-int OTH_estVide(OTH_Position position, OTH_Plateau plateau)
+int OTH_estVide(PO_Position position, PL_Plateau plateau)
 {
-    return OTH_ObtenirEtatPion(OTH_ObtenirPion(position,plateau));
+    return PI_ObtenirEtatPion(PL_ObtenirPion(position,plateau));
 }
 
-OTH_Plateau OTH_ViderPlateau(OTH_Plateau plateau);
+PL_Plateau OTH_ViderPlateau(PL_Plateau plateau);

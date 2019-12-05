@@ -1,6 +1,6 @@
 #include "plateau.h"
 
-int OTH_estVide(OTH_Position position, OTH_Plateau plateau)
+int OTH_estVide(PO_Position position, PL_Plateau plateau)
 {
-    return OTH_etatPion(OTH_obtenirPion(position,plateau));
+    return PI_etatPion(PL_obtenirPion(position,plateau));
 }

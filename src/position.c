@@ -1,20 +1,20 @@
 #include "position.h"
 
-OTH_Position OTH_Defposition(int x, int y)
+PO_Position OTH_Defposition(int x, int y)
 {
-    OTH_Position resultat;
+    PO_Position resultat;
     resultat.positionx = x;
     resultat.positiony = y;
     return resultat;
 
 }
 
-int OTH_ObtenirX(OTH_Position position)
+int PO_ObtenirX(PO_Position position)
 {
     return position.positionx;
 }
 
-int OTH_ObtenirY(OTH_Position position)
+int PO_ObtenirY(PO_Position position)
 {
     return position.positiony;
 }

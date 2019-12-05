@@ -1,16 +1,16 @@
 #include "couleur.h"
 
-OTH_Couleur OTH_Blanc()
+CO_Couleur CO_Blanc()
 {
     return BLANC;
 }
 
-OTH_Couleur OTH_Noir()
+CO_Couleur CO_Noir()
 {
     return NOIR;
 }
 
-OTH_Couleur OTH_ChangerCouleur(OTH_Couleur CouleurActuelle )
+CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle )
 {
     if (CouleurActuelle = BLANC)
     {

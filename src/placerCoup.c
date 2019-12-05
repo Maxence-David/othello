@@ -1,7 +1,8 @@
 #include "position.h"
 #include "coup.h"
+#include "plateau.h"
 
-OTH_Coup placerCoup(OTH_Plateau plateau, int partieFinie)
+C_Coup placerCoup(PL_Plateau plateau, int partieFinie)
 {
 
 }

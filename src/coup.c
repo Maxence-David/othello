@@ -2,16 +2,16 @@
 #include "position.h"
 #include "coup.h"
 
-OTH_Coup OTH_PlacerCoup(OTH_Pion pion, OTH_Position positionCoup);
+C_Coup OTH_PlacerCoup(PI_Pion pion, PO_Position positionCoup);
 
-OTH_Position OTH_Obtenir_Position_Coup(OTH_Coup Coup)
+PO_Position OTH_Obtenir_Position_Coup(C_Coup Coup)
 {
     return Coup.positionCoup;
 }
 
-OTH_Couleur OTH_Obtenir_Couleur_Coup(OTH_Coup Coup)
+CO_Couleur OTH_Obtenir_Couleur_Coup(C_Coup Coup)
 {
     return OTH_ObtenirCouleurPion(Coup.Pion);
 }
 
-int OTH_Coup_Valide(OTH_Coup Coup); /*
+int OTH_Coup_Valide(C_Coup Coup); /*a coder*/

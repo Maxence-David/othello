@@ -21,7 +21,7 @@ typedef struct {
  * \param int position x
  * \return PO_Position
  */
-PO_Position PO_Defposition(int y, int x);
+PO_Position PO_defPosition(int y, int x);
 
 /**
  * \fn  PO_ObtenirX()
