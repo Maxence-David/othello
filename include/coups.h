@@ -50,9 +50,10 @@ CS_Coups OTH_InitCoups();
  * \fn  CS_IemeCoup ()
  * \brief Fonction renvoi le ieme coup
  * \param CS_Coups coups, tableau de coups
+ * \param int i
  * \return C_Coup 
  */
- C_Coup CS_AjouterCoup (CS_Coups coups);
+ C_Coup CS_IemeCoup (CS_Coups coups,int i);
 
  /**
  * \fn  CS_NbCoups ()
@@ -71,4 +72,14 @@ CS_Coups OTH_InitCoups();
  */
  int CS_EstPresent (CS_Coups coups);
 
+
+
+
+ /**
+ * \fn  CS_SupprimerCoup ()
+ * \brief procedure qui supprime un coup du tableau
+ * \param CS_Coups coups, tableau de coups
+ * \return void*
+ */
+ void* CS_SupprimerCoup (CS_Coups coups);
 #endif
