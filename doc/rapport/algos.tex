@@ -97,40 +97,56 @@
                     \retourner{modifHG ou modifH ou modifHD ou modifD ou modifBD ou modifB ou modifBG ou modfigG}
                 }
         \end{algorithme}
+
         \begin{algorithme}
-            \fonction
-                {testModifDirection}
+            \fonction{testModifDirection}
                 {pl : Plateau, leCoup : Coup, direction : \{HG,h,HD,D,BD,B,BG,G\}}
                 {\booleen}
                 {incrementX, incrementY : \entier \\ positionAtester : Position}
                 {
-                    % \casou{direction}
-                    % {
-                    %     HG : 
-                    %         \affecter{incrementX}{-1}
-                    %         \affecter{incrementY}{1}
-                    %     H : 
-                    %         \affecter{incrementX}{0}
-                    %         \affecter{incrementY}{1}
-                    %     HD : 
-                    %         \affecter{incrementX}{1}
-                    %         \affecter{incrementY}{1}
-                    %     D : 
-                    %         \affecter{incrementX}{1}
-                    %         \affecter{incrementY}{0}
-                    %     BD : 
-                    %         \affecter{incrementX}{1}
-                    %         \affecter{incrementY}{-1}
-                    %     B : 
-                    %         \affecter{incrementX}{0}
-                    %         \affecter{incrementY}{-1}
-                    %     BG : 
-                    %         \affecter{incrementX}{-1}
-                    %         \affecter{incrementY}{-1}
-                    %     G : 
-                    %         \affecter{incrementX}{-1}
-                    %         \affecter{incrementY}{0}
-                    % }
+                    \cas{direction}
+                    {
+                        \casclausegenerale{HG}
+                        { 
+                            \affecter{incrementX}{-1}
+                            \affecter{incrementY}{1}
+                        }
+                        \casclausegenerale{H}
+                        { 
+                            \affecter{incrementX}{0}
+                            \affecter{incrementY}{1}
+                        }
+                        \casclausegenerale{HD}
+                        { 
+                            \affecter{incrementX}{1}
+                             \affecter{incrementY}{1}
+                        }                        
+                        \casclausegenerale{D}
+                        { 
+                            \affecter{incrementX}{1}
+                            \affecter{incrementY}{0}
+                        }                        
+                        \casclausegenerale{BD}
+                        { 
+                            \affecter{incrementX}{1}
+                            \affecter{incrementY}{-1}
+                        }                        
+                        \casclausegenerale{B}
+                        { 
+                            \affecter{incrementX}{0}
+                            \affecter{incrementY}{-1}
+                        }                        
+                        \casclausegenerale{BG}
+                        { 
+                            \affecter{incrementX}{-1}
+                            \affecter{incrementY}{-1}
+                        }                        
+                        \casclausegenerale{G}
+                        { 
+                            \affecter{incrementX}{-1}
+                            \affecter{incrementY}{0}
+                        }
+                    }
                     \affecter{positionAtester}{defPosition(obtenirX(obtenirPosCoup(leCoup)+incrementX, obtenirY(obtenirPosCoup(leCoup)+incrementY)))}
                     \sialorssinon{obtenirCouleurCoup(leCoup)=Noir}
                     {
@@ -139,18 +155,26 @@
                     {
                         \affecter{couleurAdverse}{Noir}
                     }
-                    \tantque{obtenirCouleur((obtenirPion(positionAtester,pl)) = couleurAdverse) et (0 $\leqslant$ obtenirX(positionAtester) $\leqslant$ 8) et (0 $\leqslant$ obtenirY(positionAtester) $\leqslant$ 8)}
-                    {
-                        \affecter{positionAtester}{defPosition(obtenirX(positionAtester) + incrementX, obtenirY(positionAtester) + incrementY)}
-                    }
-                    \sialorssinon{obtenirCouleur(obtenirPion(positionAtester,pl)) = obtenirCouleurCoup(leCoup)}
-                    {
-                        \retourner{VRAI}
-                    }
+
+                    \sialorssinon{obtenirCouleurCoup(leCoup) = obtenirCouleur(obtenirPion(positionAtester,pl))}
                     {
                         \retourner{FAUX}
                     }
-                }
+                    {
+                        \tantque{obtenirCouleur((obtenirPion(positionAtester,pl)) = couleurAdverse) et (0 $\leqslant$ obtenirX(positionAtester) $\leqslant$ 8) et (0 $\leqslant$ obtenirY(positionAtester) $\leqslant$ 8)}
+                        {
+                            \affecter{positionAtester}{defPosition(obtenirX(positionAtester) + incrementX, obtenirY(positionAtester) + incrementY)}
+                        }
+                        \sialorssinon{obtenirCouleur(obtenirPion(positionAtester,pl)) = obtenirCouleurCoup(leCoup)}
+                        {
+                            \retourner{VRAI}
+                        }
+                        {
+                            \retourner{FAUX}
+                        }
+                    }
+            }
+            
         \end{algorithme}
 
     \subsection{partieTerminee}
@@ -242,17 +266,16 @@
      \begin{algorithme}
      	\procedure
      	{majPlateau}
-     	{\paramEntreeSortie {lePlateau : Plateau},
-     		\paramEntree {leCoup : Coup, lesDirections : Ensemble$<$Direction$>$}}
+     	{\paramEntreeSortie {lePlateau : Plateau}, \paramEntree {leCoup : Coup, lesDirections : Ensemble$<$Direction$>$}}
      	{element : Direction, onRetourne : \booleen, pos : Position}
      	{
-     		\pourchaque{element}{lesDirections}
+     		%\pourchaque{element}{lesDirections}
      		{
      			\affecter{positionsARetourner, onRetourne}{testModifDirection(lePlateau, leCoup, element)}
      			\sialors{onRetourne = VRAI}
      			{
      				
-     				\pourchaque{pos}{positionsARetourner}
+     				%\pourchaque{pos}{positionsARetourner}
      				{
      					\instruction{retournerPion(lePlateau, pos)}
      				}
@@ -284,7 +307,7 @@
      \begin{algorithme}
      	\fonctionAvecPreconditions
      	{placerCoup}
-     	{partieFinie : Booleen, lePlateau : Plateau}
+     	{partieFinie : booleen, lePlateau : Plateau}
      	{Coup}
      	{non(partieFinie)}
      	{pionAPlacer : Pion, abscisse, ordonnee : \naturel, nouveauCoup : Coup}
@@ -308,7 +331,7 @@
      \begin{algorithme}
      	\fonctionAvecPreconditions
      	{defPosition}
-     	{abscisse, ordonnee : Entier} 
+     	{abscisse, ordonnee : entier} 
      	{Position}
      	{(1 $\leqslant$ abscisse $\leqslant$ lePlateau.largeur) et (1 $\leqslant$ ordonnee $\leqslant$  lePlateau.hauteur)}
      	{laPosition : Position}
@@ -340,7 +363,7 @@
         \fonction{CoupIA}
         {pl : plateau, CouleurReference : Couleur }
         {Coup}
-        {estPossible \booleen \\CoupsATester : coups \\ CoupTest,BestCoup : Coup\\ Alpha,Beta :\reel \\ BestScoreCoup, ScoreTemp : \Naturel }
+        {estPossible \booleen \\CoupsATester : coups \\ CoupTest,BestCoup : Coup\\ Alpha,Beta :\reel \\ BestScoreCoup, ScoreTemp : \naturel }
         {
             \affecter{CoupsATester}{ObtenirCoupPossible(pl,CouleurReference)}
             \affecter{profondeur}{6}
@@ -367,14 +390,14 @@
             \retourner{CoupIA}
         }
     \end{algorithme}
-    \end{subsection}
+
 
     \subsection{ScoreDUnCoup}
     \begin{algorithme}
         \fonction{ScoreDUnCoup}
-        {pl:plateau,CouleurReference:Couleur,coup:Coup,profondeur:\Naturel,Alpha:\Reel, Beta:\Real}
-        {\Entier}
-        {TestFin : \Booleen \\ GrilleTemp: plateau \\ AutreCouleur : Couleur \\ score :\Entier}
+        {pl:plateau,CouleurReference:Couleur,coup:Coup,profondeur:\naturel,Alpha:\reel, Beta:\reel}
+        {\entier}
+        {TestFin : \booleen \\ GrilleTemp: plateau \\ AutreCouleur : Couleur \\ score :\entier}
         {
             \affecter{GrilleTemp}{CopierGrille(pl)}
             \affecter{AutreCouleur}{ChangerCouleur(CouleurReference)}
@@ -400,9 +423,9 @@
     \subsection{AlphaBeta}
     \begin{algorithme}
         \fonction{AlphaBeta}
-        {pl:plateau,CouleurReference:Couleur,CouleurActuel:Couleur,Alpha : \Reel,Beta: \Reel,profondeur :\Naturel}
-        {\Entier}
-        {CoupsPossible : Coups \\ res : \Entier \\ score : \Entier \\i : \Entier}
+        {pl:plateau,CouleurReference:Couleur,CouleurActuel:Couleur,Alpha : \reel,Beta: \reel,profondeur :\naturel}
+        {\entier}
+        {CoupsPossible : Coups \\ res : \entier \\ score : \entier \\i : \entier}
         {
             \affecter{CoupsPossible}{ObtenirCoupPossible(pl,CouleurActuel)}
             \sialors{non(estVide(CoupsPossible))}
