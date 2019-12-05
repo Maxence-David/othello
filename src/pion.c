@@ -1,7 +1,7 @@
 #include "couleur.h"
 #include "pion.h"
 
-PI_Pion OTH_CreerPion(CO_Couleur couleur)
+PI_Pion PI_CreerPion(CO_Couleur couleur)
 {
     PI_Pion resultat;
     resultat.couleurPion = couleur;
@@ -9,7 +9,7 @@ PI_Pion OTH_CreerPion(CO_Couleur couleur)
     return resultat;
 }
 
-PI_Pion OTH_ChangerEtat(PI_Pion pion)
+void* PI_ChangerEtat(PI_Pion pion)
 {
     PI_Pion resultat; 
     if (pion.etatPion = 0)
@@ -20,15 +20,15 @@ PI_Pion OTH_ChangerEtat(PI_Pion pion)
     {
         resultat.etatPion = 0;
     }
-    return resultat;
+    pion = resultat;
 }
 
-CO_Couleur OTH_ObtenirCouleurPion(PI_Pion pion)
+CO_Couleur PI_ObtenirCouleurPion(PI_Pion pion)
 {
     return pion.couleurPion;
 }
 
-int OTH_ObtenirEtatPion(PI_Pion pion)
+int PI_ObtenirEtatPion(PI_Pion pion)
 {
     return pion.etatPion;
 }

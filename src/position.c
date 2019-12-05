@@ -1,6 +1,6 @@
 #include "position.h"
 
-PO_Position OTH_Defposition(int x, int y)
+PO_Position PO_defPosition(int x, int y)
 {
     PO_Position resultat;
     resultat.positionx = x;
