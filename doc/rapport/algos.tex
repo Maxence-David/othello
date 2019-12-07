@@ -1,3 +1,6 @@
+\begin{document}\right) 
+
+
 \section{Conception détaillée}
     \subsection{estVide}
         \begin{algorithme}
@@ -463,3 +466,72 @@
             \retourner{res}
         }
     \end{algorithme}
+
+
+\subsection{affichagePlateau}
+\begin{algorithme}
+	\procedure
+	{majPlateau}
+	{\paramEntree {lePlateau : Plateau}}
+	{i, j : \naturel}
+	{
+		\pour{i}{1}{lePlateau.hauteur}{}{
+			\pour{j}{1}{lePlateau.largeur}{}{
+				\instruction{ecrire(lePlateau.cases[i][j])}
+			}
+		}
+	}
+	
+\end{algorithme}
+
+\subsection{faireUnePartie}
+\begin{algorithme}
+	\fonction
+	{faireUnePartie}
+	{}
+	{Couleur}
+	{couleurDuGagnant, joueurCourant : Couleur, joueurOuIA : Booleen, unPlateau : Plateau, coupJoueur1, coupJoueur2, coupIA : Coup, lesDirections : Ensemble$<$Direction$>$}
+	{
+		\instruction{lire(joueurOuIA)}
+		\affecter{joueurCourant}{noir}
+		\affecter{unPlateau}{creerPlateau()}
+		\sialorssinon{non(JoueurContreIA)}{
+			\tantque{non(partieTerminee(unPlateau, joueurCourant))}{
+				\affecter{coupJoueur1}{placerCoup(unPlateau, non(partieTerminee(unPlateau)))}
+				\instruction{majPlateau(unPlateau, coupJoueur1, lesDirections)}
+				\instruction{affichagePlateau(unPlateau)}
+				\affecter{coupJoueur2}{placerCoup(unPlateau, non(partieTerminee(unPlateau)))}
+				\instruction{majPlateau(unPlateau, coupJoueur2, lesDirections)}
+				\instruction{affichagePlateau(unPlateau)}
+				}
+		}
+		{
+			\tantque{non(partieTerminee(unPlateau, joueurCourant))}{
+				\affecter{coupJoueur}{placerCoup(unPlateau, non(partieTerminee(unPlateau)))}
+				\instruction{majPlateau(unPlateau, coupJoueur, lesDirections)}
+				\instruction{affichagePlateau(unPlateau)}
+				\affecter{coupIA}{moduleIA(unPlateau)}
+				\instruction{majPlateau(unPlateau, coupIA, lesDirections)}
+				\instruction{affichagePlateau(unPlateau)}
+				}
+		}
+	
+	}
+	
+	\end{algorithme}
+
+    \subsection{creerPlateau}
+	\begin{algorithme}
+		\fonction{creerPlateau}
+		{pl:plateau,CouleurReference:Couleur,coup:Coup,profondeur:\naturel,Alpha:\reel, Beta:\reel}
+		{\entier}
+		{TestFin : \booleen \\ GrilleTemp: plateau \\ AutreCouleur : Couleur \\ score :\entier}
+		{
+			\affecter{unPlateau.hauteur}{8} 
+			\affecter{unPlateau.largeur}{8} 
+			\instruction{poserPion(creerPion(Blanc), defPosition(4,4), unPlateau)}
+			\instruction{poserPion(creerPion(Noir), defPosition(4,5), unPlateau)} 
+			\instruction{poserPion(creerPion(Blanc), defPosition(5,5), unPlateau)}
+			\instruction{poserPion(creerPion(Noir), defPosition(5,4), unPlateau)}
+		}
+	\end{algorithme}
