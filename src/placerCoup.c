@@ -9,11 +9,6 @@ C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie)
 
 }
 
-int OTH_coupValide(PL_Plateau plateau, C_Coup coup)
-{
-
-}
-
 int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)
 {
     int modifHG, modifH, modifHD, modifD, modifBD, modifB, modifBG, modifG;
@@ -86,11 +81,11 @@ int testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
     }
     else
     {
-        while((PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == couleurAdverse) && (0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= 8) && (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= 8))
+        while((PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau))) && (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == couleurAdverse) && (0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= 8) && (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= 8))
         {
             positionAtester = PO_defPosition(PO_ObtenirX(positionAtester) + incrementX, PO_ObtenirY(positionAtester) + incrementY);
         }
-        if (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == C_Obtenir_Couleur_Coup(coup))
+        if ((PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau)) != 0) && (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == C_Obtenir_Couleur_Coup(coup)))
         {
             return 1;
         }
