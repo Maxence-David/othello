@@ -78,10 +78,11 @@
                 }
         \end{algorithme}
 
-    \subsection{auMoinsUneModif}
+    \subsection{retournerAuMoinsUnPion}
+    \subsubsection{retournerAuMoinsUnPion}
         \begin{algorithme}
             \fonction
-                {auMoinsUneModif}
+                {retournerAuMoinsUnPion}
                 {pl : Plateau, leCoup : Coup}
                 {\booleen}
                 {modifHG, modifH, modifD, modifBD, modifB, modifBG, modifG : \booleen}
@@ -97,10 +98,10 @@
                     \retourner{modifHG ou modifH ou modifHD ou modifD ou modifBD ou modifB ou modifBG ou modfigG}
                 }
         \end{algorithme}
-
+        \subsubsection{testModifDirection}
         \begin{algorithme}
             \fonction{testModifDirection}
-                {pl : Plateau, leCoup : Coup, direction : \{HG,h,HD,D,BD,B,BG,G\}}
+                {pl : Plateau, leCoup : Coup, direction : \{HG,H,HD,D,BD,B,BG,G\}}
                 {\booleen}
                 {incrementX, incrementY : \entier \\ positionAtester : Position}
                 {
