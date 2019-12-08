@@ -2,10 +2,12 @@
 #include "coup.h"
 #include "plateau.h"
 #include "placerCoup.h"
+#include "position.h"
+#include "pion.h"
 
 C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie)
 {
-  PI_Pion pionAPlacer, int abscisse, int ordonnee, C_Coup nouveauCoup;
+  PI_Pion pionAPlacer; unsigned int abscisse; unsigned int ordonnee; C_Coup nouveauCoup;
   pionAPlacer.couleur = definirCouleurNouveauJoueuer(pionAPlacer);
   nouveauCoup.pion = pionAPlacer;
   nouveauCoup.position = PO_defPosition(caractereEnEntier(getchar(abscisse)), caractereEnEntier(getchar(ordonne)));
