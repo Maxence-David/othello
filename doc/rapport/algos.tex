@@ -182,10 +182,10 @@
     \subsection{partieTerminee}
         \begin{algorithme}
             \fonction{partieTerminee}
-                {pl : Plateau}
+                {pl : Plateau, couleurJoueurCourant : Couleur}
                 {\booleen}
                 {}
-                {\retourner{(plateauPlein ou plusDeCoups)}}
+                {\retourner{(plateauPlein(pl) ou plusDeCoups(pl, couleurJoueurCourant))}}
         \end{algorithme}
    
     \subsection{plateauPlein}
@@ -521,9 +521,9 @@
     \subsection{creerPlateau}
 	\begin{algorithme}
 		\fonction{creerPlateau}
-		{pl:plateau,CouleurReference:Couleur,coup:Coup,profondeur:\naturel,Alpha:\reel, Beta:\reel}
-		{\entier}
-		{TestFin : \booleen \\ GrilleTemp: plateau \\ AutreCouleur : Couleur \\ score :\entier}
+		{}
+		{Plateau}
+		{blanc, noir : Couleur, unPlateau : Plateau}
 		{
 			\affecter{unPlateau.hauteur}{8} 
 			\affecter{unPlateau.largeur}{8} 
