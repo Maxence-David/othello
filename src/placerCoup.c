@@ -1,8 +1,7 @@
 #include "position.h"
 #include "coup.h"
 #include "plateau.h"
-
-typedef enum {HG,H,HD,D,BD,B,BG,G} Direction;
+#include "placerCoup.h"
 
 C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie)
 {
@@ -13,19 +12,19 @@ int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)
 {
     int modifHG, modifH, modifHD, modifD, modifBD, modifB, modifBG, modifG;
 
-    modifHG = testModifDirection(plateau, coup, HG);
-    modifH = testModifDirection(plateau, coup, H);
-    modifHD = testModifDirection(plateau, coup, HD);
-    modifD = testModifDirection(plateau, coup, D);
-    modifBD = testModifDirection(plateau, coup, BD);
-    modifB = testModifDirection(plateau, coup, B);
-    modifBG = testModifDirection(plateau, coup, BG);
-    modifG = testModifDirection(plateau, coup, G);
+    modifHG = OTH_testModifDirection(plateau, coup, HG);
+    modifH = OTH_testModifDirection(plateau, coup, H);
+    modifHD = OTH_testModifDirection(plateau, coup, HD);
+    modifD = OTH_testModifDirection(plateau, coup, D);
+    modifBD = OTH_testModifDirection(plateau, coup, BD);
+    modifB = OTH_testModifDirection(plateau, coup, B);
+    modifBG = OTH_testModifDirection(plateau, coup, BG);
+    modifG = OTH_testModifDirection(plateau, coup, G);
     return(modifHG || modifH || modifHD || modifD || modifBD || modifB || modifBG || modifG);
 
 }
 
-int testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
+int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
 {
     int incrementX, incrementY;
     PO_Position positionAtester;

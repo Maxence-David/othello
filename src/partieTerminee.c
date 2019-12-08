@@ -3,6 +3,7 @@
 #include "plateau.h"
 #include "couleur.h"
 #include "pion.h"
+#include "partieTerminee.h"
 
 
 
@@ -53,7 +54,7 @@ int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant)
     return !coupOK;
 }
 
-int partieTerminee(PL_Plateau plateau, CO_Couleur couleurJoueurCourant)
+int OTH_partieTerminee(PL_Plateau plateau, CO_Couleur couleurJoueurCourant)
 {
     return (OTH_plateauPlein(plateau) || OTH_plusDeCoups(plateau, couleurJoueurCourant));
 }
