@@ -43,3 +43,31 @@ C_Coup CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
     return(Resultat);
     
 }
+
+
+ int IA_scoreDUnCoup (C_Coup coup, PL_Plateau pl, CO_Couleur CouleurReference, int profondeur,int alpha , int beta  )
+ {
+     CO_Couleur AutreCouleur = CO_ChangerCouleur(CouleurReference);
+     int ScoreFinal = 0 ;
+     int TestFin = ((CS_NbCoups( IA_ObtenirCoupsPossible(pl,CouleurReference))==0) &&  (CS_NbCoups( IA_ObtenirCoupsPossible(pl,AutreCouleur))==0));
+     PL_Plateau GrilleTemp = PL_CopierPlateau(pl);
+     MiseAJourPlateau(GrilleTemp,coup);
+     if (( profondeur==0 )||(TestFin==0))
+     {
+         ScoreFinal = IA_Evalue(GrilleTemp,CouleurReference);
+         return(ScoreFinal);
+     }
+     else
+     {
+         return(IA_Alpha_Beta(GrilleTemp,CouleurReference,AutreCouleur,profondeur-1,alpha,beta));
+     }
+     
+
+ }
+
+
+
+
+
+
+

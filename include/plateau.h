@@ -71,4 +71,12 @@ int PL_estVide(PO_Position position, PL_Plateau plateau);
  */
 PL_Plateau PL_ViderPlateau(PL_Plateau plateau);
 
+/**
+ * \fn PL_CopierPlateau()
+ * \brief Fonction pour copier le plateau
+ * \param PL_Plateau
+ * \return PL_Plateau
+ */
+PL_Plateau PL_CopierPlateau(PL_Plateau plateau);
+
 #endif
