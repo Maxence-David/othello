@@ -16,6 +16,13 @@ typedef struct {
 }C_Coup;
 
 /**
+ * \fn  OTH_InitCoup()
+ * \brief Fonction qui creer un  coup 
+ * \return OTH_Coup
+ */
+C_Coup C_InitCoup();
+
+/**
  * \fn  C_PlacerCoup()
  * \brief Fonction pour posser un coup sur la plateau 
  * \param PI_Pion pion, pion a placer

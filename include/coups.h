@@ -22,7 +22,7 @@ typedef struct  {
  * \param 
  * \return OTH_Coups
  */
-CS_Coups OTH_InitCoups();
+CS_Coups CS_InitCoups();
 
 
 /**
@@ -59,10 +59,9 @@ CS_Coups OTH_InitCoups();
  * \fn  CS_NbCoups ()
  * \brief Fonction qui renvoi le nombre de coups du tableau 
  * \param CS_Coups coups, tableau de coups
- * \param int i 
  * \return int 
  */
- int CS_NbCoups (CS_Coups coups, int i );
+ int CS_NbCoups (CS_Coups coups );
 
  /**
  * \fn  CS_EstPresent ()
@@ -79,7 +78,8 @@ CS_Coups OTH_InitCoups();
  * \fn  CS_SupprimerCoup ()
  * \brief procedure qui supprime un coup du tableau
  * \param CS_Coups coups, tableau de coups
+ * \param i possition du coup a suuprimer 
  * \return void*
  */
- void* CS_SupprimerCoup (CS_Coups coups);
+ void* CS_SupprimerCoup (CS_Coups coups,int i);
 #endif

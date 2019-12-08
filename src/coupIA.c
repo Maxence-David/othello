@@ -14,8 +14,7 @@ C_Coup CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
     
     CS_Coups CoupsATester;
     C_Coup CoupTest;
-    C_Coup BestCoup;
-    C_Coup Resultat;
+    C_Coup Resultat=C_InitCoup();
     int alpha = -5000;
     int beta = 5000;
     int BestScoreCoup;
@@ -24,7 +23,7 @@ C_Coup CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
     int profondeur = 6;
     int estPossible = !CS_EstVide(CoupsATester);
     int i=1;
-    if(estPossible)
+    if(estPossible==1)
     {
         BestScoreCoup = 0;
         while (i<=CS_NbCoups(CoupsATester))
@@ -36,7 +35,7 @@ C_Coup CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
                 BestScoreCoup = scoreTemp;
                 Resultat = CoupTest;
             }
-            CoupsATester = CS_SupprimerCoup(CoupsATester,i);
+            CS_SupprimerCoup(CoupsATester,i);
             i=i+1;
         }
         

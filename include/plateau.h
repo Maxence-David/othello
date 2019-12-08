@@ -19,7 +19,7 @@
 typedef struct {
     unsigned int largeur; /**< largeur du plateau */
     unsigned int hauteur;    /**< hauteur du plateau */
-    PI_Pion *cases  /**< tableau dynamique taille = longeur*largeur  */
+    PI_Pion *cases;  /**< tableau dynamique taille = longeur*largeur  */
 } PL_Plateau;
 
 /**
