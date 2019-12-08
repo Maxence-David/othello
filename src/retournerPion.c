@@ -6,8 +6,8 @@
 
 void retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion){
   PI_Pion lePionModifie;
-  lePionModifie = obtenirPion(lePlateau, positionDuPion);
-  lePionModifie.couleurPion = changerCouleur(obtenirCouleurPion(lePionModifie));
-  poserPion(lePionModifie, positionDuPion, lePlateau);
+  lePionModifie = PL_obtenirPion(lePlateau, positionDuPion);
+  lePionModifie.couleurPion = CO_changerCouleur(PI_obtenirCouleurPion(lePionModifie));
+  PL_poserPion(lePionModifie, positionDuPion, lePlateau);
   return(lePionModife);
 }
