@@ -5,7 +5,7 @@
 #include "pion.h"
 #include "couleur.h"
 
-void retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion){
+void retournerPion(PL_Plateau lePlateau, PO_Position positionDuPion){
   PI_Pion lePionModifie;
   lePionModifie = PL_obtenirPion(lePlateau, positionDuPion);
   lePionModifie.couleurPion = CO_changerCouleur(PI_obtenirCouleurPion(lePionModifie));
