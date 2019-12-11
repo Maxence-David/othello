@@ -4,7 +4,15 @@
 #include "pion.h"
 #include "plateau.h"
 
-PL_Plateau PL_CreerPlateau();
+PL_Plateau PL_creerPlateau(){
+  CO_Couleur blanc, noir; PL_Plateau unPlateau;
+  unPlateau.hauteur = 8;
+  unPlateau.largeur = 8;
+  PL_poserPion(PI_creerPion(blanc), PO_defPosition(4,4), unPlateau);
+  PL_poserPion(PI_creerPion(noir), PO_defPosition(4,5), unPlateau);
+  PL_poserPion(PI_creerPion(blanc), PO_defPosition(5,5), unPlateau);
+  PL_poserPion(PI_creerPion(noir), PO_defPosition(5,4), unPlateau);
+}
 
 PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau);
 

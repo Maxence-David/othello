@@ -15,7 +15,6 @@ C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie)
     PI_changerEtat(pionAPlacer);
     return(nouveauCoup);
   }				  
-}
 
 }
 
