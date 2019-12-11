@@ -67,9 +67,10 @@ CS_Coups CS_InitCoups();
  * \fn  CS_EstPresent ()
  * \brief Fonction qui test si un coup est prensent dans le tableau
  * \param CS_Coups coups, tableau de coups
+ * \param C_Coup le coup à chercher
  * \return int 
  */
- int CS_EstPresent (CS_Coups coups);
+ int CS_EstPresent (CS_Coups coups,C_Coup coup);
 
 
 
