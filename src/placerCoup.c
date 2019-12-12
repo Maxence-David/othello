@@ -22,7 +22,7 @@ int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)
 {
     int modifHG, modifH, modifHD, modifD, modifBD, modifB, modifBG, modifG;
 
-    modifHG = OTH_testModifDirection(plateau, coup, HG);
+    modifHG = OTH_testModifDirection(plateau, coup, HG);    /*On teste les modifications dans toutes les directions*/
     modifH = OTH_testModifDirection(plateau, coup, H);
     modifHD = OTH_testModifDirection(plateau, coup, HD);
     modifD = OTH_testModifDirection(plateau, coup, D);
@@ -30,7 +30,7 @@ int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)
     modifB = OTH_testModifDirection(plateau, coup, B);
     modifBG = OTH_testModifDirection(plateau, coup, BG);
     modifG = OTH_testModifDirection(plateau, coup, G);
-    return(modifHG || modifH || modifHD || modifD || modifBD || modifB || modifBG || modifG);
+    return(modifHG || modifH || modifHD || modifD || modifBD || modifB || modifBG || modifG);   /*Si il y a une modification dans au moins une direction, on retourne vrai*/
 
 }
 
@@ -40,10 +40,10 @@ int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
     PO_Position positionAtester;
     CO_Couleur couleurAdverse;
 
-    switch (dir)
+    switch (dir)    /*Suivant la direction que l'on veut tester, on affecte différentes valeurs aux varialbes d'incrémentation*/
     {
         case HG :
-            incrementX = -1;
+            incrementX = -1;    /*Ici par exemple, se déplacer vers en haut à gauche revient à reculer sur l'axe X et monter sur l'axe Y*/
             incrementY = 1;
         break;
         case H :
@@ -75,8 +75,8 @@ int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
             incrementY = 0;
         break;
     }
-    positionAtester = PO_defPosition(PO_ObtenirX(C_Obtenir_Position_Coup(coup)) + incrementX, PO_ObtenirY(C_Obtenir_Position_Coup(coup)) + incrementY);
-    if (C_Obtenir_Couleur_Coup(coup) == NOIR)
+    positionAtester = PO_defPosition(PO_ObtenirX(C_Obtenir_Position_Coup(coup)) + incrementX, PO_ObtenirY(C_Obtenir_Position_Coup(coup)) + incrementY); /*La première postion à tester est la position du pion à laquelle on ajoute la valeur des incréments X et Y*/
+    if (C_Obtenir_Couleur_Coup(coup) == NOIR)   /*Si la couleur du joueur courant est BLANC, alors celle de l'adversaire est nécéssairement NOIR et inversément*/
     {
         couleurAdverse = BLANC;
     }
@@ -84,19 +84,19 @@ int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
     {
         couleurAdverse = NOIR;
     }
-    if (C_Obtenir_Couleur_Coup(coup) == PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)))
+    if ((PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau))) && (C_Obtenir_Couleur_Coup(coup) == PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau))))    /*Si le pion juste à coté du coup que l'on place est actif et de la même couleur, alors on ne va retourner aucun pion dans cette direction */
     {
         return 0;
     }
     else
     {
-        while((PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau))) && (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == couleurAdverse) && (0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= 8) && (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= 8))
+        while((PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau))) && (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == couleurAdverse) && (0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= 8) && (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= 8))    /*On teste les positions suivantes tant que les pions sont actifs, de la couleur adverse et que l'on ne sort pas du plateau*/
         {
-            positionAtester = PO_defPosition(PO_ObtenirX(positionAtester) + incrementX, PO_ObtenirY(positionAtester) + incrementY);
+            positionAtester = PO_defPosition(PO_ObtenirX(positionAtester) + incrementX, PO_ObtenirY(positionAtester) + incrementY); /*La position suivante à tester est obtenue en ajoutant les incréments X et Y à la postition actuelle*/
         }
-        if ((PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau)) != 0) && (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == C_Obtenir_Couleur_Coup(coup)))
+        if ((PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau)) != 0) && (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == C_Obtenir_Couleur_Coup(coup)))   /*Lorsqu'on atteint une poistion ne respectant pas les conditions mais qui est toujours dans le plateau, on regarde la couleur et l'état du pion associé*/
         {
-            return 1;
+            return 1;   /*Si le pion est de la couleur du joueur et est actif, alors il y aura au moins une modification*/
         }
         else
         {
