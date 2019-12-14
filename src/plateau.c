@@ -14,7 +14,10 @@ PL_Plateau PL_creerPlateau(){
   PL_poserPion(PI_creerPion(noir), PO_defPosition(5,4), unPlateau);
 }
 
-PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau);
+PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau){
+  
+  return(plateau[PO_ObtenirX(position)][PO_ObtenirY(position)]);
+}
 
 int PL_obtenirHauteur(PL_Plateau plateau)
 {
