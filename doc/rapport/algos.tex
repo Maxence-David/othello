@@ -271,13 +271,13 @@
      	{\paramEntreeSortie {lePlateau : Plateau}, \paramEntree {leCoup : Coup, lesDirections : Ensemble$<$Direction$>$}}
      	{element : Direction, onRetourne : \booleen, pos : Position}
      	{
-     		%\pourchaque{element}{lesDirections}
+     		\pourchaque{element}{lesDirections}
      		{
      			\affecter{positionsARetourner, onRetourne}{testModifDirection(lePlateau, leCoup, element)}
      			\sialors{onRetourne = VRAI}
      			{
      				
-     				%\pourchaque{pos}{positionsARetourner}
+     				\pourchaque{pos}{positionsARetourner}
      				{
      					\instruction{retournerPion(lePlateau, pos)}
      				}
@@ -513,6 +513,7 @@
 				\instruction{affichagePlateau(unPlateau)}
 				}
 		}
+	\instruction{retourner(obtenirCouleurGagnant(unPlateau))}
 	
 	}
 	
