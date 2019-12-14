@@ -8,9 +8,9 @@ void OTH_affichagePlateau(PL_Plateau plateau)
 {
     int x,y;
 
-    for (y = 1; y <= 8; y++)    /*On parcourt les lignes*/
+    for (y = 1; y <= PL_obtenirHauteur(plateau); y++)    /*On parcourt les lignes*/
     {
-        for (x = 1; x <= 8; x++)    /*Et les colonnes*/
+        for (x = 1; x <= PL_obtenirLargeur(plateau); x++)    /*Et les colonnes*/
         {
             if (PI_ObtenirEtatPion(PL_ObtenirPion(PO_defPosition(y,x),plateau)) == 0)   /*On vérifie l'état du pion pour chaque position*/
             {
