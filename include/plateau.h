@@ -41,6 +41,22 @@ PL_Plateau PL_CreerPlateau();
  */
 PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau);
 
+/**
+ * \fn PL_obtenirHauteur()
+ * \brief Fonction pour obtenir la hauteur du plateau
+ * \param PL_Plateau
+ * \return int
+ */
+int PL_obtenirHauteur(PL_Plateau plateau);
+
+/**
+ * \fn PL_obtenirLargeur()
+ * \brief Fonction pour obtenir la largeur du plateau
+ * \param PL_Plateau
+ * \return int
+ */
+int PL_obtenirLargeur(PL_Plateau plateau);
+
 
 /**
  * \fn PL_PoserPion()

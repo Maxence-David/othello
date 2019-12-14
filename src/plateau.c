@@ -16,6 +16,16 @@ PL_Plateau PL_creerPlateau(){
 
 PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau);
 
+int PL_obtenirHauteur(PL_Plateau plateau)
+{
+  return plateau.hauteur;
+}
+
+int PL_obtenirLargeur(PL_Plateau plateau)
+{
+  return plateau.largeur;
+}
+
 PL_Plateau PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau plateau);
 
 int PL_estVide(PO_Position position, PL_Plateau plateau)
