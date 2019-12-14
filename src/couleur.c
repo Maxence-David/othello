@@ -21,3 +21,28 @@ CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle )
         return BLANC;
     }
 }
+
+int estNoir(CO_Couleur UneCouleur)
+{
+    if (UneCouleur = NOIR)
+    {
+	return 1 ;
+    }
+    else 
+    {
+	return 0 ;
+    }
+}
+
+int estBlanc(CO_Couleur UneCouleur)
+{
+    if (UneCouleur = BLANC)
+    {
+	return 1 ;
+    }
+    else 
+    {
+	return 0 ;
+    }
+}
+
