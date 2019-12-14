@@ -4,13 +4,29 @@
 #include "placerCoup.h"
 #include "position.h"
 #include "pion.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "couleur.h"
+
+CO_Couleur definirCouleurNouveauJoueur(laCouleur Couleur){
+  CO_Couleur blanc, noir;
+
+  if (laCouleur = blanc){
+    return(noir);
+  }
+  else {
+    return(blanc);
+  }
+}
 
 C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie)
 {
   PI_Pion pionAPlacer; unsigned int abscisse; unsigned int ordonnee; C_Coup nouveauCoup;
   pionAPlacer.couleur = definirCouleurNouveauJoueuer(pionAPlacer);
   nouveauCoup.pion = pionAPlacer;
-  nouveauCoup.position = PO_defPosition(caractereEnEntier(getchar(abscisse)), caractereEnEntier(getchar(ordonne)));
+  abscisse = getchar();
+  ordonnee = getchar();
+  nouveauCoup.position = PO_defPosition(caractereEnEntier(abscisse), caractereEnEntier(ordonnee));
   if (C_coupValide(nouveauCoup, pionAPlacer, C_obtenirPositionCoup(nouveauCoup), lePlateau)){
     PI_changerEtat(pionAPlacer);
     return(nouveauCoup);
