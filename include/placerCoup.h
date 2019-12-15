@@ -1,13 +1,29 @@
 #ifndef __PARTIE_TERMINEE__
 #define __PARTIE_TERMINEE__
 
-#include "couleur.h"
+#include "position.h"
+#include "coup.h"
 #include "plateau.h"
+#include "placerCoup.h"
+#include "position.h"
+#include "pion.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "couleur.h"
 
 /**
  * \brief Le type Direction qui représente une direction dans le plateau (H = Haut, B = Bas, D = Droite, G = Gauche)
  */
 typedef enum {HG,H,HD,D,BD,B,BG,G} Direction;
+
+/**
+ * \fn  definirCouleurNouveauJoueur()
+ * \brief Fonction qui permet définir la couleur du joueur suivant
+ * \param CO_Couleur laCouleur  couleur du joueur précédent
+ * \return CO_Couleur couleur du joueur suivant
+ */
+
+CO_Couleur definirCouleurNouveauJoueur(CO_Couleur laCouleur);
 
 /**
  * \fn  OTH_placerCoup()
