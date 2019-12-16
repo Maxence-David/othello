@@ -10,25 +10,30 @@
 
 
 
-
+/**
+* \def HAUTEUR 8
+* \brief hauteur plateau 
+*/
+#define HAUTEUR 8
+/**
+* \def LARGEUR 8
+* \brief largeur du plateau 
+*/
+#define LARGEUR 8
 
 /**
  * \brief Le type PL_Plateau permet de représenter le plateau de jeu 
  *
  */
-typedef struct {
-    unsigned int largeur; /**< largeur du plateau */
-    unsigned int hauteur;    /**< hauteur du plateau */
-    PI_Pion *cases;  /**< tableau dynamique taille = longeur*largeur  */
-} PL_Plateau;
+typedef PI_Pion PL_Plateau[LARGEUR][HAUTEUR];  /**< tableau dynamique taille = longeur*largeur  */
+
 
 /**
  * \fn  PL_CreerPlateau(int largeur, int hauteur)
  * \brief Fonction de création d'un plateau de cases inactive
- *
- * \return PL_Plateau
+ * \param[in,out] PL_Plateau plateau a initialiser 
  */
-PL_Plateau PL_CreerPlateau();
+void* PL_Initialiser_Plateau(PL_Plateau* plateau);
 
 
 
@@ -61,12 +66,11 @@ int PL_obtenirLargeur(PL_Plateau plateau);
 /**
  * \fn PL_PoserPion()
  * \brief Fonction pour poser un pion sur un plateau
- * \param PO_Position position dont on veut le pion
- * \param PL_Plateau
- * \param PI_Pion
- * \return PL_Plateau
+ * \param[in] PO_Position position dont on veut le pion
+ * \param[in,out] PL_Plateau, plateau ou on ajoute le pion
+ * \param[in] PI_Pion
  */
-PL_Plateau PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau plateau);
+void* PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau);
 
 
 
@@ -82,17 +86,16 @@ int PL_estVide(PO_Position position, PL_Plateau plateau);
 /**
  * \fn PL_ViderPlateau()
  * \brief Fonction pour vider le plateau
- * \param PL_Plateau
- * \return PL_Plateau
+ * \param[in,out] PL_Plateau a vider
  */
-PL_Plateau PL_ViderPlateau(PL_Plateau plateau);
+void* PL_ViderPlateau(PL_Plateau* plateau);
 
 /**
  * \fn PL_CopierPlateau()
  * \brief Fonction pour copier le plateau
- * \param PL_Plateau
- * \return PL_Plateau
+ * \param[in,out] PL_Plateau plateau, la copie du plateau
+ * \param[in] PL_Plateau plateau_a_copier, le plateau a copier
  */
-PL_Plateau PL_CopierPlateau(PL_Plateau plateau);
+void* PL_CopierPlateau(PL_Plateau* plateau,PL_Plateau plateau_a_copier);
 
 #endif
