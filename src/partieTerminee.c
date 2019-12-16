@@ -15,10 +15,10 @@ int OTH_plateauPlein(PL_Plateau plateau)
 
     caseVide = 0;   /*On initialise le booléen à faux*/
     i = 1;
-    while (!caseVide && i<= PL_obtenirHauteur(plateau))  /*On itère sur les lignes tant que la case n'est pas vide et qu'on ne sort pas du plateu*/
+    while (!caseVide && i<= HAUTEUR)  /*On itère sur les lignes tant que la case n'est pas vide et qu'on ne sort pas du plateu*/
     {
         j = 1;
-        while (!caseVide && j <= PL_obtenirLargeur(plateau)) /*On itère sur les colonnes tant que la case n'est pas vide et qu'on ne sort pas du plateu*/
+        while (!caseVide && j <= LARGEUR) /*On itère sur les colonnes tant que la case n'est pas vide et qu'on ne sort pas du plateu*/
         {
             position = PO_defPosition(i,j); /*La position que l'on souhaite tester*/
             if (PL_estVide(position,plateau))
@@ -38,10 +38,10 @@ int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant)
 
     coupOK = 0; /*On initialise le booléen vérifiant la validité d'un coup à faux*/
     i = 1;
-    while (!coupOK && i <= PL_obtenirHauteur(plateau))   /*On itère sur les lignes tant que le coup n'est pas valide n'est pas vide et qu'on ne sort pas du plateu*/
+    while (!coupOK && (i <= HAUTEUR))   /*On itère sur les lignes tant que le coup n'est pas valide n'est pas vide et qu'on ne sort pas du plateu*/
     {
         j = 1;
-        while (!coupOK && j <= PL_obtenirLargeur(plateau))   /*On itère sur les colonnes tant que le coup n'est pas valide et qu'on ne sort pas du plateu*/
+        while (!coupOK && j <= LARGEUR)   /*On itère sur les colonnes tant que le coup n'est pas valide et qu'on ne sort pas du plateu*/
         {
             if (C_coupValide(PI_creerPion(couleurJoueurCourant),PO_defPosition(i,j),plateau))
             {
