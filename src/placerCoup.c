@@ -8,30 +8,27 @@
 #include <stdlib.h>
 #include "couleur.h"
 
-CO_Couleur definirCouleurNouveauJoueur(CO_Couleur laCouleur){
-  CO_Couleur blanc, noir;
+CO_Couleur OTH_definirCouleurNouveauJoueur(CO_Couleur laCouleur){
 
-  if (laCouleur = blanc){
-    return(noir);
+  if (laCouleur == CO_Blanc()){
+    return(CO_Noir());
   }
   else {
-    return(blanc);
+    return(CO_Blanc());
   }
 }
 
-C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie)
-{
-  PI_Pion pionAPlacer; unsigned int abscisse; unsigned int ordonnee; C_Coup nouveauCoup;
-  pionAPlacer.couleur = definirCouleurNouveauJoueuer(pionAPlacer);
-  nouveauCoup.pion = pionAPlacer;
-  abscisse = getchar();
-  ordonnee = getchar();
-  nouveauCoup.position = PO_defPosition(caractereEnEntier(abscisse), caractereEnEntier(ordonnee));
-  if (C_coupValide(nouveauCoup, pionAPlacer, C_obtenirPositionCoup(nouveauCoup), lePlateau)){
-    PI_changerEtat(pionAPlacer);
+C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie){
+  PI_Pion pionAPlacer; int abscisse; int ordonnee; C_Coup nouveauCoup;
+  pionAPlacer.couleurPion = OTH_definirCouleurNouveauJoueur(PI_ObtenirCouleurPion(pionAPlacer));
+  nouveauCoup.Pion = pionAPlacer;
+  scanf("%d", &abscisse);
+  scanf("%d", &ordonnee);
+  nouveauCoup.positionCoup = PO_defPosition(abscisse, ordonnee);
+  if (C_Coup_Valide(nouveauCoup)){
+    PI_ChangerEtat(pionAPlacer);
     return(nouveauCoup);
-  }				  
-
+  }		  
 }
 
 int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)

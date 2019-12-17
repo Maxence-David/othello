@@ -2,6 +2,7 @@
 #include "plateau.h"
 #include "coup.h"
 #include "couleur.h"
+#include "caractereEnEntier.h"
 
 /**
  * \fn  faireUnePartie()

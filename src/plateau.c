@@ -5,13 +5,12 @@
 #include "plateau.h"
 
 void* PL_creerPlateau(PL_Plateau* plateau){
-  CO_Couleur blanc, noir;
   PL_Initialiser_Plateau(plateau);
   
-  PL_poserPion(PI_CreerPion(blanc), PO_defPosition(4,4), plateau);
-  PL_poserPion(PI_CreerPion(noir), PO_defPosition(4,5), plateau);
-  PL_poserPion(PI_CreerPion(blanc), PO_defPosition(5,5), plateau);
-  PL_poserPion(PI_CreerPion(noir), PO_defPosition(5,4), plateau);
+  PL_poserPion(PI_CreerPion(CO_Blanc()), PO_defPosition(4,4), plateau);
+  PL_poserPion(PI_CreerPion(CO_Noir()), PO_defPosition(4,5), plateau);
+  PL_poserPion(PI_CreerPion(CO_Blanc()), PO_defPosition(5,5), plateau);
+  PL_poserPion(PI_CreerPion(CO_Noir()), PO_defPosition(5,4), plateau);
 }
 
 /*

@@ -8,11 +8,6 @@
 #include <stdlib.h>
 #include "couleur.h"
 
-/**
- * \brief Le type Direction qui représente une direction dans le plateau (H = Haut, B = Bas, D = Droite, G = Gauche)
- */
-
-typedef enum {HG, BG, HD, BD, H, B, G, D} Directions;
 
 /**
  * \fn majPlateau()
@@ -22,7 +17,7 @@ typedef enum {HG, BG, HD, BD, H, B, G, D} Directions;
  * \return void
  */
 
-void majPlateau(PL_Plateau lePlateau, C_Coup leCoup);
+void OTH_majPlateau(PL_Plateau lePlateau, C_Coup leCoup);
 
 /**
  * \fn  retournerPion()
@@ -32,4 +27,4 @@ void majPlateau(PL_Plateau lePlateau, C_Coup leCoup);
  * \return void
  */
 
-void retournerPion(PL_Plateau lePlateau, PO_Position positionDuPion);
+void OTH_retournerPion(PL_Plateau lePlateau, PO_Position positionDuPion);
