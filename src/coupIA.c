@@ -12,7 +12,7 @@
 
 
 
-C_Coup CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
+C_Coup IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
     
     CS_Coups CoupsATester;
     C_Coup CoupTest;
@@ -52,7 +52,8 @@ C_Coup CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
      CO_Couleur AutreCouleur = CO_ChangerCouleur(CouleurReference);
      int ScoreFinal = 0 ;
      int TestFin = ((CS_NbCoups( IA_ObtenirCoupsPossible(pl,CouleurReference))==0) &&  (CS_NbCoups( IA_ObtenirCoupsPossible(pl,AutreCouleur))==0));
-     PL_Plateau GrilleTemp = PL_CopierPlateau(pl);
+     PL_Plateau GrilleTemp;
+     PL_CopierPlateau(&GrilleTemp,pl);
      MiseAJourPlateau(GrilleTemp,coup);
      if (( profondeur==0 )||(TestFin==0))
      {

@@ -10,12 +10,11 @@
 /**
  * \fn  IA_coupIA ()
  * \brief Fonction qui donne le coup de l'IA 
- * \param CS_Coups coupsIA, tableau de coups
  * \param CO_Couleur CouleurReference
  * \param PL_Plateau pl 
  * \return C_Coup
  */
- C_Coup IA_coupIA (CS_Coups coupsIA, PL_Plateau pl, CO_Couleur CouleurReference);
+ C_Coup IA_coupIA (PL_Plateau pl, CO_Couleur CouleurReference);
 
 
 
