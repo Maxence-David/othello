@@ -4,7 +4,7 @@
 #include "pion.h"
 #include "plateau.h"
 
-void* PL_creerPlateau(PL_Plateau* plateau){
+void PL_QuatrePionsDebut(PL_Plateau* plateau){
   PL_Initialiser_Plateau(plateau);
   
   PL_poserPion(PI_CreerPion(CO_Blanc()), PO_defPosition(4,4), plateau);
@@ -26,7 +26,7 @@ int PL_obtenirLargeur(PL_Plateau plateau)
 */
 
 
-void* PL_Initialiser_Plateau(PL_Plateau* plateau){
+void PL_Initialiser_Plateau(PL_Plateau* plateau){
   int i;
   int j; 
   for (i=1; i <= HAUTEUR; i++){
@@ -43,7 +43,7 @@ PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau){
   return(plateau[PO_ObtenirX(position)][PO_ObtenirY(position)]);
 }
 
-void* PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau){
+void PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau){
   (*plateau)[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1] = pion;
 
 }
@@ -52,14 +52,14 @@ int PL_estVide(PO_Position position, PL_Plateau plateau)
 {
   return PI_ObtenirEtatPion(PL_ObtenirPion(position,plateau));
 }
-
-void* PL_ViderPlateau(PL_Plateau* plateau){
+/*
+void PL_ViderPlateau(PL_Plateau* plateau){
   int i,j;
   
   for (i=1; i <= HAUTEUR; i++){
     for (j=1; j <= LARGEUR; j++){
       PO_Position position = PO_defPosition(i,j);
-      if ((*plateau)[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1].etatPion == 1) { /* si le pion était actif alors on change son état en inactif*/
+      if ((*plateau)[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1].etatPion == 1) {
 	      PI_ChangerEtat(*
         
         
@@ -69,10 +69,11 @@ void* PL_ViderPlateau(PL_Plateau* plateau){
   }
 
 }
+*/
 
 
 
-void* PL_CopierPlateau(PL_Plateau* plateau,PL_Plateau plateau_a_copier){
+void PL_CopierPlateau(PL_Plateau* plateau,PL_Plateau plateau_a_copier){
   PO_Position position;
   int i;
   int j;

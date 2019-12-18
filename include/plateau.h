@@ -27,14 +27,19 @@
  */
 typedef PI_Pion PL_Plateau[LARGEUR][HAUTEUR];  /**< tableau dynamique taille = longeur*largeur  */
 
+/**
+ * \fn  PL_QuatrePionsDebut()
+ * \brief Fonction qui pose les 4 pions au centre du plateau (configuration avant le début de la partie)
+ * \param[in,out] PL_Plateau* plateau  le plateau qu'il faut configurer
+ */
+void PL_QuatrePionsDebut(PL_Plateau* plateau);
 
 /**
- * \fn  PL_CreerPlateau(int largeur, int hauteur)
+ * \fn  PL_InitialiserPlateau()
  * \brief Fonction de création d'un plateau de cases inactive
  * \param[in,out] PL_Plateau plateau a initialiser 
  */
-void* PL_Initialiser_Plateau(PL_Plateau* plateau);
-
+void PL_Initialiser_Plateau(PL_Plateau* plateau);
 
 
 /**
@@ -70,7 +75,7 @@ int PL_obtenirLargeur(PL_Plateau plateau);
  * \param[in,out] PL_Plateau, plateau ou on ajoute le pion
  * \param[in] PI_Pion
  */
-void* PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau);
+void PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau);
 
 
 
@@ -88,7 +93,7 @@ int PL_estVide(PO_Position position, PL_Plateau plateau);
  * \brief Fonction pour vider le plateau
  * \param[in,out] PL_Plateau a vider
  */
-void* PL_ViderPlateau(PL_Plateau* plateau);
+void PL_ViderPlateau(PL_Plateau* plateau);
 
 /**
  * \fn PL_CopierPlateau()
@@ -96,6 +101,6 @@ void* PL_ViderPlateau(PL_Plateau* plateau);
  * \param[in,out] PL_Plateau plateau, la copie du plateau
  * \param[in] PL_Plateau plateau_a_copier, le plateau a copier
  */
-void* PL_CopierPlateau(PL_Plateau* plateau,PL_Plateau plateau_a_copier);
+void PL_CopierPlateau(PL_Plateau* plateau,PL_Plateau plateau_a_copier);
 
 #endif
