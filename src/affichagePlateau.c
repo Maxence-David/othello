@@ -31,3 +31,8 @@ void OTH_affichagePlateau(PL_Plateau plateau)
         printf("\n");   /*On saute une ligne à la fin de chaque ligne parcourue*/
     }
 }
+
+
+void OTH_entrerCoup(PO_Position* position){
+    
+}

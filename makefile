@@ -19,8 +19,10 @@ doc : $(DOCDIR)/rapport/rapport.pdf
 $(DOCDIR)/rapport/rapport.pdf:
 	cd $(DOCDIR)/rapport/; pdflatex -synctex=1 -interaction=nonstopmode rapport.tex; cd ../..
 
-$(BINDIR)/$(EXEC) : $(SRCDIR)/majPlateau.o $(SRCDIR)/moduleIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/creerPlateau.o $(SRCDIR)/placerCoup.o $(SRCDIR)/obtenirCouleurGagnant.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/caractereEnEntier.o
-	$(CC) -o $@ $(LDFLAGS) $(SRCDIR)/majPlateau.o $(SRCDIR)/moduleIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/creerPlateau.o $(SRCDIR)/placerCoup.o $(SRCDIR)/obtenirCouleurGagnant.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/caractereEnEntier.o (SRCDIR)/Pion.o $(SRCDIR)/Position.o $(SRCDIR)/Plateau.o $(SRCDIR)/Couleur.o $(SRCDIR)/Coup.o $(SRCDIR)/Coups.o 
+
+
+$(BINDIR)/$(EXEC) : $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o 
+	$(CC) -o $@  $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o 
 
 $(SRCDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)

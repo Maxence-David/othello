@@ -5,11 +5,11 @@
 #include "caractereEnEntier.h"
 #include "placerCoup.h"
 #include "majPlateau.h"
-#include"partieTerminee.h"
+#include "partieTerminee.h"
 #include "affichagePlateau.h"
 #include "coupIA.h"
 
-CO_Couleur OTH_faireUnePartie(){
+CO_Couleur OTH_faireUnePartie(affichagePlateau OTH_affichagePlateau,obtenirCoup a, obtenirCoup b){
 
   CO_Couleur joueurCourant;
   int booleen;
@@ -17,22 +17,30 @@ CO_Couleur OTH_faireUnePartie(){
   PL_Plateau unPlateau;
   C_Coup coupDeIA, coupJoueur1, coupJoueur2, coupJoueur;
 
-  scanf("%d", contreIA);/* si l'utilisateur veut joueur contre l'IA ou contre un autre joueur*/
   joueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
-  *unPlateau = PL_creerPlateau();
-  if(contreIA != 0){ 
+  PL_QuatrePionsDebut(&unPlateau);
+  
     while(OTH_partieTerminee(unPlateau,joueurCourant) == 0){
       booleen = OTH_partieTerminee(unPlateau, joueurCourant);
-      coupJoueur1 = OTH_placerCoup(unPlateau, booleen);
-      OTH_majPlateau(unPlateau, coupJoueur1);
-      OTH_affichagePlateau(unPlateau);
+      (*OTH_affichagePlateau)(unPlateau);
+      coupJoueur1 = (*a)( OTH_entrerCoup, unPlateau, joueurCourant);
+      OTH_majPlateau(&unPlateau, coupJoueur1);
+      
       joueurCourant = C_Obtenir_Couleur_Coup(coupJoueur1);
       booleen = OTH_partieTerminee(unPlateau, joueurCourant);
-      coupJoueur2 = OTH_placerCoup(unPlateau, booleen);
-      OTH_majPlateau(unPlateau, coupJoueur2);
-      OTH_affichagePlateau(unPlateau);
+      (*OTH_affichagePlateau)(unPlateau);
+      coupJoueur2 = (*b)(OTH_entrerCoup, unPlateau, joueurCourant);
+      OTH_majPlateau(&unPlateau, coupJoueur2);
+      
       joueurCourant = C_Obtenir_Couleur_Coup(coupJoueur1);
     }
+
+
+
+
+
+
+/*
   }
    else {
     if(contreIA == 0){ 
@@ -49,5 +57,6 @@ CO_Couleur OTH_faireUnePartie(){
       }
     }
   }
+  */
     return(OTH_obtenirCouleurGagnant(unPlateau));
 }

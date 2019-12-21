@@ -6,10 +6,12 @@
 #include "plateau.h"
 #include "placerCoup.h"
 #include "position.h"
+#include "affichagePlateau.h"
 #include "pion.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "couleur.h"
+typedef C_Coup (*obtenirCoup)();
 
 /**
  * \brief Le type Direction qui représente une direction dans le plateau (H = Haut, B = Bas, D = Droite, G = Gauche)
@@ -32,7 +34,7 @@ CO_Couleur definirCouleurNouveauJoueur(CO_Couleur laCouleur);
  * \paral int partieFinie   Booléen qui permet de vérifier que la partie n'est pas finie
  * \return C_Coup  Le coup
  */
-C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie);
+C_Coup OTH_placerCoup( entrerCoup , PL_Plateau plateau, CO_Couleur couleurJoueur);
 
 /**
  * \fn  OTH_retournerAuMoinsUnPion()

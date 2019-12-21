@@ -40,3 +40,4 @@ int estNoir(CO_Couleur UneCouleur);
 int estBlanc(CO_Couleur UneCouleur);
 
 #endif
+

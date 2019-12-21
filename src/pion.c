@@ -12,7 +12,7 @@ PI_Pion PI_CreerPion(CO_Couleur couleur)
 void* PI_ChangerEtat(PI_Pion pion)
 {
     PI_Pion resultat; 
-    if (pion.etatPion = 0)
+    if (pion.etatPion == 0)
     {
         resultat.etatPion = 1;
     }

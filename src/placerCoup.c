@@ -4,6 +4,8 @@
 #include "placerCoup.h"
 #include "position.h"
 #include "pion.h"
+#include "affichagePlateau.h"
+#include "plateau.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "couleur.h"
@@ -18,17 +20,21 @@ CO_Couleur OTH_definirCouleurNouveauJoueur(CO_Couleur laCouleur){
   }
 }
 
-C_Coup OTH_placerCoup(PL_Plateau plateau, int partieFinie){
-  PI_Pion pionAPlacer; int abscisse; int ordonnee; C_Coup nouveauCoup;
-  pionAPlacer.couleurPion = OTH_definirCouleurNouveauJoueur(PI_ObtenirCouleurPion(pionAPlacer));
-  nouveauCoup.Pion = pionAPlacer;
-  scanf("%d", &abscisse);
-  scanf("%d", &ordonnee);
-  nouveauCoup.positionCoup = PO_defPosition(abscisse, ordonnee);
-  if (C_Coup_Valide(nouveauCoup)){
+C_Coup OTH_placerCoup(entrerCoup OTH_entrerCoup,PL_Plateau plateau, CO_Couleur couleurJoueur){
+  PI_Pion pionAPlacer; 
+  C_Coup nouveauCoup;
+  PO_Position position;
+  
+  do{
+      OTH_entrerCoup(&position);
+      nouveauCoup.positionCoup = position;
+  } while (C_Coup_Valide(nouveauCoup));
+
     PI_ChangerEtat(pionAPlacer);
+    pionAPlacer.couleurPion = couleurJoueur;
+    nouveauCoup.Pion = pionAPlacer;
     return(nouveauCoup);
-  }		  
+  		  
 }
 
 int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)
@@ -46,6 +52,22 @@ int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)
     return(modifHG || modifH || modifHD || modifD || modifBD || modifB || modifBG || modifG);   /*Si il y a une modification dans au moins une direction, on retourne vrai*/
 
 }
+
+
+CO_Couleur obtenirCouleurAdverse(C_Coup coup)
+{
+    if (C_Obtenir_Couleur_Coup(coup) == NOIR)   /*Si la couleur du joueur courant est BLANC, alors celle de l'adversaire est nécéssairement NOIR et inversément*/
+    {
+        return BLANC;
+    }
+    else
+    {
+        return NOIR;
+    }
+}
+
+
+
 
 int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
 {
@@ -120,14 +142,4 @@ int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
     }
 }
 
-CO_Couleur obtenirCouleurAdverse(C_Coup coup)
-{
-    if (C_Obtenir_Couleur_Coup(coup) == NOIR)   /*Si la couleur du joueur courant est BLANC, alors celle de l'adversaire est nécéssairement NOIR et inversément*/
-    {
-        return BLANC;
-    }
-    else
-    {
-        return NOIR;
-    }
-}
+

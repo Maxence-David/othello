@@ -3,6 +3,7 @@
 #include "coup.h"
 #include "couleur.h"
 #include "coupIA.h"
+#include "majPlateau.h"
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -54,7 +55,7 @@ C_Coup IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
      int TestFin = ((CS_NbCoups( IA_ObtenirCoupsPossible(pl,CouleurReference))==0) &&  (CS_NbCoups( IA_ObtenirCoupsPossible(pl,AutreCouleur))==0));
      PL_Plateau GrilleTemp;
      PL_CopierPlateau(&GrilleTemp,pl);
-     MiseAJourPlateau(GrilleTemp,coup);
+     OTH_majPlateau(GrilleTemp,coup);
      if (( profondeur==0 )||(TestFin==0))
      {
          ScoreFinal = IA_Evalue(GrilleTemp,CouleurReference);

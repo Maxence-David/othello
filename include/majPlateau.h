@@ -17,7 +17,7 @@
  * \return void
  */
 
-void OTH_majPlateau(PL_Plateau lePlateau, C_Coup leCoup);
+void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
 
 /**
  * \fn  retournerPion()
@@ -27,4 +27,4 @@ void OTH_majPlateau(PL_Plateau lePlateau, C_Coup leCoup);
  * \return void
  */
 
-void OTH_retournerPion(PL_Plateau lePlateau, PO_Position positionDuPion);
+void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion);

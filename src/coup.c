@@ -15,6 +15,6 @@ CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup)
 
 int coupValide (C_Coup leCoup, PL_Plateau lePlateau){
   
-  return (OTH_estVide(C_obtenirPositionCoup(leCoup, lePlateau) && retournerAuMoinsUnPion(lePlateau,leCoup));
+  return (OTH_estVide(C_obtenirPositionCoup(leCoup, lePlateau) && retournerAuMoinsUnPion(lePlateau,leCoup)));
 
 }

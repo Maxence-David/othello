@@ -6,7 +6,7 @@
 #include "couleur.h"
 #include "plateau.h"
 
-
+typedef C_Coup (*ObtenirCoup)();
 /**
  * \fn  IA_coupIA ()
  * \brief Fonction qui donne le coup de l'IA 

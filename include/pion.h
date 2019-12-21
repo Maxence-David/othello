@@ -49,3 +49,4 @@ CO_Couleur PI_ObtenirCouleurPion(PI_Pion pion);
 int PI_ObtenirEtatPion(PI_Pion pion);
 
 #endif
+

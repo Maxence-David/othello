@@ -32,3 +32,4 @@ int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant);
 int OTH_partieTerminee(PL_Plateau plateau, CO_Couleur couleurJoueurCourant);
 
 #endif
+

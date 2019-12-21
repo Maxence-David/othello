@@ -12,7 +12,7 @@ CO_Couleur CO_Noir()
 
 CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle )
 {
-    if (CouleurActuelle = BLANC)
+    if (CouleurActuelle == BLANC)
     {
         return NOIR;
     }
@@ -24,7 +24,7 @@ CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle )
 
 int estNoir(CO_Couleur UneCouleur)
 {
-    if (UneCouleur = NOIR)
+    if (UneCouleur == NOIR)
     {
 	return 1 ;
     }
@@ -36,7 +36,7 @@ int estNoir(CO_Couleur UneCouleur)
 
 int estBlanc(CO_Couleur UneCouleur)
 {
-    if (UneCouleur = BLANC)
+    if (UneCouleur == BLANC)
     {
 	return 1 ;
     }
