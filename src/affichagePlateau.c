@@ -3,6 +3,7 @@
 #include <string.h>*/
 
 #include "plateau.h"
+#include <stdio.h>
 
 void OTH_affichagePlateau(PL_Plateau plateau)
 {
