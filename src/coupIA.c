@@ -166,7 +166,7 @@ CS_Coups IA_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference )
         {
             PO_Position position = PO_defPosition(i,j);
             C_Coup coup = C_PlacerCoup(pion,position);
-            if (C_Coup_Valide(coup) == 1)
+            if (C_Coup_Valide(coup, pl) == 1)
             {
                 CS_AjouterCoup(resultat,coup);
             }

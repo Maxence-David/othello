@@ -3,6 +3,7 @@
 
 #include "pion.h"
 #include "position.h"
+#include "plateau.h"
 
 
 /**
@@ -53,6 +54,6 @@ CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup);
  * \param C_Coup coup, 
  * \return int
  */
-int C_Coup_Valide(C_Coup Coup);
+int C_Coup_Valide(C_Coup leCoup, PL_Plateau lePlateau);
 
 #endif

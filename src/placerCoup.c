@@ -28,7 +28,7 @@ C_Coup OTH_placerCoup(entrerCoup OTH_entrerCoup,PL_Plateau plateau, CO_Couleur c
   do{
       OTH_entrerCoup(&position);
       nouveauCoup.positionCoup = position;
-  } while (C_Coup_Valide(nouveauCoup));
+  } while (C_Coup_Valide(nouveauCoup, plateau));
 
     PI_ChangerEtat(pionAPlacer);
     pionAPlacer.couleurPion = couleurJoueur;

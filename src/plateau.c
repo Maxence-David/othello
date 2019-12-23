@@ -7,10 +7,10 @@
 void PL_QuatrePionsDebut(PL_Plateau* plateau){
   PL_Initialiser_Plateau(plateau);
   
-  PL_poserPion(PI_CreerPion(CO_Blanc()), PO_defPosition(4,4), plateau);
-  PL_poserPion(PI_CreerPion(CO_Noir()), PO_defPosition(4,5), plateau);
-  PL_poserPion(PI_CreerPion(CO_Blanc()), PO_defPosition(5,5), plateau);
-  PL_poserPion(PI_CreerPion(CO_Noir()), PO_defPosition(5,4), plateau);
+  PL_PoserPion(PI_CreerPion(CO_Blanc()), PO_defPosition(4,4), plateau);
+  PL_PoserPion(PI_CreerPion(CO_Noir()), PO_defPosition(4,5), plateau);
+  PL_PoserPion(PI_CreerPion(CO_Blanc()), PO_defPosition(5,5), plateau);
+  PL_PoserPion(PI_CreerPion(CO_Noir()), PO_defPosition(5,4), plateau);
 }
 
 /*

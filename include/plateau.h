@@ -4,7 +4,6 @@
 
 #include "couleur.h"
 #include "position.h"
-#include "coup.h"
 #include "pion.h"
 /*#include <stdbool.h>*/
 

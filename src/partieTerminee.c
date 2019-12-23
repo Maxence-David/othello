@@ -35,6 +35,7 @@ int OTH_plateauPlein(PL_Plateau plateau)
 int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant)
 {
     int i,j,coupOK;
+    C_Coup nouveauCoup;
 
     coupOK = 0; /*On initialise le booléen vérifiant la validité d'un coup à faux*/
     i = 1;
@@ -43,7 +44,9 @@ int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant)
         j = 1;
         while (!coupOK && j <= LARGEUR)   /*On itère sur les colonnes tant que le coup n'est pas valide et qu'on ne sort pas du plateu*/
         {
-            if (C_Coup_Valide(PI_creerPion(couleurJoueurCourant),PO_defPosition(i,j),plateau))
+	    nouveauCoup.positionCoup = PO_defPosition(i,j);
+	    nouveauCoup.Pion = PI_CreerPion(couleurJoueurCourant);
+            if (C_Coup_Valide(nouveauCoup,plateau))
             {
                 coupOK = 1; /*Si la position à laquelle on se trouve est valide, coupOK devient vrai*/
             }
