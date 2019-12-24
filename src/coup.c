@@ -4,6 +4,15 @@
 #include "placerCoup.h"
 #include "plateau.h"
 
+C_Coup C_InitCoup(PO_Position position, PI_Pion pion)
+{
+  C_Coup leCoup;
+
+  leCoup.positionCoup = position;
+  leCoup.Pion = pion;
+  return leCoup;
+}
+
 PO_Position C_Obtenir_Position_Coup(C_Coup Coup)
 {
     return Coup.positionCoup;
