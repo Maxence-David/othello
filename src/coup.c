@@ -18,6 +18,11 @@ PO_Position C_Obtenir_Position_Coup(C_Coup Coup)
     return Coup.positionCoup;
 }
 
+PI_Pion C_obtenirPionCoup(C_Coup coup)
+{
+  return coup.Pion;
+}
+
 CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup)
 {
     return PI_ObtenirCouleurPion(Coup.Pion);

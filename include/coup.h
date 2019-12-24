@@ -43,6 +43,14 @@ C_Coup C_PlacerCoup(PI_Pion pion, PO_Position positionCoup);
 PO_Position C_Obtenir_Position_Coup(C_Coup Coup);
 
 /**
+ * \fn  C_obtenirPionCoup()
+ * \brief Fonction pour obtenir le pion d'un coup
+ * \param C_Coup coup, 
+ * \return PI_Pion
+ */
+PI_Pion C_obtenirPionCoup(C_Coup coup);
+
+/**
  * \fn  C_Obtenir_Couleur_Coup()
  * \brief Fonction pour obtenir la couleur d'un coup
  * \param C_Coup coup, 
