@@ -2,9 +2,14 @@
 #define __COUP_IA__
 
 #include "coups.h"
+#include "plateau.h"
 #include "coup.h"
 #include "couleur.h"
-#include "plateau.h"
+#include "majPlateau.h"
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 
 typedef void (*ObtenirCoupIA)(PL_Plateau pl, CO_Couleur CouleurReference,C_Coup* coup, int* booleen);
 
@@ -16,7 +21,7 @@ typedef void (*ObtenirCoupIA)(PL_Plateau pl, CO_Couleur CouleurReference,C_Coup*
  * \param PL_Plateau pl 
  * \return C_Coup
  */
-void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* estPossible){
+void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* estPossible);
 
 
 

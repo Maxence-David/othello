@@ -29,7 +29,7 @@ PI_Pion PI_CreerPion(CO_Couleur couleur);
  * \brief procedure pour changer l'etat d'un pion 
  * \param PI_Pion pion dont on change l'etat
  */
-void* PI_ChangerEtat(PI_Pion pion);
+void PI_ChangerEtat(PI_Pion pion);
 
 /**
  * \fn  PI_ObtenirCouleurPion()
