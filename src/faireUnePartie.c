@@ -19,7 +19,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
   CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
   
-    while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant) == 0){
+    while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant,CO_ChangerCouleur(CouleurJoueurCourant)) == 0){
 
       (*OTH_affichagePlateau)(unPlateau);
       (*a)( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
@@ -52,7 +52,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
   CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
   
-    while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant) == 0){
+    while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant,CO_ChangerCouleur(CouleurJoueurCourant)) == 0){
 
   
       (*OTH_affichagePlateau)(unPlateau);
@@ -71,4 +71,53 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
     }
     return(OTH_obtenirCouleurGagnant(unPlateau));
+}
+
+
+CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA_CoupIA,CO_Couleur CouleurJoueur){
+  
+  CO_Couleur CouleurJoueurAdverse =CO_ChangerCouleur(CouleurJoueur);
+  PL_Plateau plateau;
+  PL_QuatrePionsDebut(&plateau);
+  C_Coup coupJoueur;
+  C_Coup CoupJoueurAdverse;
+  int booleenTestJ;
+  int booleenTestJA;
+  PO_Position positionJoueurAdverse;
+ 
+  while(OTH_partieTerminee(plateau,CouleurJoueurAdverse,CouleurJoueurAdverse) == 0) {
+
+    if (CouleurJoueur==NOIR) {
+
+      (*IA_CoupIA)(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
+      if (booleenTestJ) {
+	
+        OTH_majPlateau(&plateau,coupJoueur);
+      }
+
+
+      (*OTH_entrerCoupTournoi)(&positionJoueurAdverse,&booleenTestJA);
+      if (booleenTestJA) {
+        CoupJoueurAdverse =C_InitCoup(positionJoueurAdverse,PI_CreerPion(CouleurJoueurAdverse) );
+        OTH_majPlateau(&plateau,CoupJoueurAdverse);
+      }
+
+
+    } else {
+      (*OTH_entrerCoupTournoi)(&positionJoueurAdverse,&booleenTestJA);
+      if (booleenTestJA) {
+        CoupJoueurAdverse =C_InitCoup(positionJoueurAdverse,PI_CreerPion(CouleurJoueurAdverse) );
+        OTH_majPlateau(&plateau,CoupJoueurAdverse);
+      }
+      (*IA_CoupIA)(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
+      if (booleenTestJ) {
+	
+        OTH_majPlateau(&plateau,coupJoueur);
+      }
+      }
+    }
+  return(OTH_obtenirCouleurGagnant(unPlateau));
+
+
+
 }

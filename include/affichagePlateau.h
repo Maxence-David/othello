@@ -6,6 +6,7 @@
 
 typedef void (*affichagePlateau)(PL_Plateau);
 typedef void (*entrerCoup)(PO_Position*);
+typedef void (entrerCoupTournoi)(PO_Position*,int* );
 /**
  * \fn  affichagePlateau()
  * \brief Fonction qui affiche le plateau dans le terminal
@@ -21,6 +22,9 @@ void OTH_affichagePlateau(PL_Plateau plateau);
  * \return void
  */
 void OTH_entrerCoup(PO_Position* position);
+ 
 
+
+void OTH_entrerCoupTournoi(PO_Position* position, int* booleen);
 
 #endif

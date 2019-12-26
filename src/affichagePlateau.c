@@ -45,3 +45,10 @@ void OTH_affichagePlateau(PL_Plateau plateau)
 void OTH_entrerCoup(PO_Position* position){
     
 }
+
+
+
+void OTH_entrerCoupTournoi(PO_Position* position, int* res){
+    
+}
+

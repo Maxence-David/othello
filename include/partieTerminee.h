@@ -29,7 +29,7 @@ int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant);
  * \param CO_Couleur couleurJoueurCourant   La couleur du joueur en train de jouer
  * \return int   Un booléen (1=Vrai si la partie est treminée)
  */
-int OTH_partieTerminee(PL_Plateau plateau, CO_Couleur couleurJoueurCourant);
+int OTH_partieTerminee(PL_Plateau plateau, CO_Couleur couleurJoueurCourant,CO_Couleur couleurAutreJoueur);
 
 #endif
 
