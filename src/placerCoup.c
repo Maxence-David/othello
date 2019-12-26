@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "couleur.h"
+#include "coups.h"
 
 CO_Couleur OTH_definirCouleurNouveauJoueur(CO_Couleur laCouleur){
 
@@ -20,20 +21,18 @@ CO_Couleur OTH_definirCouleurNouveauJoueur(CO_Couleur laCouleur){
   }
 }
 
-C_Coup OTH_placerCoup(entrerCoup OTH_entrerCoup,PL_Plateau plateau, CO_Couleur couleurJoueur){
-  PI_Pion pionAPlacer; 
-  C_Coup nouveauCoup;
+void OTH_placerCoup(entrerCoup OTH_entrerCoup,PL_Plateau plateau, CO_Couleur couleurJoueur,C_Coup* coup,int* valide){
+  PI_Pion pionAPlacer = PI_CreerPion(couleurJoueur); 
   PO_Position position;
+  CS_Coups coups = CS_ObtenirCoupsPossible(plateau,couleurJoueur);
+  *valide = !CS_EstVide(coups);
   
-  do{
-      OTH_entrerCoup(&position);
-      nouveauCoup.positionCoup = position;
-  } while (C_Coup_Valide(nouveauCoup, plateau));
-
-    PI_ChangerEtat(pionAPlacer);
-    pionAPlacer.couleurPion = couleurJoueur;
-    nouveauCoup.Pion = pionAPlacer;
-    return(nouveauCoup);
+  if(*valide){
+    do{
+            (*OTH_entrerCoup)(&position);
+            *coup = C_InitCoup(position,pionAPlacer);
+    } while (C_Coup_Valide(*coup, plateau));
+  }
   		  
 }
 

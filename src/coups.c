@@ -51,7 +51,28 @@
     coups.nbcoups = coups.nbcoups -1;
  }
 
+CS_Coups CS_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference )
+{
+    int i =0;
+    PI_Pion pion = PI_CreerPion(CouleurReference);
+    int j=0;
+    CS_Coups resultat = CS_InitCoups();
+    for (i=1;i<=8;i++)
+    {
+        for(j=1;j<=8;j++)
+        {
+            PO_Position position = PO_defPosition(i,j);
+            C_Coup coup = C_PlacerCoup(pion,position);
+            if (C_Coup_Valide(coup, pl) == 1)
+            {
+                CS_AjouterCoup(resultat,coup);
+            }
+        }
+    }
+    return(resultat);
 
+
+}
 
 
 

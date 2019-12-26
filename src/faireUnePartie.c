@@ -9,54 +9,66 @@
 #include "affichagePlateau.h"
 #include "coupIA.h"
 
-CO_Couleur OTH_faireUnePartie(affichagePlateau OTH_affichagePlateau,obtenirCoup a, obtenirCoup b){
+CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a){
 
-  CO_Couleur joueurCourant;
+  CO_Couleur CouleurJoueurCourant;
   int booleen;
-  int contreIA;
   PL_Plateau unPlateau;
   C_Coup coupDeIA, coupJoueur1, coupJoueur2, coupJoueur;
 
-  joueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
+  CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
   
-    while(OTH_partieTerminee(unPlateau,joueurCourant) == 0){
-      booleen = OTH_partieTerminee(unPlateau, joueurCourant);
+    while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant) == 0){
+
       (*OTH_affichagePlateau)(unPlateau);
-      coupJoueur1 = (*a)( OTH_entrerCoup, unPlateau, joueurCourant);
-      OTH_majPlateau(&unPlateau, coupJoueur1);
-      
-      joueurCourant = C_Obtenir_Couleur_Coup(coupJoueur1);
-      booleen = OTH_partieTerminee(unPlateau, joueurCourant);
-      (*OTH_affichagePlateau)(unPlateau);
-      coupJoueur2 = (*b)(OTH_entrerCoup, unPlateau, joueurCourant);
-      OTH_majPlateau(&unPlateau, coupJoueur2);
-      
-      joueurCourant = C_Obtenir_Couleur_Coup(coupJoueur1);
-    }
-
-
-
-
-
-
-/*
-  }
-   else {
-    if(contreIA == 0){ 
-	   while(OTH_partieTerminee(unPlateau,joueurCourant) == 0){
-      booleen = OTH_partieTerminee(unPlateau, joueurCourant);
-      coupJoueur = OTH_placerCoup(unPlateau, booleen);
-      OTH_majPlateau(unPlateau, coupJoueur);
-      OTH_affichagePlateau(unPlateau);
-      joueurCourant = C_Obtenir_Couleur_Coup(coupJoueur);
-      coupDeIA  = CoupIA(unPlateau, joueurCourant);
-      OTH_majPlateau(unPlateau, coupJoueur2);
-      OTH_affichagePlateau(unPlateau);
-      joueurCourant = C_Obtenir_Couleur_Coup(coupDeIA);
+      (*a)( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
+      if(booleen==1){
+        OTH_majPlateau(&unPlateau, coupJoueur1);
       }
+      CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+
+      (*OTH_affichagePlateau)(unPlateau);
+      (*a)(OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur2,&booleen);
+      if(booleen==1){
+        OTH_majPlateau(&unPlateau, coupJoueur2);
+      } 
+      CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+
     }
-  }
-  */
+
+
+    return(OTH_obtenirCouleurGagnant(unPlateau));
+}
+
+
+
+CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a, ObtenirCoupIA b){
+  CO_Couleur CouleurJoueurCourant;
+  int booleen;
+  PL_Plateau unPlateau;
+  C_Coup coupDeIA, coupJoueur1,  coupJoueur;
+
+  CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
+  PL_QuatrePionsDebut(&unPlateau);
+  
+    while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant) == 0){
+
+  
+      (*OTH_affichagePlateau)(unPlateau);
+      (*a)( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
+      if(booleen==1){
+        OTH_majPlateau(&unPlateau, coupJoueur1);
+      }
+      CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+
+      (*OTH_affichagePlateau)(unPlateau);
+      (*b)( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
+      if (booleen==1){
+        OTH_majPlateau(&unPlateau, coupDeIA);
+      }
+      
+      CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+    }
     return(OTH_obtenirCouleurGagnant(unPlateau));
 }

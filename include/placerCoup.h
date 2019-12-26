@@ -11,7 +11,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "couleur.h"
-typedef C_Coup (*obtenirCoup)();
+#include "coups.h"
+typedef void (*obtenirCoupJOUEUR)();
 
 /**
  * \brief Le type Direction qui représente une direction dans le plateau (H = Haut, B = Bas, D = Droite, G = Gauche)
@@ -34,7 +35,7 @@ CO_Couleur definirCouleurNouveauJoueur(CO_Couleur laCouleur);
  * \paral int partieFinie   Booléen qui permet de vérifier que la partie n'est pas finie
  * \return C_Coup  Le coup
  */
-C_Coup OTH_placerCoup( entrerCoup , PL_Plateau plateau, CO_Couleur couleurJoueur);
+void OTH_placerCoup( entrerCoup , PL_Plateau plateau, CO_Couleur couleurJoueur,C_Coup* coup,int* valide);
 
 /**
  * \fn  OTH_retournerAuMoinsUnPion()

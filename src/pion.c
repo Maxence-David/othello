@@ -9,7 +9,7 @@ PI_Pion PI_CreerPion(CO_Couleur couleur)
     return resultat;
 }
 
-void* PI_ChangerEtat(PI_Pion pion)
+void PI_ChangerEtat(PI_Pion pion)
 {
     PI_Pion resultat; 
     if (pion.etatPion == 0)

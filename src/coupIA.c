@@ -10,19 +10,16 @@
 
 
 
-
-
-
-C_Coup IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
+void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* estPossible){
     
     CS_Coups CoupsATester;
     C_Coup CoupTest;
-    C_Coup Resultat=C_InitCoup();
+
     int alpha = -5000;
     int beta = 5000;
     int BestScoreCoup;
     int scoreTemp;
-    CoupsATester = IA_ObtenirCoupsPossible( pl,CouleurReference);
+    CoupsATester = CS_ObtenirCoupsPossible( pl,CouleurReference);
     int profondeur = 6;
     int estPossible = !CS_EstVide(CoupsATester);
     int i=1;
@@ -36,23 +33,26 @@ C_Coup IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference){
             if (BestScoreCoup<scoreTemp)
             {
                 BestScoreCoup = scoreTemp;
-                Resultat = CoupTest;
+                *Resultat = CoupTest;
             }
             CS_SupprimerCoup(CoupsATester,i);
             i=i+1;
         }
         
     }
-    return(Resultat);
     
 }
 
 
- int IA_scoreDUnCoup (C_Coup coup, PL_Plateau pl, CO_Couleur CouleurReference, int profondeur,int alpha , int beta  )
+
+
+
+
+int IA_scoreDUnCoup (C_Coup coup, PL_Plateau pl, CO_Couleur CouleurReference, int profondeur,int alpha , int beta  )
  {
      CO_Couleur AutreCouleur = CO_ChangerCouleur(CouleurReference);
      int ScoreFinal = 0 ;
-     int TestFin = ((CS_NbCoups( IA_ObtenirCoupsPossible(pl,CouleurReference))==0) &&  (CS_NbCoups( IA_ObtenirCoupsPossible(pl,AutreCouleur))==0));
+     int TestFin = ((CS_NbCoups( CS_ObtenirCoupsPossible(pl,CouleurReference))==0) &&  (CS_NbCoups( CS_ObtenirCoupsPossible(pl,AutreCouleur))==0));
      PL_Plateau GrilleTemp;
      PL_CopierPlateau(&GrilleTemp,pl);
      OTH_majPlateau(GrilleTemp,coup);
@@ -92,10 +92,11 @@ int min(int a, int b ){
     }
 }
 
+
 int IA_Alpha_Beta (PL_Plateau pl,CO_Couleur CouleurReference,CO_Couleur CouleurActuel, int profondeur, int alpha, int beta)  {
     int resultat;
     int i;
-    CS_Coups Coups_possible = IA_ObtenirCoupsPossible(pl,CouleurActuel);
+    CS_Coups Coups_possible = CS_ObtenirCoupsPossible(pl,CouleurActuel);
     if (!CS_EstVide(Coups_possible)){
          resultat = IA_scoreDUnCoup(CS_IemeCoup(Coups_possible,1),pl,CouleurReference,profondeur,alpha,beta);
     }
@@ -154,27 +155,6 @@ int IA_Evalue(PL_Plateau pl, CO_Couleur CouleurReference){
 }
 
 
-CS_Coups IA_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference )
-{
-    int i =0;
-    PI_Pion pion = PI_CreerPion(CouleurReference);
-    int j=0;
-    CS_Coups resultat = CS_InitCoups();
-    for (i=1;i<=8;i++)
-    {
-        for(j=1;j<=8;j++)
-        {
-            PO_Position position = PO_defPosition(i,j);
-            C_Coup coup = C_PlacerCoup(pion,position);
-            if (C_Coup_Valide(coup, pl) == 1)
-            {
-                CS_AjouterCoup(resultat,coup);
-            }
-        }
-    }
-    return(resultat);
 
-
-}
 
 

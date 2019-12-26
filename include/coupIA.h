@@ -6,7 +6,9 @@
 #include "couleur.h"
 #include "plateau.h"
 
-typedef C_Coup (*ObtenirCoup)();
+typedef void (*ObtenirCoupIA)(PL_Plateau pl, CO_Couleur CouleurReference,C_Coup* coup, int* booleen);
+
+
 /**
  * \fn  IA_coupIA ()
  * \brief Fonction qui donne le coup de l'IA 
@@ -14,7 +16,7 @@ typedef C_Coup (*ObtenirCoup)();
  * \param PL_Plateau pl 
  * \return C_Coup
  */
- C_Coup IA_coupIA (PL_Plateau pl, CO_Couleur CouleurReference);
+void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* estPossible){
 
 
 
@@ -57,14 +59,6 @@ typedef C_Coup (*ObtenirCoup)();
  int IA_Evalue (PL_Plateau pl, CO_Couleur CouleurReference );
 
 
- /**
- * \fn  IA_ObtenirCoupsPossible ()
- * \brief Fonction qui donne un tableau de coups possible
- * \param PL_Plateau pl, plateau courant 
- * \param CO_Couleur CouleurReference 
- * \return CS_Coups
- */
- CS_Coups IA_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference );
 
 
 

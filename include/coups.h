@@ -83,4 +83,12 @@ CS_Coups CS_InitCoups();
  * \return void*
  */
  void CS_SupprimerCoup (CS_Coups coups,int i);
+
+
+
+
+CS_Coups CS_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference );
+
+
 #endif
+
