@@ -1,3 +1,6 @@
+#ifndef __faireUnePartie__
+#define __faireUnePartie__
+
 #include <stdio.h>
 #include "plateau.h"
 #include "coup.h"
@@ -18,3 +21,6 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau ,obtenirCoupJOUEUR );
 
 
 CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a, ObtenirCoupIA b);
+
+
+#endif

@@ -1,3 +1,7 @@
+#ifndef __MAJ_Plateau__
+#define __MAJ_Plateau__
+
+
 #include "position.h"
 #include "coup.h"
 #include "plateau.h"
@@ -28,3 +32,5 @@ void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
  */
 
 void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion);
+
+#endif
