@@ -32,7 +32,9 @@ void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup){
 
   PO_Position posCoup, posARetourner;
   posCoup = C_Obtenir_Position_Coup(leCoup);
-  
+
+  OTH_retournerPion(lePlateau, posCoup);
+
   if (OTH_testModifDirection(*lePlateau, leCoup, H) != 0) {
     posARetourner = PO_defPosition(PO_ObtenirX(posCoup), PO_ObtenirY(posCoup)+1);
     pour_chaque_direction(posARetourner, lePlateau, leCoup);
