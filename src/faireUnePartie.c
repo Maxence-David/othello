@@ -9,6 +9,23 @@
 #include "affichagePlateau.h"
 #include "coupIA.h"
 
+void OTH_entrerCoup(PL_Plateau* plateau, CO_Couleur couleurJoueurCourant)
+{
+	char coordCoup[];	/**<On prévoit une chaine de caractère plus grande au cas où l'utilisateur entre n'importe quoi*/
+	int entierColonnes, entierLignes;
+
+	do {
+		printf("Joueur %s c'est à vous de jouer, entrez les coordonnées de votre coup svp : ", couleurJoueurCourant);
+		scanf("%s", coordCoup);
+	}	while (!OTH_chaineValide);
+
+	OTH_chaineEnEntiers(coordCoup, entierColonnes, entierLignes);
+	
+	leCoup = C_InitCoup(PO_defPosition(entierColonnes,entierLignes),PI_CreerPion(couleurJoueurCourant));
+
+	C_PlacerCoup(plateau, leCoup);	
+}
+
 CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a){
 
   CO_Couleur CouleurJoueurCourant;

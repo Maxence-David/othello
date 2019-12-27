@@ -10,6 +10,15 @@
 #include "coupIA.h"
 
 /**
+ * \fn  enterCoup()
+ * \brief Fonction pour lire un coup entré par l'utilisateur
+ * \param plateau, le plateau
+ * \param couleurJoueurCourant, la couleur du joueur en train de jouer
+ * \return void
+ */
+void OTH_entrerCoup(PL_Plateau* plateau, CO_Couleur couleurJoueurCourant);
+
+/**
  * \fn  faireUnePartie()
  * \brief Fonction principale
  * \param fonction d'affichage du plateau
