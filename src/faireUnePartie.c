@@ -8,6 +8,8 @@
 #include "partieTerminee.h"
 #include "affichagePlateau.h"
 #include "coupIA.h"
+#include "majPlateau.h"
+#include "caractereEnEntier.h"
 
 void OTH_entrerCoup(PL_Plateau* plateau, CO_Couleur couleurJoueurCourant)
 {
@@ -23,7 +25,7 @@ void OTH_entrerCoup(PL_Plateau* plateau, CO_Couleur couleurJoueurCourant)
 	
 	leCoup = C_InitCoup(PO_defPosition(entierColonnes,entierLignes),PI_CreerPion(couleurJoueurCourant));
 
-	C_PlacerCoup(plateau, leCoup);	
+	OTH_majPlateau(plateau, leCoup);	
 }
 
 CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a){
