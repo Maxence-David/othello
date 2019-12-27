@@ -11,6 +11,7 @@ int  main(int argc, char** argv) {
         &&((strcmp(argv[2],"noir")) || (strcmp(argv[2],"blanc")) )){
             if (strcmp(argv[1],"JoueurVSJoueur")){
                 couleurGagnante = OTH_faireUnePartie_J_VS_J(OTH_affichagePlateau,OTH_placerCoup );
+                affichageFinPartie(couleurGagnante);
             }
             if (strcmp(argv[2],"blanc")){
                 couleurJoueur = CO_Blanc();
@@ -20,11 +21,12 @@ int  main(int argc, char** argv) {
             }
             if (strcmp(argv[1],"JoueurVSia")){
                 couleurGagnante = OTH_faireUnePartie_J_VS_IA(OTH_affichagePlateau,OTH_placerCoup,IA_CoupIA);
-
+                affichageFinPartie(couleurGagnante);
             }
             else
             {
                 couleurGagnante = OTH_Tournoi(OTH_entrerCoupTournoi,IA_CoupIA,couleurJoueur);
+                affichageFinPartie(couleurGagnante);
             }
             
         }

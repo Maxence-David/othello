@@ -27,4 +27,6 @@ void OTH_entrerCoup(PO_Position* position);
 
 void OTH_entrerCoupTournoi(PO_Position* position, int* booleen);
 
+
+void affichageFinPartie (CO_Couleur couleur);
 #endif

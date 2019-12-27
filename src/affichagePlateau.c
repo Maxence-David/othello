@@ -52,3 +52,11 @@ void OTH_entrerCoupTournoi(PO_Position* position, int* res){
     
 }
 
+void affichageFinPartie (CO_Couleur couleur){
+    if (couleur == "NOIR"){
+        printf("victoire des noir \n");
+    }
+    else {
+        printf("victoire des blanc \n");
+    }
+}
