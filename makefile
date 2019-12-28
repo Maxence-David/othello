@@ -18,7 +18,7 @@ doc : $(DOCDIR)/rapport/rapport.pdf
 
 test : $(TESTDIR)/$(EXEC)
 
-$(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o
+$(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o 
 
 $(DOCDIR)/rapport/rapport.pdf:
 	cd $(DOCDIR)/rapport/; pdflatex -synctex=1 -interaction=nonstopmode rapport.tex; cd ../..
