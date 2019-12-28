@@ -45,6 +45,7 @@ void test_pions_noirs (void){
             for (x = 1; x <= LARGEUR; x++)   
             {
                 pion = PL_ObtenirPion(PO_defPosition(y,x),plateau); /* on créé un plateau rempli uniquement de pions noirs*/
+                PI_ChangerEtat(pion); /*on passe l'état des pions à actif*/
                 pion.couleurPion = CO_Noir();
 
             }
@@ -75,7 +76,9 @@ void test_pions_blancs (void){
             for (x = 1; x <= LARGEUR; x++)   
             {
                 pion = PL_ObtenirPion(PO_defPosition(y,x),plateau); /* on créé un plateau rempli uniquement de pions blancs*/
+                PI_ChangerEtat(pion); /*on passe l'état des pions à actif*/
                 pion.couleurPion = CO_Blanc();
+
 
             }
         }
