@@ -3,8 +3,6 @@
 
 int OTH_chaineValide(char* chaine)
 {
-    int entier1, entier2;
-
     if (strlen(chaine) > 2)
     {
         return 0;
