@@ -118,7 +118,7 @@ CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA
       }
       }
     }
-  return(OTH_obtenirCouleurGagnant(unPlateau));
+  return(OTH_obtenirCouleurGagnant(plateau));
 
 
 
