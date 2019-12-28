@@ -18,10 +18,10 @@ void OTH_affichagePlateau(PL_Plateau plateau);
 /**
  * \fn  OTH_entrerCoup()
  * \brief Fonction qui demande a l'utilisateur d'entrer une position 
- * \param position
- * \return void
+ * \param CO_Couleur    La couleur du de l'utilisateur
+ * \return PO_Position  La posision à laquelle l'utilisateur a joué
  */
-void OTH_entrerCoup(PO_Position* position);
+PO_Position OTH_entrerCoup(CO_Couleur couleurJoueurCourant);
  
 
 
