@@ -37,7 +37,7 @@ void OTH_affichagePlateau(PL_Plateau plateau)
         printf("|");
         printf("\n");   /*On saute une ligne à la fin de chaque ligne parcourue*/
     }
-    printf(" +--------+");
+    printf(" ----------");
     printf("\n"); 
 }
 
