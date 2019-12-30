@@ -1,5 +1,6 @@
 #include "couleur.h"
 #include "plateau.h"
+#include "pion.h"
 
 void OTH_obtenirCouleurGagnant(PL_Plateau plateau, int* ilYaUnGagnant, CO_Couleur* couleurGagnant)
 {

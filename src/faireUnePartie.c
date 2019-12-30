@@ -10,6 +10,7 @@
 #include "coupIA.h"
 #include "majPlateau.h"
 #include "caractereEnEntier.h"
+#include "obtenirCouleurGagnant.h"
 
 CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a){
 
@@ -17,6 +18,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
   int booleen;
   PL_Plateau unPlateau;
   C_Coup coupJoueur1, coupJoueur2;
+  
 
   CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
@@ -38,9 +40,10 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
 
     }
-
-
-    return(OTH_obtenirCouleurGagnant(unPlateau));
+    int* ilYaUnGagnant;
+    CO_Couleur* couleurGagnant;
+    OTH_obtenirCouleurGagnant(unPlateau, ilYaUnGagnant, couleurGagnant);
+    return(*couleurGagnant);
 }
 
 
@@ -72,7 +75,10 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
     }
-    return(OTH_obtenirCouleurGagnant(unPlateau));
+    int* ilYaUnGagnant;
+    CO_Couleur* couleurGagnant;
+    OTH_obtenirCouleurGagnant(unPlateau, ilYaUnGagnant, couleurGagnant);
+    return(*couleurGagnant);
 }
 
 
@@ -118,7 +124,10 @@ CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA
       }
       }
     }
-  return(OTH_obtenirCouleurGagnant(plateau));
+  int* ilYaUnGagnant;
+  CO_Couleur* couleurGagnant;
+  OTH_obtenirCouleurGagnant(plateau, ilYaUnGagnant, couleurGagnant);
+  return(*couleurGagnant);
 
 
 

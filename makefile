@@ -12,7 +12,13 @@ CREATE = mkdir
 CFLAGS = -Wall -pedantic -g -I$(INCLUDEDIR)
 LDFLAGS= -L$(LIBDIR) -lothello
 
-all : $(BINDIR)/$(EXEC)
+all : const $(BINDIR)/$(EXEC)
+
+const :
+	@ if ! [ -d $(BINDIR) ]; then \
+		echo "Création du dossier $(BINDIR)"; \
+		$(CREATE) $(BINDIR); \
+	fi
 
 doc : $(DOCDIR)/rapport/rapport.pdf
 
@@ -33,7 +39,7 @@ $(TESTDIR)/%.o : $(TESTDIR)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	rm -rf $(BINDIR)/*
+	rm -rf $(BINDIR)
 	rm -rf $(LIBDIR)/*.a
 	rm -rf $(SRCDIR)/*.o
 	rm -rf $(TESTDIR)/*.o

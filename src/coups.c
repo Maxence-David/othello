@@ -1,6 +1,7 @@
 #include "pion.h"
 #include "coup.h"
 #include "coups.h"
+#include "placerCoup.h"
 
 
 
