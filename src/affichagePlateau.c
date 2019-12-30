@@ -74,3 +74,4 @@ void affichageFinPartie (CO_Couleur couleur){
         printf("victoire des blanc \n");
     }
 }
+

@@ -16,7 +16,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
   CO_Couleur CouleurJoueurCourant;
   int booleen;
   PL_Plateau unPlateau;
-  C_Coup coupDeIA, coupJoueur1, coupJoueur2, coupJoueur;
+  C_Coup coupJoueur1, coupJoueur2;
 
   CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
@@ -49,7 +49,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
   CO_Couleur CouleurJoueurCourant;
   int booleen;
   PL_Plateau unPlateau;
-  C_Coup coupDeIA, coupJoueur1,  coupJoueur;
+  C_Coup coupDeIA, coupJoueur1;
 
   CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
@@ -123,3 +123,4 @@ CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA
 
 
 }
+

@@ -5,7 +5,7 @@
 #include "position.h"
 
 typedef void (*affichagePlateau)(PL_Plateau);
-typedef void (*entrerCoup)(PO_Position*);
+typedef PO_Position (*entrerCoup)(CO_Couleur);
 typedef void (entrerCoupTournoi)(PO_Position*,int* );
 /**
  * \fn  affichagePlateau()

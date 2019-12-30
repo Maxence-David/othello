@@ -29,7 +29,7 @@ void OTH_placerCoup(entrerCoup OTH_entrerCoup,PL_Plateau plateau, CO_Couleur cou
   
   if(*valide){
     do{
-            (*OTH_entrerCoup)(&position);
+            position = (*OTH_entrerCoup)(couleurJoueur);
             *coup = C_InitCoup(position,pionAPlacer);
     } while (C_Coup_Valide(*coup, plateau));
   }
