@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<CUnit/Basic.h>
 #include "majPlateau.h"
 
 int init_suite_success(void)
@@ -18,11 +19,11 @@ void test_changement_couleur_pion_blanc_vers_noir(void)
 
     PL_Plateau lePlateau;
     PO_Position positionDuPion;
-    PL_Initialiser_Plateau(lePlateau);
+    PL_Initialiser_Plateau(lePlateau);  /**<On initialise le plateau avec la configuration de base*/
     PL_QuatrePionsDebut(lePlateau);
-    positionDuPion = PO_defPosition(4, 4);
-    OTH_retournerPion(lePlateau, positionDuPion);
-    resultatObtenu = estNoir(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau)));
+    positionDuPion = PO_defPosition(4, 4);  /**<On choisit un pion blanc*/
+    OTH_retournerPion(lePlateau, positionDuPion);   /**<On retourne un pion blanc*/
+    resultatObtenu = estNoir(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau))); /**<On vérifie qu'il est bien devenu noir*/
     CU_ASSERT_EQUAL(resultatAttendu, resultatObtenu);
 }
 
@@ -33,11 +34,11 @@ void test_changement_couleur_pion_noir_vers_blanc(void)
 
     PL_Plateau lePlateau;
     PO_Position positionDuPion;
-    PL_Initialiser_Plateau(lePlateau);
+    PL_Initialiser_Plateau(lePlateau);  /**<On initialise le plateau avec la configuration de base*/
     PL_QuatrePionsDebut(lePlateau);
-    positionDuPion = PO_defPosition(4, 5);
-    OTH_retournerPion(lePlateau, positionDuPion);
-    resultatObtenu = estBlanc(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau)));
+    positionDuPion = PO_defPosition(4, 5);  /**<On choisit un pion noir*/
+    OTH_retournerPion(lePlateau, positionDuPion);   /**<On retourne un pion noir*/
+    resultatObtenu = estBlanc(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau)));    /**<On vérifie qu'il est bien devenu blanc*/
     CU_ASSERT_EQUAL(resultatAttendu, resultatObtenu);
 }
 
@@ -92,4 +93,33 @@ void test_pour_maj_plateau(void)
     }
 
     CU_ASSERT_EQUAL(resultatAttendu, resultatObtenu);
+}
+
+int main(int argc , char** argv){
+    CU_pSuite pSuite = NULL;
+
+        if (CUE_SUCCESS != CU_initialize_registry())
+            return CU_get_error() ;
+
+    pSuite = CU_add_suite("Tests boite noire", init_suite_success , clean_suite_success ) ;
+        if (NULL == pSuite) {
+            CU_cleanup_registry() ;
+            return CU_get_error() ;
+        }
+
+        if( (NULL == CU_add_test(pSuite, "test changement de couleur de blanc vers noir", test_changement_couleur_pion_blanc_vers_noir)) || 
+            (NULL == CU_add_test(pSuite, "test changement de couleur de noir vers blanc", test_changement_couleur_pion_noir_vers_blanc)) ||
+            (NULL == CU_add_test(pSuite, "test maj plateau", test_pour_maj_plateau))
+        ){
+        CU_cleanup_registry() ;
+        return CU_get_error() ;
+        }
+
+    CU_basic_set_mode(CU_BRM_VERBOSE);
+    CU_basic_run_tests();
+    printf("\n");
+    CU_basic_show_failures(CU_get_failure_list());
+    printf("\n\n");
+    CU_cleanup_registry();
+    return CU_get_error();
 }
