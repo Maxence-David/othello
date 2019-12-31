@@ -51,7 +51,7 @@ PO_Position OTH_entrerCoup(CO_Couleur couleurJoueurCourant)
     PO_Position positionDuCoup; 
 
 	do {
-		printf("Joueur %s c'est à vous de jouer, entrez les coordonnées de votre coup svp : ", couleurJoueurCourant);
+		printf("Joueur %d c'est à vous de jouer, entrez les coordonnées de votre coup svp : ", couleurJoueurCourant);
 		scanf("%s", coordCoup);
 	}	while (!OTH_chaineValide(coordCoup));
 

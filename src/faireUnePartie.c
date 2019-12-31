@@ -40,10 +40,10 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
 
     }
-    int* ilYaUnGagnant;
-    CO_Couleur* couleurGagnant;
-    OTH_obtenirCouleurGagnant(unPlateau, ilYaUnGagnant, couleurGagnant);
-    return(*couleurGagnant);
+    int ilYaUnGagnant = 0;
+    CO_Couleur couleurGagnant = CO_Noir();
+    OTH_obtenirCouleurGagnant(&unPlateau, &ilYaUnGagnant, &couleurGagnant);
+    return(couleurGagnant);
 }
 
 
@@ -75,10 +75,10 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
     }
-    int* ilYaUnGagnant;
-    CO_Couleur* couleurGagnant;
-    OTH_obtenirCouleurGagnant(unPlateau, ilYaUnGagnant, couleurGagnant);
-    return(*couleurGagnant);
+    int ilYaUnGagnant = 0;
+    CO_Couleur couleurGagnant = CO_Noir();
+    OTH_obtenirCouleurGagnant(unPlateau, &ilYaUnGagnant, &couleurGagnant);
+    return(couleurGagnant);
 }
 
 
@@ -124,10 +124,10 @@ CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA
       }
       }
     }
-  int* ilYaUnGagnant;
-  CO_Couleur* couleurGagnant;
-  OTH_obtenirCouleurGagnant(plateau, ilYaUnGagnant, couleurGagnant);
-  return(*couleurGagnant);
+  int ilYaUnGagnant = 0;
+  CO_Couleur couleurGagnant = CO_Noir();
+  OTH_obtenirCouleurGagnant(plateau, &ilYaUnGagnant, &couleurGagnant);
+  return(couleurGagnant);
 
 
 
