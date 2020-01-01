@@ -1,15 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "position.h"
 #include "coup.h"
 #include "plateau.h"
 #include "placerCoup.h"
 #include "position.h"
 #include "pion.h"
-#include "affichagePlateau.h"
 #include "plateau.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include "couleur.h"
 #include "coups.h"
+#include "affichagePlateau.h"
 
 CO_Couleur OTH_definirCouleurNouveauJoueur(CO_Couleur laCouleur){
 
@@ -120,15 +120,15 @@ int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
     }
     else
     {
-        while((0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= LARGEUR) && 
-            (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= HAUTEUR) && 
+        while((0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= 8) && 
+            (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= 8) && 
             (PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau))) && 
             (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == couleurAdverse))    /*On teste les positions suivantes tant que les pions sont actifs, de la couleur adverse et que l'on ne sort pas du plateau*/
         {
             positionAtester = PO_defPosition(PO_ObtenirX(positionAtester) + incrementX, PO_ObtenirY(positionAtester) + incrementY); /*La position suivante à tester est obtenue en ajoutant les incréments X et Y à la postition actuelle*/
         }
-        if ((0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= LARGEUR) &&
-            (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= HAUTEUR) &&
+        if ((0 <= PO_ObtenirX(positionAtester)) && (PO_ObtenirX(positionAtester) <= 8) &&
+            (0 <= PO_ObtenirY(positionAtester)) && (PO_ObtenirY(positionAtester) <= 8) &&
             (PI_ObtenirEtatPion(PL_ObtenirPion(positionAtester, plateau)) != 0) && 
             (PI_ObtenirCouleurPion(PL_ObtenirPion(positionAtester, plateau)) == C_Obtenir_Couleur_Coup(coup)))   /*Lorsqu'on atteint une poistion ne respectant pas les conditions mais qui est toujours dans le plateau, on regarde la couleur et l'état du pion associé*/
         {

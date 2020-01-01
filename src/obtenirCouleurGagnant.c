@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "couleur.h"
 #include "plateau.h"
 #include "pion.h"

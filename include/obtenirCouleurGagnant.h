@@ -1,3 +1,6 @@
+#ifndef __OBTENIR_COULEUR_GAGNANT__
+#define __OBTENIR_COULEUR_GAGNANT__
+
 #include "couleur.h" 
 #include "plateau.h"
 
@@ -9,3 +12,4 @@
  */
 void OTH_obtenirCouleurGagnant(PL_Plateau plateau, int* ilYaUnGagnant, CO_Couleur* couleurGagnant);
 
+#endif

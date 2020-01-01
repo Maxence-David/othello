@@ -29,8 +29,8 @@ $(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caracter
 $(DOCDIR)/rapport/rapport.pdf:
 	cd $(DOCDIR)/rapport/; pdflatex -synctex=1 -interaction=nonstopmode rapport.tex; cd ../..
 
-$(BINDIR)/$(EXEC) : $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/affichagePlateau.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o 
-	$(CC) -o $@  $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/affichagePlateau.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o 
+$(BINDIR)/$(EXEC) : $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/affichagePlateau.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o $(SRCDIR)/obtenirCouleurGagnant.o $(SRCDIR)/main.o 
+	$(CC) -o $@  $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/affichagePlateau.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o $(SRCDIR)/obtenirCouleurGagnant.o $(SRCDIR)/main.o 
 
 $(SRCDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)

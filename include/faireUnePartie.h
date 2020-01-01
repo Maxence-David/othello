@@ -1,5 +1,5 @@
-#ifndef __faireUnePartie__
-#define __faireUnePartie__
+#ifndef __FAIRE_UNE_PARTIE__
+#define __FAIRE_UNE_PARTIE__
 
 #include <stdio.h>
 #include "plateau.h"
@@ -30,8 +30,8 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
  * \param couleurJoueurCourant, la couleur du joueur en train de jouer
  * \return void
  */
-void OTH_entrerCoup(PL_Plateau* plateau, CO_Couleur couleurJoueurCourant);
-
+/*void OTH_entrerCoup(PL_Plateau* plateau, CO_Couleur couleurJoueurCourant);
+*/
 
 
 
