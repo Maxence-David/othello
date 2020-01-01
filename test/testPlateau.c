@@ -40,7 +40,7 @@ void test_PL_CopierPlateau() {
   PL_Plateau pl, plcopy;
   PL_Initialiser_Plateau(&pl);
   PL_PoserPion(PI_CreerPion(NOIR),PO_defPosition(1,1),&pl);
-  PL_CopierPlateau(pl,&plcopy);
+  PL_CopierPlateau(&pl,plcopy);
   CU_ASSERT_TRUE(plcopy==pl);
 }
 

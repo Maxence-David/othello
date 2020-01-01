@@ -23,7 +23,7 @@ void test_changement_couleur_pion_blanc_vers_noir(void)
     PL_QuatrePionsDebut(&lePlateau);
     positionDuPion = PO_defPosition(4, 4);  /**<On choisit un pion blanc*/
     OTH_retournerPion(&lePlateau, positionDuPion);   /**<On retourne un pion blanc*/
-    resultatObtenu = estNoir(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau))); /**<On vérifie qu'il est bien devenu noir*/
+    resultatObtenu = CO_estNoir(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau))); /**<On vérifie qu'il est bien devenu noir*/
     CU_ASSERT_EQUAL(resultatAttendu, resultatObtenu);
 }
 
@@ -38,7 +38,7 @@ void test_changement_couleur_pion_noir_vers_blanc(void)
     PL_QuatrePionsDebut(&lePlateau);
     positionDuPion = PO_defPosition(4, 5);  /**<On choisit un pion noir*/
     OTH_retournerPion(&lePlateau, positionDuPion);   /**<On retourne un pion noir*/
-    resultatObtenu = estBlanc(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau)));    /**<On vérifie qu'il est bien devenu blanc*/
+    resultatObtenu = CO_estBlanc(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau)));    /**<On vérifie qu'il est bien devenu blanc*/
     CU_ASSERT_EQUAL(resultatAttendu, resultatObtenu);
 }
 
@@ -80,7 +80,7 @@ void test_pour_maj_plateau(void)
     {
         for(j=1; j<=5; j++)
         {
-            if(estBlanc(PI_ObtenirCouleurPion(PL_ObtenirPion(PO_defPosition(i,j),lePlateau))))  /**On vérifie qu'il n'y a aucun pion blanc<*/
+            if(CO_estBlanc(PI_ObtenirCouleurPion(PL_ObtenirPion(PO_defPosition(i,j),lePlateau))))  /**On vérifie qu'il n'y a aucun pion blanc<*/
             {
                 resultatObtenu = 0; /**<Si il y a un pion blanc, resultatObtenu reste à 0*/
             }

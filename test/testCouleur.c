@@ -12,22 +12,22 @@ int clean_suite_success(void) {
 }
 
 void test_est_noir_pour_couleur_blanche(void){
-  CO_Couleur couleur_blanche = CO_BLANC();
+  CO_Couleur couleur_blanche = CO_Blanc();
   CU_ASSERT_TRUE(!CO_estNoir(couleur_blanche));
 }
 
 void test_est_noir_pour_couleur_noire(void){
-  CO_Couleur couleur_noire = CO_NOIR();
+  CO_Couleur couleur_noire = CO_Noir();
   CU_ASSERT_TRUE(CO_estNoir(couleur_noire));
 }
 
 void test_est_blanc_pour_couleur_blanche(void){
-  CO_Couleur couleur_blanche = CO_BLANC();
+  CO_Couleur couleur_blanche = CO_Blanc();
   CU_ASSERT_TRUE(CO_estBlanc(couleur_blanche));
 }
 
 void test_est_blanc_pour_couleur_noire(void){
-  CO_Couleur couleur_noire = CO_NOIR();
+  CO_Couleur couleur_noire = CO_Noir();
   CU_ASSERT_TRUE(!CO_estBlanc(couleur_noire));
 }
 
