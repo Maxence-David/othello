@@ -74,7 +74,7 @@ CS_Coups CS_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference )
         for(j=1;j<=8;j++)
         {
             PO_Position position = PO_defPosition(i,j);
-            C_Coup coup = C_PlacerCoup(pion,position);
+            C_Coup coup = C_InitCoup(position,pion);
             if (C_Coup_Valide(coup, pl) == 1)
             {
                 CS_AjouterCoup(resultat,coup);
