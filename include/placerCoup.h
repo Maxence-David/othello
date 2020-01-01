@@ -1,5 +1,5 @@
-#ifndef __PARTIE_TERMINEE__
-#define __PARTIE_TERMINEE__
+#ifndef __PLACER_COUP__
+#define __PLACER_COUP__
 
 #include "position.h"
 #include "coup.h"

@@ -2,14 +2,11 @@
 #include "plateau.h"
 #include "coup.h"
 #include "couleur.h"
-#include "caractereEnEntier.h"
+#include "coupIA.h"
 #include "placerCoup.h"
 #include "majPlateau.h"
 #include "partieTerminee.h"
 #include "affichagePlateau.h"
-#include "coupIA.h"
-#include "majPlateau.h"
-#include "caractereEnEntier.h"
 #include "obtenirCouleurGagnant.h"
 
 CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a){
@@ -42,7 +39,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
     }
     int ilYaUnGagnant = 0;
     CO_Couleur couleurGagnant = CO_Noir();
-    OTH_obtenirCouleurGagnant(&unPlateau, &ilYaUnGagnant, &couleurGagnant);
+    OTH_obtenirCouleurGagnant(unPlateau, &ilYaUnGagnant, &couleurGagnant);
     return(couleurGagnant);
 }
 
