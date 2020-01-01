@@ -123,7 +123,7 @@ CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA
     }
   int ilYaUnGagnant = 0;
   CO_Couleur couleurGagnant = CO_Noir();
-  OTH_obtenirCouleurGagnant(plateau, &ilYaUnGagnant, &couleurGagnant);
+  OTH_obtenirCouleurGagnant( plateau, &ilYaUnGagnant, &couleurGagnant);
   return(couleurGagnant);
 
 

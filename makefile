@@ -24,7 +24,7 @@ doc : $(DOCDIR)/rapport/rapport.pdf
 
 test : $(TESTDIR)/$(EXEC)
 
-$(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o $(TESTDIR)/test_partieTerminee.o $(TESTDIR)/test_obtenirCouleurGagnant.o
+$(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o $(TESTDIR)/test_partieTerminee.o $(TESTDIR)/test_obtenirCouleurGagnant.o $(TESTDIR)/test_majPlateau.o $(TESTDIR)/testCouleur.o $(TESTDIR)/testCoup.o $(TESTDIR)/testPion.o $(TESTDIR)/testPlateau.o $(TESTDIR)/testPostition.o
 
 $(DOCDIR)/rapport/rapport.pdf:
 	cd $(DOCDIR)/rapport/; pdflatex -synctex=1 -interaction=nonstopmode rapport.tex; cd ../..

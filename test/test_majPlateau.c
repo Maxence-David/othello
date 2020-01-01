@@ -19,10 +19,10 @@ void test_changement_couleur_pion_blanc_vers_noir(void)
 
     PL_Plateau lePlateau;
     PO_Position positionDuPion;
-    PL_Initialiser_Plateau(lePlateau);  /**<On initialise le plateau avec la configuration de base*/
-    PL_QuatrePionsDebut(lePlateau);
+    PL_Initialiser_Plateau(&lePlateau);  /**<On initialise le plateau avec la configuration de base*/
+    PL_QuatrePionsDebut(&lePlateau);
     positionDuPion = PO_defPosition(4, 4);  /**<On choisit un pion blanc*/
-    OTH_retournerPion(lePlateau, positionDuPion);   /**<On retourne un pion blanc*/
+    OTH_retournerPion(&lePlateau, positionDuPion);   /**<On retourne un pion blanc*/
     resultatObtenu = estNoir(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau))); /**<On vérifie qu'il est bien devenu noir*/
     CU_ASSERT_EQUAL(resultatAttendu, resultatObtenu);
 }
@@ -34,10 +34,10 @@ void test_changement_couleur_pion_noir_vers_blanc(void)
 
     PL_Plateau lePlateau;
     PO_Position positionDuPion;
-    PL_Initialiser_Plateau(lePlateau);  /**<On initialise le plateau avec la configuration de base*/
-    PL_QuatrePionsDebut(lePlateau);
+    PL_Initialiser_Plateau(&lePlateau);  /**<On initialise le plateau avec la configuration de base*/
+    PL_QuatrePionsDebut(&lePlateau);
     positionDuPion = PO_defPosition(4, 5);  /**<On choisit un pion noir*/
-    OTH_retournerPion(lePlateau, positionDuPion);   /**<On retourne un pion noir*/
+    OTH_retournerPion(&lePlateau, positionDuPion);   /**<On retourne un pion noir*/
     resultatObtenu = estBlanc(PI_ObtenirCouleurPion(PL_ObtenirPion(positionDuPion, lePlateau)));    /**<On vérifie qu'il est bien devenu blanc*/
     CU_ASSERT_EQUAL(resultatAttendu, resultatObtenu);
 }
@@ -53,7 +53,7 @@ void test_pour_maj_plateau(void)
     PI_Pion pionNoir = PI_CreerPion(CO_Noir());
     PI_Pion pionBlanc = PI_CreerPion(CO_Blanc());
 
-    PL_Initialiser_Plateau(lePlateau);  /**<Création d'une configuration particulière dans laquelle la pose d'un pion va en retourner 8 (un dans chaque direction)*/
+    PL_Initialiser_Plateau(&lePlateau);  /**<Création d'une configuration particulière dans laquelle la pose d'un pion va en retourner 8 (un dans chaque direction)*/
     for(i=1; i<=5; i++)
     {
         PL_PoserPion(pionNoir, PO_defPosition(i,1),&lePlateau);
