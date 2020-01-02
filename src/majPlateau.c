@@ -31,8 +31,8 @@ void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup){
 
   PI_Pion pionSuivant;
   PO_Position posCoup, posARetourner;
-  /*posCoup = C_Obtenir_Position_Coup(leCoup); 
-  OTH_retournerPion(lePlateau, posCoup);*/
+  posCoup = C_Obtenir_Position_Coup(leCoup); 
+  PL_PoserPion(C_obtenirPionCoup(leCoup),C_Obtenir_Position_Coup(leCoup),lePlateau);
 
   if (OTH_testModifDirection(*lePlateau, leCoup, H) != 0) {
     do{

@@ -40,7 +40,7 @@ void PL_Initialiser_Plateau(PL_Plateau* plateau){
 
 PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau){
   
-  return(plateau[PO_ObtenirX(position)][PO_ObtenirY(position)]);
+  return(plateau[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1]);
 }
 
 void PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau){

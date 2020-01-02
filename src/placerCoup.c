@@ -21,15 +21,16 @@ CO_Couleur OTH_definirCouleurNouveauJoueur(CO_Couleur laCouleur){
   }
 }
 
-void OTH_placerCoup(entrerCoup OTH_entrerCoup,PL_Plateau plateau, CO_Couleur couleurJoueur,C_Coup* coup,int* valide){
+void OTH_placerCoup(entrerCoup a,PL_Plateau plateau, CO_Couleur couleurJoueur,C_Coup* coup,int* valide){
   PI_Pion pionAPlacer = PI_CreerPion(couleurJoueur); 
   PO_Position position;
   CS_Coups coups = CS_ObtenirCoupsPossible(plateau,couleurJoueur);
   *valide = !CS_EstVide(coups);
   
-  if(*valide){
+  
+  if(valide != 0){
     do{
-            position = (*OTH_entrerCoup)(couleurJoueur);
+            position = (*a)(couleurJoueur);
             *coup = C_InitCoup(position,pionAPlacer);
     } while (C_Coup_Valide(*coup, plateau));
   }
