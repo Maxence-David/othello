@@ -9,7 +9,7 @@ CC = gcc
 AR = ar
 CREATE = mkdir
 
-CFLAGS = -Wall -pedantic -g -I$(INCLUDEDIR)
+CFLAGS = -Wall -pedantic -g -I$(INCLUDEDIR) -lcunit
 LDFLAGS= -L$(LIBDIR) -lothello
 
 all : const $(BINDIR)/$(EXEC)
@@ -24,7 +24,8 @@ doc : $(DOCDIR)/rapport/rapport.pdf
 
 test : $(TESTDIR)/$(EXEC)
 
-$(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o $(TESTDIR)/test_partieTerminee.o $(TESTDIR)/test_obtenirCouleurGagnant.o $(TESTDIR)/test_majPlateau.o $(TESTDIR)/testCouleur.o $(TESTDIR)/testCoup.o $(TESTDIR)/testPion.o $(TESTDIR)/testPlateau.o $(TESTDIR)/testPostition.o
+$(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o $(TESTDIR)/test_partieTerminee.o $(TESTDIR)/test_obtenirCouleurGagnant.o $(TESTDIR)/test_majPlateau.o $(TESTDIR)/testCouleur.o $(TESTDIR)/testCoup.o $(TESTDIR)/testPion.o $(TESTDIR)/testPlateau.o $(TESTDIR)/testPosition.o
+	$(CC) -o $@ $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o $(TESTDIR)/test_partieTerminee.o $(TESTDIR)/test_obtenirCouleurGagnant.o $(TESTDIR)/test_majPlateau.o $(TESTDIR)/testCouleur.o $(TESTDIR)/testCoup.o $(TESTDIR)/testPion.o $(TESTDIR)/testPlateau.o $(TESTDIR)/testPosition.o
 
 $(DOCDIR)/rapport/rapport.pdf:
 	cd $(DOCDIR)/rapport/; pdflatex -synctex=1 -interaction=nonstopmode rapport.tex; cd ../..
