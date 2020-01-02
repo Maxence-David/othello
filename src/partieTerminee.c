@@ -59,5 +59,6 @@ int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant)
 
 int OTH_partieTerminee(PL_Plateau plateau, CO_Couleur couleurJoueurCourant,CO_Couleur couleurAutreJoueur)
 {
-    return (OTH_plateauPlein(plateau) || (OTH_plusDeCoups(plateau, couleurJoueurCourant) && OTH_plusDeCoups(plateau, couleurAutreJoueur)));   /*Une partie est terminée lorsque le plateau est plein ou que plus personne ne peut jouer*/
+    return  (OTH_plateauPlein(plateau) || 
+            (OTH_plusDeCoups(plateau, couleurJoueurCourant) && OTH_plusDeCoups(plateau, couleurAutreJoueur)));   /*Une partie est terminée lorsque le plateau est plein ou que plus personne ne peut jouer*/
 }
