@@ -78,15 +78,15 @@ int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
     {
         case HG :
             incrementX = -1;    /*Ici par exemple, se déplacer vers en haut à gauche revient à reculer sur l'axe X et monter sur l'axe Y*/
-            incrementY = 1;
+            incrementY = -1;
         break;
         case H :
             incrementX = 0;
-            incrementY = 1;
+            incrementY = -1;
         break;
         case HD :
             incrementX = 1;
-            incrementY = 1;
+            incrementY = -1;
         break;
         case D :
             incrementX = 1;
@@ -94,15 +94,15 @@ int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
         break;
         case BD :
             incrementX = 1;
-            incrementY = -1;
+            incrementY = 1;
         break;
         case B :
             incrementX = 0;
-            incrementY = -1;
+            incrementY = 1;
         break;
         case BG :
             incrementX = -1;
-            incrementY = -1;
+            incrementY = 1;
         break;
         case G :
             incrementX = -1;
