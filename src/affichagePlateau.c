@@ -48,10 +48,21 @@ PO_Position OTH_entrerCoup(CO_Couleur couleurJoueurCourant)
 {
     char coordCoup[10];	/**<On prévoit une chaine de caractère plus grande au cas où l'utilisateur entre n'importe quoi*/
 	int entierColonnes, entierLignes;
-    PO_Position positionDuCoup; 
+    PO_Position positionDuCoup;
+    char* couleurDuJoueur;
+
+    if(couleurJoueurCourant == NOIR)
+    {
+        couleurDuJoueur = "Noir";
+    }
+    else
+    {
+        couleurDuJoueur = "Blanc";
+    }
+    
 
 	do {
-		printf("Joueur %d c'est à vous de jouer, entrez les coordonnées de votre coup svp : ", couleurJoueurCourant);
+		printf("Joueur %s c'est à vous de jouer, entrez les coordonnées de votre coup svp : ", couleurDuJoueur);
 		scanf("%s", coordCoup);
 	}	while (!OTH_chaineValide(coordCoup));
 
