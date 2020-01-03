@@ -30,8 +30,9 @@ C_Coup CS_IemeCoup (CS_Coups coups,int i)
 
 void CS_AjouterCoup (CS_Coups coups,C_Coup coup)
 {
-    coups.tabcoups[coups.nbcoups]=coup;
     coups.nbcoups = coups.nbcoups+1;
+    coups.tabcoups[coups.nbcoups]=coup;
+    
 
 }
 

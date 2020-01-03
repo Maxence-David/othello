@@ -50,7 +50,13 @@ void PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau){
 
 int PL_estVide(PO_Position position, PL_Plateau plateau)
 {
-  return PI_ObtenirEtatPion(PL_ObtenirPion(position,plateau));
+  if (PI_ObtenirEtatPion(PL_ObtenirPion(position,plateau))==0){
+
+    return (1);
+  }
+  else{
+    return(0);
+  }
 }
 /*
 void PL_ViderPlateau(PL_Plateau* plateau){
