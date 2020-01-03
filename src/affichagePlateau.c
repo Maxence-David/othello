@@ -11,7 +11,7 @@ void OTH_affichagePlateau(PL_Plateau plateau)
 {
     int x,y;
 
-    printf("  abcdefhg ");
+    printf("  abcdefgh ");
     printf("\n");
     printf(" +--------+");
     printf("\n"); 
