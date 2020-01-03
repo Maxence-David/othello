@@ -86,3 +86,18 @@ void affichageFinPartie (CO_Couleur couleur){
     }
 }
 
+void affichageAide()
+{
+    printf("Aide du programme othello \n");
+    printf("Les options possibles sont : \n");
+    printf("    othello JoueurVSia blanc|noir \n");
+    printf("        permet de jouer contre l'ordinateur en choisissant la couleur \n");
+    printf("        par defaut la profondeur d'analyse est egale a 5 \n");
+    printf("    othello JoueurVSJoueur \n");
+    printf("        permet de faire jouer deux joueur chacun leur tour sur la même machine \n");
+    printf("    othello tournoi blanc|noir \n");
+    printf("        permet de faire jouer le programme dans un mode 'tournoi' en lui donnant les blancs ou les noirs \n");
+    printf("        par defaut la profondeur d'analyse est egale a 5 \n");
+
+
+}
