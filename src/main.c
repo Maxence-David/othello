@@ -7,10 +7,10 @@ int  main(int argc, char** argv) {
     CO_Couleur couleurGagnante;
     CO_Couleur couleurJoueur;
     PL_Plateau pl;
-
-    couleurGagnante = OTH_faireUnePartie_J_VS_J(OTH_affichagePlateau,OTH_placerCoup );
-    affichageFinPartie(couleurGagnante);
 /*
+    couleurGagnante = OTH_faireUnePartie_J_VS_J(OTH_affichagePlateau,OTH_placerCoup );
+    affichageFinPartie(couleurGagnante);*/
+
     if  ( (argc==3) 
         && ((strcmp(argv[1],"JoueurVSJoueur"))||(strcmp(argv[1],"JoueurVSia"))||(strcmp(argv[1],"iaVSia")))
         &&((strcmp(argv[2],"noir")) || (strcmp(argv[2],"blanc")) )){
@@ -38,7 +38,7 @@ int  main(int argc, char** argv) {
         }
 
 
-*/
+
 	return EXIT_SUCCESS;
 
 }

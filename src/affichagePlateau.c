@@ -57,7 +57,7 @@ PO_Position OTH_entrerCoup(CO_Couleur couleurJoueurCourant)
 
 	OTH_chaineEnEntiers(coordCoup, &entierColonnes, &entierLignes);
 	
-	positionDuCoup = PO_defPosition(entierColonnes,entierLignes),PI_CreerPion(couleurJoueurCourant);
+	positionDuCoup = PO_defPosition(entierLignes,entierColonnes),PI_CreerPion(couleurJoueurCourant);
 
     return positionDuCoup;
 }
