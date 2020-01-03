@@ -12,6 +12,9 @@
 void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion){
   PI_Pion lePionModifie;
   lePionModifie = PL_ObtenirPion(positionDuPion, *lePlateau);
+  if (PI_ObtenirEtatPion(lePionModifie) == 0) {
+    PI_ChangerEtat(lePionModifie);
+  }
   lePionModifie.couleurPion = CO_ChangerCouleur(PI_ObtenirCouleurPion(lePionModifie));
   PL_PoserPion(lePionModifie, positionDuPion, lePlateau);
 }
