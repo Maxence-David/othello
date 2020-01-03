@@ -25,17 +25,17 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
       OTH_affichagePlateau(unPlateau);
       OTH_placerCoup( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
 
-      if(booleen != 0){
+      if(booleen != 0){}
         OTH_majPlateau(&unPlateau, coupJoueur1);
-      }
+      
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
 
       OTH_affichagePlateau(unPlateau);
       OTH_placerCoup(OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur2,&booleen);
-      if(booleen != 0){
+      if(booleen != 0){}
         OTH_majPlateau(&unPlateau, coupJoueur2);
-      } 
+      
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
     }
     

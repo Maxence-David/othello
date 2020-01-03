@@ -25,10 +25,9 @@ void OTH_placerCoup(entrerCoup a,PL_Plateau plateau, CO_Couleur couleurJoueur,C_
   PI_Pion pionAPlacer = PI_CreerPion(couleurJoueur); 
   PO_Position position;
   CS_Coups coups = CS_ObtenirCoupsPossible(plateau,couleurJoueur);
-  *valide = !CS_EstVide(coups);
-  
-  
-  if(valide != 0){
+  *valide = !CS_EstVide(coups); /* si coups vide alors renvoie 0 */
+
+  if(valide != 0){ /* si coups n'est pas vide*/
     do{
             position = (*a)(couleurJoueur);
             *coup = C_InitCoup(position,pionAPlacer);
