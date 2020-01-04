@@ -31,7 +31,7 @@ void OTH_placerCoup(entrerCoup a,PL_Plateau plateau, CO_Couleur couleurJoueur,C_
     do{
             position = (*a)(couleurJoueur);
             *coup = C_InitCoup(position,pionAPlacer);
-    } while (C_Coup_Valide(*coup, plateau));
+    } while (!C_Coup_Valide(*coup, plateau));
   }
   		  
 }

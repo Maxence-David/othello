@@ -19,14 +19,21 @@ void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* 
     int beta = 5000;
     int BestScoreCoup;
     int scoreTemp;
-    CoupsATester = CS_ObtenirCoupsPossible( pl,CouleurReference);
+    CoupsATester = CS_ObtenirCoupsPossible(pl,CouleurReference);
     int profondeur = 6;
     *estPossible = !CS_EstVide(CoupsATester);
+   
+    
+    /*for (int i = 1; i < CS_NbCoups(CoupsATester) +1; i++){
+    PO_Position temp = C_Obtenir_Position_Coup (CS_IemeCoup(CoupsATester, i));
+    printf("%i, %i\n", PO_ObtenirX(temp), PO_ObtenirY(temp));
+    }*/
+
     int i=1;
-    if(*estPossible==1)
+    if(*estPossible)
     {
-        BestScoreCoup = 0;
-        while (i<=CS_NbCoups(CoupsATester))
+        BestScoreCoup = -7000;
+        for (i=1; i<=CS_NbCoups(CoupsATester); i++)
         {
             CoupTest = CS_IemeCoup(CoupsATester,i);
             scoreTemp = IA_scoreDUnCoup(CoupTest , pl , CouleurReference , profondeur , alpha , beta);
@@ -35,8 +42,8 @@ void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* 
                 BestScoreCoup = scoreTemp;
                 *Resultat = CoupTest;
             }
-            CS_SupprimerCoup(CoupsATester,i);
-            i=i+1;
+            /*CS_SupprimerCoup(CoupsATester,i);*/
+            
         }
         
     }
@@ -51,19 +58,19 @@ void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* 
 int IA_scoreDUnCoup (C_Coup coup, PL_Plateau pl, CO_Couleur CouleurReference, int profondeur,int alpha , int beta  )
  {
      CO_Couleur AutreCouleur = CO_ChangerCouleur(CouleurReference);
-     int ScoreFinal = 0 ;
      int TestFin = ((CS_NbCoups( CS_ObtenirCoupsPossible(pl,CouleurReference))==0) &&  (CS_NbCoups( CS_ObtenirCoupsPossible(pl,AutreCouleur))==0));
      PL_Plateau GrilleTemp;
      PL_CopierPlateau(&GrilleTemp,pl);
      OTH_majPlateau(&GrilleTemp,coup);
-     if (( profondeur==0 )||(TestFin==0))
+     if (( profondeur==0 )||(TestFin==1))
      {
-         ScoreFinal = IA_Evalue(GrilleTemp,CouleurReference);
-         return(ScoreFinal);
+        
+        return(IA_Evalue(GrilleTemp,CouleurReference));
      }
      else
      {
-         return(IA_Alpha_Beta(GrilleTemp,CouleurReference,AutreCouleur,profondeur-1,alpha,beta));
+        return(IA_Alpha_Beta(GrilleTemp,CouleurReference,AutreCouleur,profondeur-1,alpha,beta));
+        
      }
      
 
@@ -98,7 +105,7 @@ int IA_Alpha_Beta (PL_Plateau pl,CO_Couleur CouleurReference,CO_Couleur CouleurA
     int i;
     CS_Coups Coups_possible = CS_ObtenirCoupsPossible(pl,CouleurActuel);
     if (!CS_EstVide(Coups_possible)){
-         resultat = IA_scoreDUnCoup(CS_IemeCoup(Coups_possible,1),pl,CouleurReference,profondeur,alpha,beta);
+        resultat = IA_scoreDUnCoup(CS_IemeCoup(Coups_possible,1),pl,CouleurReference,profondeur,alpha,beta);
     }
     for (i=2;i<=CS_NbCoups(Coups_possible);i=i+1){
         int score =IA_scoreDUnCoup(CS_IemeCoup(Coups_possible,i),pl,CouleurReference,profondeur,alpha,beta);
@@ -146,7 +153,7 @@ int IA_Evalue(PL_Plateau pl, CO_Couleur CouleurReference){
         for (j=1;j<=8;j++)
         {
             if (PI_ObtenirCouleurPion(PL_ObtenirPion(PO_defPosition(i,j),pl))==CouleurReference){
-                resultat = resultat + valeur[i][j];
+                resultat = resultat + valeur[i-1][j-1];
             }
         }
     }

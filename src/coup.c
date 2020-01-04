@@ -29,7 +29,7 @@ CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup)
 }
 
 int C_Coup_Valide (C_Coup leCoup, PL_Plateau lePlateau){
-
-  return (PI_ObtenirEtatPion(C_obtenirPionCoup(leCoup)) && !OTH_retournerAuMoinsUnPion(lePlateau,leCoup));
+  PO_Position position = leCoup.positionCoup;
+  return ( (lePlateau[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1].etatPion == 0) && OTH_retournerAuMoinsUnPion(lePlateau,leCoup));
 
 }

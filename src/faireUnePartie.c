@@ -9,11 +9,16 @@
 #include "affichagePlateau.h"
 #include "obtenirCouleurGagnant.h"
 
+
 CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a){
 
   CO_Couleur CouleurJoueurCourant;
   int booleen;
   PL_Plateau unPlateau;
+
+
+
+  
   C_Coup coupJoueur1, coupJoueur2;
   
 
@@ -56,21 +61,24 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
   CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
   
-    while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant,CO_ChangerCouleur(CouleurJoueurCourant)) == 0){
+    while(OTH_plateauPlein(unPlateau)==0 ){
 
   
-      (*OTH_affichagePlateau)(unPlateau);
-      (*a)( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
-      if(booleen==1){
+      OTH_affichagePlateau(unPlateau);
+      OTH_placerCoup( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
+      if(booleen==1){}
         OTH_majPlateau(&unPlateau, coupJoueur1);
-      }
+      
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
 
-      (*OTH_affichagePlateau)(unPlateau);
-      (*b)( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
-      if (booleen==1){
+      OTH_affichagePlateau(unPlateau);
+      IA_CoupIA( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
+      
+
+  
+      if (booleen==1){}
         OTH_majPlateau(&unPlateau, coupDeIA);
-      }
+      
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
     }

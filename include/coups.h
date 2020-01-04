@@ -42,7 +42,7 @@ CS_Coups CS_InitCoups();
  * \param C_Coup, coup a ajouter 
  * \return int 
  */
- void CS_AjouterCoup (CS_Coups coups,C_Coup coup);
+ void CS_AjouterCoup (CS_Coups* coups,C_Coup coup);
 
 
 
@@ -82,7 +82,7 @@ CS_Coups CS_InitCoups();
  * \param i possition du coup a suuprimer 
  * \return void*
  */
- void CS_SupprimerCoup (CS_Coups coups,int i);
+ void CS_SupprimerCoup (CS_Coups* coups,int i);
 
 
 
