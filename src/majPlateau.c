@@ -40,8 +40,17 @@ void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup){
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup), PO_ObtenirY(posCoup)-1);
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup), PO_ObtenirY(posCoup)-2),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if (PO_ObtenirX(posCoup)<1 || (PO_ObtenirY(posCoup)-2)>8){
+        if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
     /* on réitère tant que l'on est pas arrivé à un pion de même couleur*/
   }
@@ -51,8 +60,17 @@ pionSuivant.couleurPion = CO_ChangerCouleur(C_Obtenir_Couleur_Coup(leCoup));
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup), PO_ObtenirY(posCoup)+1);
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup), PO_ObtenirY(posCoup)+2),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if (PO_ObtenirX(posCoup)<1 || (PO_ObtenirY(posCoup)+2)>8){
+       if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
   }
 
@@ -61,8 +79,17 @@ pionSuivant.couleurPion = CO_ChangerCouleur(C_Obtenir_Couleur_Coup(leCoup));
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup)-1, PO_ObtenirY(posCoup));
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup)-2, PO_ObtenirY(posCoup)),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if ((PO_ObtenirX(posCoup)-2)<1 || (PO_ObtenirY(posCoup))>8){
+       if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
   }
 
@@ -71,8 +98,17 @@ pionSuivant.couleurPion = CO_ChangerCouleur(C_Obtenir_Couleur_Coup(leCoup));
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup)+1, PO_ObtenirY(posCoup));
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup)+2, PO_ObtenirY(posCoup)),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if ((PO_ObtenirX(posCoup)+2)<1 || (PO_ObtenirY(posCoup)+2)>8){
+        if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
   }
 
@@ -81,8 +117,17 @@ pionSuivant.couleurPion = CO_ChangerCouleur(C_Obtenir_Couleur_Coup(leCoup));
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup)-1, PO_ObtenirY(posCoup)-1);
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup)-2, PO_ObtenirY(posCoup)-2),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if ((PO_ObtenirX(posCoup)-2)<1 || (PO_ObtenirY(posCoup)-2)>8){
+        if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
   }
 
@@ -90,8 +135,17 @@ pionSuivant.couleurPion = CO_ChangerCouleur(C_Obtenir_Couleur_Coup(leCoup));
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup)+1, PO_ObtenirY(posCoup)-1);
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup)+2, PO_ObtenirY(posCoup)-2),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if ((PO_ObtenirX(posCoup)+2)<1 || (PO_ObtenirY(posCoup)-2)>8){
+        if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
   }
 
@@ -100,8 +154,17 @@ pionSuivant.couleurPion = CO_ChangerCouleur(C_Obtenir_Couleur_Coup(leCoup));
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup)-1, PO_ObtenirY(posCoup)+1);
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup)-2, PO_ObtenirY(posCoup)+2),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if ((PO_ObtenirX(posCoup)-2)<1 || (PO_ObtenirY(posCoup)+2)>8){
+        if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
   }
 
@@ -110,8 +173,17 @@ pionSuivant.couleurPion = CO_ChangerCouleur(C_Obtenir_Couleur_Coup(leCoup));
     while(C_Obtenir_Couleur_Coup(leCoup) != PI_ObtenirCouleurPion(pionSuivant)){
       posARetourner = PO_defPosition(PO_ObtenirX(posCoup)+1, PO_ObtenirY(posCoup)+1);
       pionSuivant = PL_ObtenirPion(PO_defPosition(PO_ObtenirX(posCoup)+2, PO_ObtenirY(posCoup)+2),*lePlateau); /* on garde en mémoire le pion que l'on va retourner, utile pour la condition du répéter tant que */
-      OTH_retournerPion(lePlateau, posARetourner);
-      posCoup = posARetourner;
+      if ((PO_ObtenirX(posCoup)+2)<1 || (PO_ObtenirY(posCoup)+2)>8){
+        if (C_Obtenir_Couleur_Coup(leCoup) == CO_Noir())
+          pionSuivant.couleurPion = CO_Noir();
+        else{
+          pionSuivant.couleurPion = CO_Blanc();
+        }
+      }
+      else{
+        OTH_retournerPion(lePlateau, posARetourner);
+        posCoup = posARetourner;
+      }
     }
   }
 }
