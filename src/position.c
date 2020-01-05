@@ -19,3 +19,7 @@ int PO_ObtenirY(PO_Position position)
     return position.positiony;
 }
 
+int PO_egal(PO_Position pos1, PO_Position pos2)
+{
+    return ((PO_ObtenirX(pos1)==PO_ObtenirX(pos2)) && (PO_ObtenirY(pos1)==PO_ObtenirY(pos2)));
+}
