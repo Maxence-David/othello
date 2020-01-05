@@ -42,9 +42,20 @@ CO_Couleur CO_Noir();
  */
 CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle );
 
-
+/**
+ * \fn  int CO_estNoir(CO_Couleur UneCouleur);
+ * \brief Fonction qui permet de savoir si la couleur est Noire
+ * \param CO_Couleur on donne la couleur à tester
+ * \return int 1=vrai si la couleur est bien noire
+ */
 int CO_estNoir(CO_Couleur UneCouleur);
 
+/**
+ * \fn  int CO_estBlanc(CO_Couleur UneCouleur);
+ * \brief Fonction qui permet de savoir si la couleur est Blanche
+ * \param CO_Couleur on donne la couleur à tester
+ * \return int 1=vrai si la couleur est bien blanche
+ */
 int CO_estBlanc(CO_Couleur UneCouleur);
 
 #endif
