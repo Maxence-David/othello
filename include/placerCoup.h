@@ -23,12 +23,13 @@
 typedef void (*obtenirCoupJOUEUR)();
 
 /**
+ * \enum
  * \brief Le type Direction qui représente une direction dans le plateau (H = Haut, B = Bas, D = Droite, G = Gauche)
  */
 typedef enum {HG,H,HD,D,BD,B,BG,G} Direction;
 
 /**
- * \fn  definirCouleurNouveauJoueur()
+ * \fn  CO_Couleur definirCouleurNouveauJoueur(CO_Couleur laCouleur)
  * \brief Fonction qui permet définir la couleur du joueur suivant
  * \param CO_Couleur laCouleur  couleur du joueur précédent
  * \return CO_Couleur couleur du joueur suivant
@@ -37,7 +38,7 @@ typedef enum {HG,H,HD,D,BD,B,BG,G} Direction;
 CO_Couleur definirCouleurNouveauJoueur(CO_Couleur laCouleur);
 
 /**
- * \fn  OTH_placerCoup()
+ * \fn  void OTH_placerCoup( entrerCoup , PL_Plateau plateau, CO_Couleur couleurJoueur,C_Coup* coup,int* valide)
  * \brief Fonction qui place un coup dans le plateau
  * \param PL_Plateau plateau  Le plateau
  * \paral int partieFinie   Booléen qui permet de vérifier que la partie n'est pas finie
@@ -46,7 +47,7 @@ CO_Couleur definirCouleurNouveauJoueur(CO_Couleur laCouleur);
 void OTH_placerCoup( entrerCoup , PL_Plateau plateau, CO_Couleur couleurJoueur,C_Coup* coup,int* valide);
 
 /**
- * \fn  OTH_retournerAuMoinsUnPion()
+ * \fn  int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup)
  * \brief Fonction qui permet de savoir si il on retourne au moins un pion lorsqu'on joue un coup
  * \param PL_Plateau plateau    Le plateau
  * \param C_Coup coup   Le coup que l'on joue 
@@ -55,7 +56,7 @@ void OTH_placerCoup( entrerCoup , PL_Plateau plateau, CO_Couleur couleurJoueur,C
 int OTH_retournerAuMoinsUnPion(PL_Plateau plateau, C_Coup coup);
 
 /**
- * \fn  OTH_testModifDirection()
+ * \fn  int OTH_testModifDirection(PL_Plateau plateau, C_Coup coup, Direction dir)
  * \brief Fonction qui permet de savoir si on retourne au moins un pion avec un coup dans une direction donnée
  * \param PL_Plateau plateau    Le plateau
  * \param C_Coup coup   Le coup joué
