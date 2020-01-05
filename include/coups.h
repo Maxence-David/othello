@@ -5,12 +5,19 @@
 #include "coup.h"
 
 /**
+ * \def MAX
+ * \brief MAX = 64 coups possibles pour les 64 cases du plateau
+ */
+
+#define MAX 64
+
+/**
  * \brief Le type CS_Coups permet de représenter un coup
  *
  */
 
 typedef struct  { 
-    C_Coup tabcoups[64]; /**< tableau de coup 64 max car le plateau fait 64 cases*/
+    C_Coup tabcoups[MAX]; /**< tableau de coup 64 max car le plateau fait 64 cases*/
     int nbcoups; /**< nombre de coups dans le tableau */
 }CS_Coups;
 
