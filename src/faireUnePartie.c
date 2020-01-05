@@ -72,6 +72,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
 
       OTH_affichagePlateau(unPlateau);
+      printf("je cherche la meilleur solution pour te battre, patiente quelques instant ...\n ");
       IA_CoupIA( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
       
 

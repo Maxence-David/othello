@@ -20,9 +20,9 @@ void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* 
     int BestScoreCoup;
     int scoreTemp;
     CoupsATester = CS_ObtenirCoupsPossible(pl,CouleurReference);
-    int profondeur = 2;
+    int profondeur = 6;
     *estPossible = !CS_EstVide(CoupsATester);
-   
+    
     
     /*for (int i = 1; i < CS_NbCoups(CoupsATester) +1; i++){
     PO_Position temp = C_Obtenir_Position_Coup (CS_IemeCoup(CoupsATester, i));
