@@ -11,6 +11,7 @@
 
 
 /**
+ * \struct
  * \brief Le type PO_Position permet de représenter un pion
  *
  */
@@ -32,15 +33,15 @@ typedef struct {
 PO_Position PO_defPosition(int y, int x);
 
 /**
- * \fn  PO_ObtenirX()
+ * \fn  int PO_ObtenirX(PO_Position position)
  * \brief Fonction pour obtenir la position x
- * \param PO_Position 
+ * \param PO_Position  
  * \return int
  */
 int PO_ObtenirX(PO_Position position);
 
 /**
- * \fn  PO_ObtenirY()
+ * \fn  int PO_ObtenirY(PO_Position position)
  * \brief Fonction pour obtenir la position y
  * \param PO_Position 
  * \return int
