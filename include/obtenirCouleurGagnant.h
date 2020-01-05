@@ -1,5 +1,5 @@
 /**
- * \file obtenirCouleurGagant.h
+ * \file obtenirCouleurGagnant.h
  * \brief Fonctions permettant d'obtenir la couleur du gagnant
  * \author 
  * \version 1.0
