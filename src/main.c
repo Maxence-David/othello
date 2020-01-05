@@ -12,9 +12,7 @@ int  main(int argc, char** argv) {
     CO_Couleur couleurGagnante;
     CO_Couleur couleurJoueur;
 
-/*
-    couleurGagnante = OTH_faireUnePartie_J_VS_J(OTH_affichagePlateau,OTH_placerCoup );
-    affichageFinPartie(couleurGagnante);*/
+
 
     if  ( (argc==3) 
         && ((strcmp(argv[1],"JoueurVSJoueur")==0)||(strcmp(argv[1],"JoueurVSia")==0)||(strcmp(argv[1],"iaVSia")==0))

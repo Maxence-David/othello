@@ -70,7 +70,7 @@ CS_Coups CS_InitCoups();
  */
  int CS_NbCoups (CS_Coups coups );
 
- /**
+/**
  * \fn  CS_EstPresent ()
  * \brief Fonction qui test si un coup est prensent dans le tableau
  * \param CS_Coups coups, tableau de coups
@@ -87,13 +87,19 @@ CS_Coups CS_InitCoups();
  * \brief procedure qui supprime un coup du tableau
  * \param CS_Coups coups, tableau de coups
  * \param i possition du coup a suuprimer 
- * \return void*
+ * \return void
  */
  void CS_SupprimerCoup (CS_Coups* coups,int i);
 
 
 
-
+ /**
+ * \fn   CS_ObtenirCoupsPossible()
+ * \brief procedure qui donne un tableau de coup jouable
+ * \param PL_Plateau, la grille de jeu
+ * \param CO_Couleur CouleurReference la couleur de de la liste de coup que l'on veux
+ * \return CS_Coups
+ */
 CS_Coups CS_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference );
 
 
