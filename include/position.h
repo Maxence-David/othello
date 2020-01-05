@@ -24,7 +24,7 @@ typedef struct {
 
 
 /**
- * \fn  PO_Position PO_Defposition(int y, int x)
+ * \fn  PO_Position PO_defPosition(int y, int x)
  * \brief Fonction pour definir la position
  * \param int position y
  * \param int position x
