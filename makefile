@@ -29,7 +29,7 @@ const :
 		$(CREATE) $(TESTDIR); \
 	fi
 
-doc : $(DOCDIR)/rapport/rapport.pdf
+doc : $(DOCDIR)/rapport/rapport.pdf $(DOCDIR)/html/index.html $(DOCDIR)/latex/refman.pdf
 
 test : $(TESTDIR)/test_affichagePlateau $(TESTDIR)/test_caractereEnEntier $(TESTDIR)/test_majPlateau $(TESTDIR)/test_obtenirCouleurGagnant $(TESTDIR)/test_partieTerminee $(TESTDIR)/testCouleur $(TESTDIR)/testCoup $(TESTDIR)/testPion $(TESTDIR)/testPlateau $(TESTDIR)/testPosition
 
@@ -38,6 +38,15 @@ $(TESTDIR)/% : $(SRCTESTDIR)/%.o $(LIBDIR)/libothello.a
 
 $(LIBDIR)/libothello.a: $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/affichagePlateau.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o $(SRCDIR)/obtenirCouleurGagnant.o
 	ar -r $@ $^
+
+$(DOCDIR)/html/index.html:
+	doxygen
+
+$(DOCDIR)/latex/refman.pdf: $(DOCDIR)/latex/refman.tex
+	cd $(DOCDIR)/latex/; make; cd ../..
+
+$(DOCDIR)/latex/refman.tex:
+	doxygen
 
 $(DOCDIR)/rapport/rapport.pdf:
 	cd $(DOCDIR)/rapport/; pdflatex -synctex=1 -interaction=nonstopmode rapport.tex; cd ../..
@@ -58,3 +67,5 @@ clean:
 	rm -rf $(SRCTESTDIR)/*.o
 	rm -rf $(TESTDIR)
 	rm -rf $(DOCDIR)/rapport/*.pdf
+	rm -rf $(DOCDIR)/html
+	rm -rf $(DOCDIR)/latex
