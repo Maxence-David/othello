@@ -33,3 +33,7 @@ int C_Coup_Valide (C_Coup leCoup, PL_Plateau lePlateau){
   return ( (lePlateau[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1].etatPion == 0) && OTH_retournerAuMoinsUnPion(lePlateau,leCoup));
 
 }
+
+int C_Egale(C_Coup coup1, C_Coup coup2) {
+	return (PI_egal(coup1.Pion,coup2.Pion) && PO_egal(coup1.positionCoup,coup2.positionCoup));
+}

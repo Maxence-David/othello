@@ -32,3 +32,7 @@ int PI_ObtenirEtatPion(PI_Pion pion)
 {
     return pion.etatPion;
 }
+
+int PI_Egal(PI_Pion pion1, PI_Pion pion2){
+	return (PI_ObtenirCouleurPion(pion1)==PI_ObtenirCouleurPion(pion2));
+}
