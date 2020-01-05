@@ -22,16 +22,18 @@
 
 
 /**
- * \fn majPlateau()
+ * \fn void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup)
  * \brief Fonction qui renouvelle le plateau après chaque coup
  * \param PL_Plateau lePlateau  l'ancien plateau
  * \param C_Coup leCoup  coup qui vient d'être placé
  * \return void
  */
 
-void maj (PL_Plateau* plateau,C_Coup coup);
+void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
+
+
 /**
- * \fn  retournerPion()
+ * \fn  void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion)
  * \brief Fonction qui retourne un pion (conséquence du coup qui vient d'être placé)
  * \param PL_Plateau lePlateau  le plateau
  * \param PO_Position positionDuPion  position du pion qui doit être retourné
@@ -41,6 +43,6 @@ void maj (PL_Plateau* plateau,C_Coup coup);
 void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion);
 
 
-void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
+void maj (PL_Plateau* plateau,C_Coup coup);
 
 #endif
