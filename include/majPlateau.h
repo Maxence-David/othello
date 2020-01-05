@@ -29,8 +29,7 @@
  * \return void
  */
 
-void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
-
+void maj (PL_Plateau* plateau,C_Coup coup);
 /**
  * \fn  retournerPion()
  * \brief Fonction qui retourne un pion (conséquence du coup qui vient d'être placé)
@@ -41,6 +40,7 @@ void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
 
 void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion);
 
-void maj (PL_Plateau* plateau,C_Coup coup);
+
+void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
 
 #endif
