@@ -4,6 +4,7 @@
 #include "faireUnePartie.h"
 #include "plateau.h"
 #include "couleur.h"
+#include "affichagePlateau.h"
 
 
 
@@ -40,7 +41,11 @@ int  main(int argc, char** argv) {
             }
             
         }
-
+    else
+    {
+        affichageAide();
+    }
+    
 
 
 	return EXIT_SUCCESS;
