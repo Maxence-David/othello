@@ -22,7 +22,7 @@ CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle )
     }
 }
 
-int estNoir(CO_Couleur UneCouleur)
+int CO_estNoir(CO_Couleur UneCouleur)
 {
     if (UneCouleur == NOIR)
     {
@@ -34,7 +34,7 @@ int estNoir(CO_Couleur UneCouleur)
     }
 }
 
-int estBlanc(CO_Couleur UneCouleur)
+int CO_estBlanc(CO_Couleur UneCouleur)
 {
     if (UneCouleur == BLANC)
     {
