@@ -3,13 +3,14 @@ SRCDIR = src
 INCLUDEDIR = include
 DOCDIR = doc
 LIBDIR = lib
+SRCTESTDIR=srctest
 TESTDIR=test
 BINDIR = bin
 CC = gcc
 AR = ar
 CREATE = mkdir
 
-CFLAGS = -Wall -pedantic -g -I$(INCLUDEDIR) -lcunit
+CFLAGS = -Wall -pedantic -g -I$(INCLUDEDIR) 
 LDFLAGS= -L$(LIBDIR) -lothello
 
 all : const $(BINDIR)/$(EXEC)
@@ -19,13 +20,24 @@ const :
 		echo "Création du dossier $(BINDIR)"; \
 		$(CREATE) $(BINDIR); \
 	fi
+	@ if ! [ -d $(LIBDIR) ]; then \
+		echo "Création du dossier $(LIBDIR)"; \
+		$(CREATE) $(LIBDIR); \
+	fi
+	@ if ! [ -d $(TESTDIR) ]; then \
+		echo "Création du dossier $(TESTDIR)"; \
+		$(CREATE) $(TESTDIR); \
+	fi
 
 doc : $(DOCDIR)/rapport/rapport.pdf
 
-test : $(TESTDIR)/$(EXEC)
+test : $(TESTDIR)/test_affichagePlateau $(TESTDIR)/test_caractereEnEntier $(TESTDIR)/test_majPlateau $(TESTDIR)/test_obtenirCouleurGagnant $(TESTDIR)/test_partieTerminee $(TESTDIR)/testCouleur $(TESTDIR)/testCoup $(TESTDIR)/testPion $(TESTDIR)/testPlateau $(TESTDIR)/testPosition
 
-$(TESTDIR)/$(EXEC) : $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o $(TESTDIR)/test_partieTerminee.o $(TESTDIR)/test_obtenirCouleurGagnant.o $(TESTDIR)/test_majPlateau.o $(TESTDIR)/testCouleur.o $(TESTDIR)/testCoup.o $(TESTDIR)/testPion.o $(TESTDIR)/testPlateau.o $(TESTDIR)/testPosition.o
-	$(CC) -o $@ $(TESTDIR)/test_affichagePlateau.o $(TESTDIR)/test_caractereEnEntier.o $(TESTDIR)/test_partieTerminee.o $(TESTDIR)/test_obtenirCouleurGagnant.o $(TESTDIR)/test_majPlateau.o $(TESTDIR)/testCouleur.o $(TESTDIR)/testCoup.o $(TESTDIR)/testPion.o $(TESTDIR)/testPlateau.o $(TESTDIR)/testPosition.o
+$(TESTDIR)/% : $(SRCTESTDIR)/%.o $(LIBDIR)/libothello.a
+	$(CC) -o $@ $< $(LDFLAGS) -lcunit
+
+$(LIBDIR)/libothello.a: $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUnePartie.o $(SRCDIR)/placerCoup.o $(SRCDIR)/partieTerminee.o $(SRCDIR)/affichagePlateau.o $(SRCDIR)/caractereEnEntier.o $(SRCDIR)/pion.o $(SRCDIR)/position.o $(SRCDIR)/plateau.o $(SRCDIR)/couleur.o $(SRCDIR)/coup.o $(SRCDIR)/coups.o $(SRCDIR)/obtenirCouleurGagnant.o
+	ar -r $@ $^
 
 $(DOCDIR)/rapport/rapport.pdf:
 	cd $(DOCDIR)/rapport/; pdflatex -synctex=1 -interaction=nonstopmode rapport.tex; cd ../..
@@ -36,12 +48,13 @@ $(BINDIR)/$(EXEC) : $(SRCDIR)/majPlateau.o $(SRCDIR)/coupIA.o $(SRCDIR)/faireUne
 $(SRCDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
-$(TESTDIR)/%.o : $(TESTDIR)/%.c
+$(SRCTESTDIR)/%.o: $(SRCTESTDIR)/%.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
 	rm -rf $(BINDIR)
 	rm -rf $(LIBDIR)/*.a
 	rm -rf $(SRCDIR)/*.o
-	rm -rf $(TESTDIR)/*.o
+	rm -rf $(SRCTESTDIR)/*.o
+	rm -rf $(TESTDIR)
 	rm -rf $(DOCDIR)/rapport/*.pdf
