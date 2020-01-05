@@ -3,6 +3,8 @@
 #include "coup.h"
 #include "pion.h"
 #include "plateau.h"
+#include <assert.h>
+
 
 void PL_QuatrePionsDebut(PL_Plateau* plateau){
   PL_Initialiser_Plateau(plateau);
@@ -44,12 +46,14 @@ PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau){
 }
 
 void PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau){
+  assert(PL_estVide(position,*plateau));
   (*plateau)[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1] = pion;
 
 }
 
 int PL_estVide(PO_Position position, PL_Plateau plateau)
 {
+  /*return plateau[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1].etatPion;*/
   if (PI_ObtenirEtatPion(PL_ObtenirPion(position,plateau))==0){
 
     return (1);
@@ -86,12 +90,12 @@ void PL_CopierPlateau(PL_Plateau* plateau,PL_Plateau plateau_a_copier){
   for (i=1 ; i <= HAUTEUR ; i++){
     for(j=1 ; j <= LARGEUR ; j++){
       position = PO_defPosition(i,j);
+      (*plateau)[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1].etatPion = 0;
+
+
       PI_Pion pion = PL_ObtenirPion(position, plateau_a_copier);
       if ( !PL_estVide(position,plateau_a_copier) ){
         PL_PoserPion(pion,position,plateau);
-      }
-      else{
-        (*plateau)[PO_ObtenirX(position)-1][PO_ObtenirY(position)-1].etatPion = 0;
       }
 
     }
