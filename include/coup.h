@@ -15,6 +15,7 @@
 
 
 /**
+ * \struct
  * \brief Le type C_Coup permet de représenter un coup
  *
  */
@@ -34,7 +35,7 @@ typedef struct {
 C_Coup C_InitCoup(PO_Position position, PI_Pion pion);
 
 /**
- * \fn  C_PlacerCoup()
+ * \fn  C_Coup C_PlacerCoup(PI_Pion pion, PO_Position positionCoup)
  * \brief Fonction pour posser un coup sur la plateau 
  * \param PI_Pion pion, pion a placer
  * \param PO_Position positionCoup, la position ou placer le coup sur la plateau 
@@ -43,7 +44,7 @@ C_Coup C_InitCoup(PO_Position position, PI_Pion pion);
 C_Coup C_PlacerCoup(PI_Pion pion, PO_Position positionCoup);
 
 /**
- * \fn  C_Obtenir_Position_Coup()
+ * \fn  PO_Position C_Obtenir_Position_Coup(C_Coup Coup)
  * \brief Fonction pour obtenir la possition d'un coup
  * \param C_Coup coup, 
  * \return PO_Position
@@ -51,7 +52,7 @@ C_Coup C_PlacerCoup(PI_Pion pion, PO_Position positionCoup);
 PO_Position C_Obtenir_Position_Coup(C_Coup Coup);
 
 /**
- * \fn  C_obtenirPionCoup()
+ * \fn  PI_Pion C_obtenirPionCoup(C_Coup coup)
  * \brief Fonction pour obtenir le pion d'un coup
  * \param C_Coup coup, 
  * \return PI_Pion
@@ -59,7 +60,7 @@ PO_Position C_Obtenir_Position_Coup(C_Coup Coup);
 PI_Pion C_obtenirPionCoup(C_Coup coup);
 
 /**
- * \fn  C_Obtenir_Couleur_Coup()
+ * \fn  CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup)
  * \brief Fonction pour obtenir la couleur d'un coup
  * \param C_Coup coup, 
  * \return CO_Couleur
@@ -67,7 +68,7 @@ PI_Pion C_obtenirPionCoup(C_Coup coup);
 CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup);
 
 /**
- * \fn  C_Coup_Valide()
+ * \fn  int C_Coup_Valide(C_Coup leCoup, PL_Plateau lePlateau)
  * \brief Fonction de verification d'un coup 
  * \param C_Coup coup, 
  * \return int
