@@ -15,6 +15,7 @@
 
 
 /**
+ * \struct
  * \brief Le type PI_Pion permet de représenter un pion
  *
  */
@@ -25,22 +26,23 @@ typedef struct {
 }PI_Pion;
 
 /**
- * \fn  PI_CreerPion()
+ * \fn  PI_Pion PI_CreerPion(CO_Couleur couleur)
  * \brief Fonction pour creer un pion
-
+ * \param CO_Couleur La couleur du pion
  * \return PI_Pion
  */
 PI_Pion PI_CreerPion(CO_Couleur couleur);
 
 /**
- * \fn  PI_ChangerEtat()
+ * \fn  void PI_ChangerEtat(PI_Pion pion)
  * \brief procedure pour changer l'etat d'un pion 
  * \param PI_Pion pion dont on change l'etat
+ * \return void
  */
 void PI_ChangerEtat(PI_Pion pion);
 
 /**
- * \fn  PI_ObtenirCouleurPion()
+ * \fn  CO_Couleur PI_ObtenirCouleurPion(PI_Pion pion)
  * \brief Fonction pour obtenir la couleur d'un pion 
  * \param PI_Pion pion dont on doit changer la couleur 
  * \return CO_Couleur
@@ -49,7 +51,7 @@ CO_Couleur PI_ObtenirCouleurPion(PI_Pion pion);
 
 
 /**
- * \fn  PI_ObtenirEtatPion()
+ * \fn  int PI_ObtenirEtatPion(PI_Pion pion)
  * \brief Fonction pour obtenir l'etat d'un pion
  * \param PI_Pion pion dont on veut l'etat
  * \return int
