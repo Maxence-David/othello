@@ -19,6 +19,7 @@
 #define MAX 64
 
 /**
+ * \struct
  * \brief Le type CS_Coups permet de représenter un coup
  *
  */
@@ -30,7 +31,7 @@ typedef struct  {
 
 
 /**
- * \fn  OTH_InitCoups()
+ * \fn  CS_Coups CS_InitCoups()
  * \brief Fonction qui creer un tableau de coup 
  * \param 
  * \param 
@@ -40,17 +41,17 @@ CS_Coups CS_InitCoups();
 
 
 /**
- * \fn  CS_EstVide ()
+ * \fn  int CS_EstVide (CS_Coups coups)
  * \brief Fonction qui verifie si le tableau de coups est vide 
  * \param CS_Coups coups, tableau de coups
  * \return int 
  */
- int CS_EstVide (CS_Coups coups);
+int CS_EstVide (CS_Coups coups);
 
 
 
 /**
- * \fn  CS_AjouterCoup ()
+ * \fn  void CS_AjouterCoup (CS_Coups* coups,C_Coup coup)
  * \brief Fonction qui ajoute un coup au tableau de coups
  * \param CS_Coups coups, tableau de coups
  * \param C_Coup, coup a ajouter 
@@ -61,7 +62,7 @@ CS_Coups CS_InitCoups();
 
 
 /**
- * \fn  CS_IemeCoup ()
+ * \fn   C_Coup CS_IemeCoup (CS_Coups coups,int i)
  * \brief Fonction renvoi le ieme coup
  * \param CS_Coups coups, tableau de coups
  * \param int i
@@ -70,7 +71,7 @@ CS_Coups CS_InitCoups();
  C_Coup CS_IemeCoup (CS_Coups coups,int i);
 
  /**
- * \fn  CS_NbCoups ()
+ * \fn   int CS_NbCoups (CS_Coups coups )
  * \brief Fonction qui renvoi le nombre de coups du tableau 
  * \param CS_Coups coups, tableau de coups
  * \return int 
@@ -78,7 +79,7 @@ CS_Coups CS_InitCoups();
  int CS_NbCoups (CS_Coups coups );
 
 /**
- * \fn  CS_EstPresent ()
+ * \fn   int CS_EstPresent (CS_Coups coups,C_Coup coup)
  * \brief Fonction qui test si un coup est prensent dans le tableau
  * \param CS_Coups coups, tableau de coups
  * \param C_Coup le coup à chercher
@@ -90,7 +91,7 @@ CS_Coups CS_InitCoups();
 
 
  /**
- * \fn  CS_SupprimerCoup ()
+ * \fn   void CS_SupprimerCoup (CS_Coups* coups,int i)
  * \brief procedure qui supprime un coup du tableau
  * \param CS_Coups coups, tableau de coups
  * \param i possition du coup a suuprimer 
@@ -101,7 +102,7 @@ CS_Coups CS_InitCoups();
 
 
  /**
- * \fn   CS_ObtenirCoupsPossible()
+ * \fn   CS_Coups CS_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference )
  * \brief procedure qui donne un tableau de coup jouable
  * \param PL_Plateau, la grille de jeu
  * \param CO_Couleur CouleurReference la couleur de de la liste de coup que l'on veux
