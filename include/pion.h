@@ -1,3 +1,11 @@
+/**
+ * \file pion.h
+ * \brief TAD Pion
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __PION_OTHELLO__
 #define __PION_OTHELLO__
 

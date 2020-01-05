@@ -1,3 +1,11 @@
+/**
+ * \file coup.h
+ * \brief TAD Coup
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __COUP_OTHELLO__
 #define __COUP_OTHELLO__
 
@@ -17,10 +25,10 @@ typedef struct {
 }C_Coup;
 
 /**
- * \fn  C_InitCoup()
+ * \fn  C_Coup C_InitCoup(PO_Position position, PI_Pion pion)
  * \brief Fonction qui créé un  coup 
- * \param PO_Postition postition, la postition sur laquelle on place le coup
- * \param PI_Pion pion, le pion à placer
+ * \param PO_Postition postition la postition sur laquelle on place le coup
+ * \param PI_Pion pion le pion à placer
  * \return C_Coup
  */
 C_Coup C_InitCoup(PO_Position position, PI_Pion pion);

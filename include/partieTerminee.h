@@ -1,3 +1,11 @@
+/**
+ * \file partieTerminee.h
+ * \brief Fonctions permettant de savoir si une partie est terminée
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __PARTIE_TERMINEE__
 #define __PARTIE_TERMINEE__
 

@@ -1,3 +1,11 @@
+/**
+ * \file faireUnePartie.h
+ * \brief Fonctions permettant de jouer une partie
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __FAIRE_UNE_PARTIE__
 #define __FAIRE_UNE_PARTIE__
 

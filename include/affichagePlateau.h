@@ -1,3 +1,11 @@
+/**
+ * \file affichagePlateau.h
+ * \brief Fonctions gérant l'affichage du plateau
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __AFFICHAGE_PLATEAU__
 #define __AFFICHAGE_PLATEAU__
 

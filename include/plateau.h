@@ -1,3 +1,10 @@
+/**
+ * \file plateau.h
+ * \brief TAD Plateau
+ * \author 
+ * \version 1.0
+ * \date 
+ */
 
 #ifndef __PLATEAU_OTHELLO__
 #define __PLATEAU_OTHELLO__

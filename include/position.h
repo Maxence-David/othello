@@ -1,9 +1,17 @@
+/**
+ * \file postition.h
+ * \brief TAD Position
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __POSITION_OTHELLO__
 #define __POSITION_OTHELLO__
 
 
 /**
- * \brief Le type OTH_Position permet de représenter un pion
+ * \brief Le type PO_Position permet de représenter un pion
  *
  */
 
@@ -15,7 +23,7 @@ typedef struct {
 
 
 /**
- * \fn  PO_Defposition()
+ * \fn  PO_Position PO_Defposition(int y, int x)
  * \brief Fonction pour definir la position
  * \param int position y
  * \param int position x

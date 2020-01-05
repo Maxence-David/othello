@@ -1,3 +1,11 @@
+/**
+ * \file placerCoup.h
+ * \brief Fonctions permettant de placer un coup
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __PLACER_COUP__
 #define __PLACER_COUP__
 

@@ -1,3 +1,10 @@
+/**
+ * \file coups.h
+ * \brief TAD Coups
+ * \author 
+ * \version 1.0
+ * \date 
+ */
 #ifndef __COUPS_OTHELLO__
 #define __COUPS_OTHELLO__
 

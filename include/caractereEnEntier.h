@@ -1,3 +1,11 @@
+/**
+ * \file caractereEnEntier.h
+ * \brief Fonctions permettant de passer d'une chaine de 2 caractères à 2 entiers
+ * \author IMBERT Gauthier
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __CARACTERE_EN_ENTIER__
 #define __CARACTERE_EN_ENTIER__
 

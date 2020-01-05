@@ -1,3 +1,11 @@
+/**
+ * \file coupIA.h
+ * \brief Fonctions gèrant les coups de l'IA
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __COUP_IA__
 #define __COUP_IA__
 

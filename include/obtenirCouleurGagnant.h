@@ -1,3 +1,11 @@
+/**
+ * \file obtenirCouleurGagant.h
+ * \brief Fonctions permettant d'obtenir la couleur du gagnant
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __OBTENIR_COULEUR_GAGNANT__
 #define __OBTENIR_COULEUR_GAGNANT__
 

@@ -1,3 +1,11 @@
+/**
+ * \file majPlateau.h
+ * \brief Fonctions gérant la mise à jour du plateau
+ * \author 
+ * \version 1.0
+ * \date 
+ */
+
 #ifndef __MAJ_Plateau__
 #define __MAJ_Plateau__
 
