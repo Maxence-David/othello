@@ -19,7 +19,7 @@ int  main(int argc, char** argv) {
         && ((strcmp(argv[1],"JoueurVSJoueur")==0)||(strcmp(argv[1],"JoueurVSia")==0)||(strcmp(argv[1],"iaVSia")==0))
         &&((strcmp(argv[2],"noir")==0) || (strcmp(argv[2],"blanc")==0) )){
             if (strcmp(argv[1],"JoueurVSJoueur")==0){
-                printf("ok \n");
+                
                 couleurGagnante = OTH_faireUnePartie_J_VS_J(OTH_affichagePlateau,OTH_placerCoup );
                 affichageFinPartie(couleurGagnante);
             }

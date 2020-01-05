@@ -2,7 +2,7 @@
 #include "coup.h"
 #include "coups.h"
 #include "placerCoup.h"
-
+#include <assert.h>
 
 
 CS_Coups CS_InitCoups()
@@ -25,12 +25,15 @@ int CS_EstVide (CS_Coups coups)
 
 C_Coup CS_IemeCoup (CS_Coups coups,int i)
 {
+    assert(i>0);
+    assert(i<=CS_NbCoups(coups));
     return(coups.tabcoups[i-1]);
 }
 
 void CS_AjouterCoup (CS_Coups *coups,C_Coup coup)
 {
-    
+
+    assert(CS_NbCoups(*coups)<MAX);
     coups->tabcoups[CS_NbCoups(*coups)] = coup;
 	coups->nbcoups = coups->nbcoups+1;
     
@@ -45,6 +48,7 @@ int CS_NbCoups (CS_Coups coups )
 
 int CS_EstPresent (CS_Coups coups,C_Coup coup)
 {
+    assert(!CS_EstVide(coups));
     int i = 1;
     int test = 0;
     for (i=1; i<=coups.nbcoups;i++){

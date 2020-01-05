@@ -20,7 +20,7 @@ void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* 
     int BestScoreCoup;
     int scoreTemp;
     CoupsATester = CS_ObtenirCoupsPossible(pl,CouleurReference);
-    int profondeur = 6;
+    int profondeur = 2;
     *estPossible = !CS_EstVide(CoupsATester);
    
     
@@ -61,7 +61,7 @@ int IA_scoreDUnCoup (C_Coup coup, PL_Plateau pl, CO_Couleur CouleurReference, in
      int TestFin = ((CS_NbCoups( CS_ObtenirCoupsPossible(pl,CouleurReference))==0) &&  (CS_NbCoups( CS_ObtenirCoupsPossible(pl,AutreCouleur))==0));
      PL_Plateau GrilleTemp;
      PL_CopierPlateau(&GrilleTemp,pl);
-     OTH_majPlateau(&GrilleTemp,coup);
+     maj(&GrilleTemp,coup);
      if (( profondeur==0 )||(TestFin==1))
      {
         

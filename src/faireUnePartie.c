@@ -21,7 +21,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
   
   C_Coup coupJoueur1, coupJoueur2;
   
-
+  
   CouleurJoueurCourant = CO_Noir(); /* les noirs commencent (cf règles de l'othello)*/
   PL_QuatrePionsDebut(&unPlateau);
   
@@ -31,7 +31,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
       OTH_placerCoup( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
 
       if(booleen != 0){}
-        OTH_majPlateau(&unPlateau, coupJoueur1);
+        maj(&unPlateau, coupJoueur1);
       
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
@@ -39,7 +39,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
       OTH_affichagePlateau(unPlateau);
       OTH_placerCoup(OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur2,&booleen);
       if(booleen != 0){}
-        OTH_majPlateau(&unPlateau, coupJoueur2);
+        maj(&unPlateau, coupJoueur2);
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
     }
@@ -67,7 +67,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
       OTH_affichagePlateau(unPlateau);
       OTH_placerCoup( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
       if(booleen==1){}
-        OTH_majPlateau(&unPlateau, coupJoueur1);
+        maj(&unPlateau, coupJoueur1);
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
 
@@ -77,7 +77,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
 
   
       if (booleen==1){}
-        OTH_majPlateau(&unPlateau, coupDeIA);
+        maj(&unPlateau, coupDeIA);
       
       
       CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
