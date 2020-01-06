@@ -37,11 +37,11 @@ void test_pas_de_gagnant(void){
                 pion.couleurPion = CO_Noir();
             }
         }
-int resultatAttenduIlYAGagnant =0;
+int resultatAttenduIlYAGagnant = 0;
 CO_Couleur resultatAttenduCouleur = CO_Noir();
-int *resultatObtenuIlYAGagnant;
-CO_Couleur *resultatObtenuCouleur;
-OTH_obtenirCouleurGagnant(plateau, resultatObtenuIlYAGagnant, resultatObtenuCouleur);
+int resultatObtenuIlYAGagnant = 1;
+CO_Couleur resultatObtenuCouleur = CO_Blanc();
+OTH_obtenirCouleurGagnant(plateau, &resultatObtenuIlYAGagnant, &resultatObtenuCouleur);
 CU_ASSERT_EQUAL(resultatAttenduIlYAGagnant, resultatObtenuIlYAGagnant);
 CU_ASSERT_EQUAL(resultatAttenduCouleur, resultatObtenuCouleur);
 }
@@ -70,11 +70,11 @@ void test_les_blancs_gagnent(void){
                 pion.couleurPion = CO_Noir();
             }
         }
-int resultatAttenduIlYAGagnant =1;
 CO_Couleur resultatAttenduCouleur = CO_Noir();
-int *resultatObtenuIlYAGagnant;
-CO_Couleur *resultatObtenuCouleur;
-OTH_obtenirCouleurGagnant(plateau, resultatObtenuIlYAGagnant, resultatObtenuCouleur);
+int resultatAttenduIlYAGagnant = 1;
+int resultatObtenuIlYAGagnant = 0;
+CO_Couleur resultatObtenuCouleur = CO_Noir();
+OTH_obtenirCouleurGagnant(plateau, &resultatObtenuIlYAGagnant, &resultatObtenuCouleur);
 CU_ASSERT_EQUAL(resultatAttenduIlYAGagnant, resultatObtenuIlYAGagnant);
 CU_ASSERT_EQUAL(resultatAttenduCouleur, resultatObtenuCouleur);
 }   
@@ -105,9 +105,9 @@ void test_les_noirs_gagnent(void){
         }
 int resultatAttenduIlYAGagnant =1;
 CO_Couleur resultatAttenduCouleur = CO_Blanc();
-int *resultatObtenuIlYAGagnant;
-CO_Couleur *resultatObtenuCouleur;
-OTH_obtenirCouleurGagnant(plateau, resultatObtenuIlYAGagnant, resultatObtenuCouleur);
+int resultatObtenuIlYAGagnant = 0;
+CO_Couleur resultatObtenuCouleur = CO_Noir();
+OTH_obtenirCouleurGagnant(plateau, &resultatObtenuIlYAGagnant, &resultatObtenuCouleur);
 CU_ASSERT_EQUAL(resultatAttenduIlYAGagnant, resultatObtenuIlYAGagnant);
 CU_ASSERT_EQUAL(resultatAttenduCouleur, resultatObtenuCouleur);
 }  
