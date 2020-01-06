@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include "couleur.h"
 #include "coups.h"
-typedef void (*obtenirCoupJOUEUR)();
+
 
 /**
  *

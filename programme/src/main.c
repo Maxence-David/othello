@@ -15,7 +15,7 @@ int  main(int argc, char** argv) {
 
 
     if  ( (argc==3) 
-        && ((strcmp(argv[1],"JoueurVSJoueur")==0)||(strcmp(argv[1],"JoueurVSia")==0)||(strcmp(argv[1],"iaVSia")==0))
+        && ((strcmp(argv[1],"JoueurVSJoueur")==0)||(strcmp(argv[1],"JoueurVSia")==0)||(strcmp(argv[1],"tournoi")==0))
         &&((strcmp(argv[2],"noir")==0) || (strcmp(argv[2],"blanc")==0) )){
             if (strcmp(argv[1],"JoueurVSJoueur")==0){
                 
@@ -34,7 +34,7 @@ int  main(int argc, char** argv) {
             }
             else
             {
-                couleurGagnante = OTH_Tournoi(OTH_entrerCoupTournoi,IA_CoupIA,couleurJoueur);
+                couleurGagnante = OTH_Tournoi(couleurJoueur);
                 affichageFinPartie(couleurGagnante);
             }
             
@@ -49,3 +49,4 @@ int  main(int argc, char** argv) {
 	return EXIT_SUCCESS;
 
 }
+

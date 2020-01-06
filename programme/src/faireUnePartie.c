@@ -111,7 +111,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain){
 }
 
 
-CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA_CoupIA,CO_Couleur CouleurJoueur){
+CO_Couleur OTH_Tournoi(CO_Couleur CouleurJoueur){
   
   CO_Couleur CouleurJoueurAdverse =CO_ChangerCouleur(CouleurJoueur);
   PL_Plateau plateau;
@@ -122,18 +122,19 @@ CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA
   int booleenTestJA;
   PO_Position positionJoueurAdverse;
  
-  while(OTH_partieTerminee(plateau,CouleurJoueurAdverse,CouleurJoueurAdverse) == 0) {
+  while(OTH_partieTerminee(plateau,CouleurJoueur,CouleurJoueurAdverse) == 0) {
 
     if (CouleurJoueur==NOIR) {
 
-      (*IA_CoupIA)(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
+      IA_CoupIA(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
       if (booleenTestJ) {
-	
         OTH_majPlateau(&plateau,coupJoueur);
+
       }
+      affichagecoupTournoi(coupJoueur,booleenTestJ);
 
 
-      (*OTH_entrerCoupTournoi)(&positionJoueurAdverse,&booleenTestJA);
+      OTH_entrerCoupTournoi(&positionJoueurAdverse,&booleenTestJA);
       if (booleenTestJA) {
         CoupJoueurAdverse =C_InitCoup(positionJoueurAdverse,PI_CreerPion(CouleurJoueurAdverse) );
         OTH_majPlateau(&plateau,CoupJoueurAdverse);
@@ -141,16 +142,23 @@ CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA
 
 
     } else {
-      (*OTH_entrerCoupTournoi)(&positionJoueurAdverse,&booleenTestJA);
+      OTH_entrerCoupTournoi(&positionJoueurAdverse,&booleenTestJA);
       if (booleenTestJA) {
         CoupJoueurAdverse =C_InitCoup(positionJoueurAdverse,PI_CreerPion(CouleurJoueurAdverse) );
         OTH_majPlateau(&plateau,CoupJoueurAdverse);
       }
-      (*IA_CoupIA)(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
+
+
+
+      IA_CoupIA(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
       if (booleenTestJ) {
 	
         OTH_majPlateau(&plateau,coupJoueur);
+        
       }
+      affichagecoupTournoi(coupJoueur,booleenTestJ);
+
+
       }
     }
   int ilYaUnGagnant = 0;

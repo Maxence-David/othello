@@ -73,7 +73,20 @@ PO_Position OTH_entrerCoup(CO_Couleur couleurJoueurCourant)
     return positionDuCoup;
 }
 
-void OTH_entrerCoupTournoi(PO_Position* position, int* res){
+void OTH_entrerCoupTournoi(PO_Position* position, int* booleen){
+
+    char* coup;
+    int posX,posY;
+    
+    coup = (char*)malloc(5*sizeof(char)); 
+    scanf(coup,stdin);
+    *booleen = !(strcmp(coup,"passe\n")==0) ;
+    if(*booleen){
+	  posX = coup[0]-'a'+1;
+	  posY = coup[1]-'0';
+	  free(coup);
+	  *position = PO_defPosition(posX,posY);
+    }
     
 }
 
@@ -100,4 +113,19 @@ void affichageAide()
     printf("        par defaut la profondeur d'analyse est egale a 5 \n");
 
 
+}
+
+
+affichagecoupTournoi(C_Coup coup , int booleen){
+    if (booleen==1 ){
+        PO_Position position = C_Obtenir_Position_Coup(coup);
+        int posX = PO_ObtenirX(position);
+        int posY = PO_ObtenirY(position);
+        char X = 'a' + posX;
+
+        printf("%c%d\n",X,posY);
+    }
+    else {
+        printf("passe\n");
+    }
 }

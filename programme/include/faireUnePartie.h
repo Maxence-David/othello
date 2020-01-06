@@ -42,7 +42,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain);
  * \return CO_Couleur la couleur du joueur gagnant
  */
 
-CO_Couleur OTH_Tournoi(entrerCoupTournoi OTH_entrerCoupTournoi, ObtenirCoupIA IA_CoupIA,CO_Couleur CouleurJoueur);
+CO_Couleur OTH_Tournoi(CO_Couleur CouleurJoueur);
 
 
 #endif

@@ -19,7 +19,7 @@
 #include <stdio.h>
 
 
-typedef void (*ObtenirCoupIA)(PL_Plateau pl, CO_Couleur CouleurReference,C_Coup* coup, int* booleen);
+
 
 
 /**

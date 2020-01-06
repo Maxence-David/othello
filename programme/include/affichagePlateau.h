@@ -11,7 +11,7 @@
 
 #include "plateau.h"
 #include "position.h"
-
+#include "coup.h"
 typedef void (*affichagePlateau)(PL_Plateau);
 typedef PO_Position (*entrerCoup)(CO_Couleur);
 typedef void (entrerCoupTournoi)(PO_Position*,int* );
@@ -55,4 +55,13 @@ void affichageFinPartie (CO_Couleur couleur);
  * \return void
  */
 void affichageAide();
+
+/**
+ * \fn  affichagecoupTournoi(C_Coup coup , int booleen)
+ * \brief Fonction qui affiche sur la sorti standart un coup (affiche passe si aucun coup)
+ * \param C_Coup coup
+ * \param int booleen
+ * \return void
+ */
+void affichagecoupTournoi(C_Coup coup , int booleen);
 #endif
