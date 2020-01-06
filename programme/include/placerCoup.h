@@ -23,7 +23,7 @@
 typedef void (*obtenirCoupJOUEUR)();
 
 /**
- * \enum
+ *
  * \brief Le type Direction qui représente une direction dans le plateau (H = Haut, B = Bas, D = Droite, G = Gauche)
  */
 typedef enum {HG,H,HD,D,BD,B,BG,G} Direction;

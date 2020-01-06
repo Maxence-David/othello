@@ -11,7 +11,7 @@
 
 
 /**
- * \struct
+ * 
  * \brief Le type PO_Position permet de représenter un pion
  *
  */

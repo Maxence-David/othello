@@ -10,7 +10,7 @@
 #define __COULEUR__
 
 /**
- * \enum CO_Couleur couleur.h "include/couleur.h"
+ * 
  * \brief Le type CO_Couleur permet de représenter la couleur 
  *
  */

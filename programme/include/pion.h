@@ -15,7 +15,7 @@
 
 
 /**
- * \struct
+ * 
  * \brief Le type PI_Pion permet de représenter un pion
  *
  */

@@ -17,12 +17,12 @@
 
 
 /**
-* \def HAUTEUR 8
+* 
 * \brief hauteur plateau 
 */
 #define HAUTEUR 8
 /**
-* \def LARGEUR 8
+* 
 * \brief largeur du plateau 
 */
 #define LARGEUR 8

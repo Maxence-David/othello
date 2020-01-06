@@ -12,14 +12,14 @@
 #include "coup.h"
 
 /**
- * \def MAX
+ * 
  * \brief MAX = 64 coups possibles pour les 64 cases du plateau
  */
 
 #define MAX 64
 
 /**
- * \struct
+ *
  * \brief Le type CS_Coups permet de représenter un coup
  *
  */

@@ -15,11 +15,10 @@
 
 
 /**
- * \struct
+ * 
  * \brief Le type C_Coup permet de représenter un coup
  *
  */
-
 typedef struct {
     PO_Position positionCoup; /**< position du coup sur le plateau*/
     PI_Pion Pion; /**< pion a placer (sa couleur)*/
