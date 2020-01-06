@@ -122,38 +122,44 @@ CO_Couleur OTH_Tournoi(CO_Couleur CouleurJoueur){
   int booleenTestJA;
   PO_Position positionJoueurAdverse;
  
-  while(OTH_partieTerminee(plateau,CouleurJoueur,CouleurJoueurAdverse) == 0) {
+  while(OTH_partieTerminee(plateau,CouleurJoueur,CouleurJoueurAdverse) ) {
 
     if (CouleurJoueur==NOIR) {
 
       IA_CoupIA(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
-      if (booleenTestJ) {
-        OTH_majPlateau(&plateau,coupJoueur);
+      if (booleenTestJ != 0) {
+        maj(&plateau,coupJoueur);
 
       }
+      OTH_affichagePlateau(plateau);
       affichagecoupTournoi(coupJoueur,booleenTestJ);
 
 
       OTH_entrerCoupTournoi(&positionJoueurAdverse,&booleenTestJA);
-      if (booleenTestJA) {
+      if (booleenTestJA!=0) {
+        
         CoupJoueurAdverse =C_InitCoup(positionJoueurAdverse,PI_CreerPion(CouleurJoueurAdverse) );
-        OTH_majPlateau(&plateau,CoupJoueurAdverse);
+        
+        affichagecoupTournoi(CoupJoueurAdverse,booleenTestJA);
+        maj(&plateau,CoupJoueurAdverse);
+       
       }
 
 
-    } else {
+    } else 
+    {
       OTH_entrerCoupTournoi(&positionJoueurAdverse,&booleenTestJA);
-      if (booleenTestJA) {
+      if (booleenTestJA!=0) {
         CoupJoueurAdverse =C_InitCoup(positionJoueurAdverse,PI_CreerPion(CouleurJoueurAdverse) );
-        OTH_majPlateau(&plateau,CoupJoueurAdverse);
+        maj(&plateau,CoupJoueurAdverse);
       }
 
 
 
       IA_CoupIA(plateau,CouleurJoueur,&coupJoueur,&booleenTestJ);
-      if (booleenTestJ) {
+      if (booleenTestJ!=0) {
 	
-        OTH_majPlateau(&plateau,coupJoueur);
+        maj(&plateau,coupJoueur);
         
       }
       affichagecoupTournoi(coupJoueur,booleenTestJ);

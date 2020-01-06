@@ -75,16 +75,16 @@ PO_Position OTH_entrerCoup(CO_Couleur couleurJoueurCourant)
 
 void OTH_entrerCoupTournoi(PO_Position* position, int* booleen){
 
-    char* coup[8];
+    char coup[100];
     int posX,posY;
     
    
     fgets(coup,sizeof(coup),stdin);
     *booleen = !(strcmp(coup,"passe\n")==0) ;
     if(*booleen){
-	  posX = coup[0]-'a'+1;
-	  posY = coup[1]-'0';
-	  free(coup);
+     
+	  posY = coup[0]-'a'+1;
+	  posX = coup[1]-'0';
 	  *position = PO_defPosition(posX,posY);
     }
     
@@ -121,9 +121,9 @@ affichagecoupTournoi(C_Coup coup , int booleen){
         PO_Position position = C_Obtenir_Position_Coup(coup);
         int posX = PO_ObtenirX(position);
         int posY = PO_ObtenirY(position);
-        char X = 'a' + posX;
+        char Y = 'a' + posY-1;
 
-        printf("%c%d\n",X,posY);
+        printf("%c%d\n",Y,posX);
     }
     else {
         printf("passe\n");
