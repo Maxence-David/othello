@@ -24,25 +24,25 @@ void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion){
 void MAJ_Partielle(C_Coup coup,PL_Plateau *plateau,int deplacementX,int deplacementY){
   int i,j,Xcoup,Ycoup,n;
   int nbretournelment = 0;
-  int test = 0;
-  int test2 =0;
+  int test = 1;
+  int test2 =1;
   PO_Position position;
   CO_Couleur CouleurREF = PI_ObtenirCouleurPion(C_obtenirPionCoup(coup));
   Xcoup = PO_ObtenirX(C_Obtenir_Position_Coup(coup));
   Ycoup = PO_ObtenirY(C_Obtenir_Position_Coup(coup));
   i = Xcoup+deplacementX;
   j = Ycoup+deplacementY;
-  while (!test && (i>0) && (i<=8) && (j>0) && (j<=8)) {
+  while (test && (i>0) && (i<=8) && (j>0) && (j<=8)) {
   
     position = PO_defPosition(i,j);
     if (PL_estVide(position,*plateau)){
-      test = 1;
+      test = 0;
     }
     else
     {
       if (PI_ObtenirCouleurPion(PL_ObtenirPion(position,*plateau)) == CouleurREF){
-        test2 =1;
-        test =1;
+        test2 =0;
+        test =0;
       }
       else
       {
@@ -54,7 +54,7 @@ void MAJ_Partielle(C_Coup coup,PL_Plateau *plateau,int deplacementX,int deplacem
 
     }
   }
-  if( test2){
+  if( !test2){
 
     for (n=1;n<=nbretournelment;n++){
       position = PO_defPosition(Xcoup + n*deplacementX,Ycoup +n*deplacementY);
