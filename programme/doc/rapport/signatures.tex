@@ -1,0 +1,194 @@
+
+\section{Signatures}
+	\subsection{affichagePlateau}
+		\begin{algorithme}
+			\signatureprocedure
+				{affichagePlateau}
+				{\paramEntree{pl : Plateau}}
+		\end{algorithme}
+	\subsection{creerPlateau}
+		\begin{algorithme}
+			\signaturefonction
+				{creerPlateau}
+				{}
+				{Plateau}
+		\end{algorithme}
+	\subsection{majPlateau}
+		\begin{algorithme}
+			\signaturefonction
+				{majPlateau}
+				{lePlateau : Plateau, leCoup : Coup}
+				{Plateau}
+		\end{algorithme}
+	\subsection{testLignes}
+		\begin{algorithme}
+			\signaturefonction
+				{testLignes}
+				{laPosition : Position}
+				{Position, Booleen}
+		\end{algorithme}
+	\subsection{testColonnes}
+		\begin{algorithme}
+			\signaturefonction
+				{testColonnes}
+				{laPosition : Position}
+				{Position, Booleen}
+		\end{algorithme}
+	\subsection{testDiagonales}
+		\begin{algorithme}
+			\signaturefonction
+				{testDiagonales}
+				{laPosition : Position}
+				{Position, Booleen}
+		\end{algorithme}
+	\subsection{retournerPion}
+		\begin{algorithme}
+			\signatureprocedure
+				{retournerPion}
+				{p : Pion, lePlateau : Plateau, laPosition : Position}
+		\end{algorithme}
+	\subsection{changerCouleur}
+		\begin{algorithme}
+			\signaturefonction
+				{changerCouleur}
+				{laCouleur : Couleur}
+				{Couleur}
+		\end{algorithme}
+
+	\subsection{placerCoup}
+		\begin{algorithme}
+			\signaturefonction
+				{placerCoup}
+				{lePion : Pion,laPosition : Position, lePlateau : Plateau}
+				{Coup}
+		\end{algorithme}
+	\subsection{definirCouleurNouveauJoueur}
+		\begin{algorithme}
+			\signaturefonction
+				{definirCouleurNouveauJoueur}
+				{dernierPionPlace : Pion}
+				{Couleur}
+		\end{algorithme}
+	\subsection{definirPosition}
+		\begin{algorithme}
+			\signaturefonction
+				{definirPosition}
+				{abcisse, ordonnee : \caractere}
+				{Postition}
+		\end{algorithme}
+	\subsection{coupValide}
+		\begin{algorithme}
+			\signaturefonction
+				{coupValide}
+				{lePion : Pion, positionCoup : Position, lePlateau : Plateau}
+				{\booleen}
+		\end{algorithme}
+	\subsection{estVide}
+		\begin{algorithme}
+			\signaturefonction
+				{estVide}
+				{pl : Plateau, positionCoup : Position}
+				{\booleen}
+		\end{algorithme}
+	\subsection{retournerAuMoinsUnPion}
+		\begin{algorithme}
+			\signaturefonction
+				{retournerAuMoinsUnPion}
+				{pl : Plateau, leCoup : Coup}
+				{\booleen}
+		\end{algorithme}
+	\subsection{partieTerminee}
+		\begin{algorithme}
+			\signaturefonction
+				{partieTerminee}
+				{pl : Plateau}
+				{\booleen}
+		\end{algorithme}
+	\subsection{plateauPlein}
+		\begin{algorithme}
+			\signaturefonction
+				{plateauPlein}
+				{lePlateau : Plateau}
+				{\booleen}
+		\end{algorithme}
+	\subsection{estGagnant}
+		\begin{algorithme}
+			\signaturefonction
+				{estGagnant}
+				{pl : Plateau, lePion : Pion}
+				{\booleen, Couleur}
+		\end{algorithme}
+	\subsection{obtenirCouleur}
+		\begin{algorithme}
+			\signaturefonction
+				{obtenirCouleur}
+				{p : Pion}
+				{Couleur}
+		\end{algorithme}
+	\subsection{plusDeCoups}
+		\begin{algorithme}
+			\signaturefonction
+				{plusDeCoups}
+				{pl : Plateau}
+				{\booleen}
+		\end{algorithme}
+	\subsection{faireUnePartie}
+\begin{algorithme}
+	\signaturefonction
+	{faireUnePartie}
+	{}
+	{Couleur}
+\end{algorithme}
+	\subsection{moduleIA}
+\begin{algorithme}
+	\signaturefonction
+	{moduleIA}
+	{pl : Plateau}
+	{Coup}
+\end{algorithme}
+	\subsection{scoreDUnCoup}
+\begin{algorithme}
+	\signaturefonction
+	{scoreDUnCoup}
+	{lesCoups : Coups}
+	{\naturel}
+\end{algorithme}
+	\subsection{minMax}
+\begin{algorithme}
+	\signaturefonction
+	{minMax}
+	{lesCoups : Coups}
+	{Coup}
+\end{algorithme}
+
+	\subsection{evaluer}
+\begin{algorithme}
+	\signaturefonction
+	{evaluer}
+	{leCoupAEvaluer : Coup}
+	{\naturel}
+\end{algorithme}
+
+	\subsection{coupsPossibles}
+\begin{algorithme}
+	\signaturefonction
+	{coupsPossibles}
+	{lePlateau : plateau}
+	{Coups}
+\end{algorithme}
+
+	\subsection{nbCoups}
+\begin{algorithme}
+	\signaturefonction
+	{nbCoups}
+	{lesCoups : Coups}
+	{\naturel}
+\end{algorithme}
+
+	\subsection{iemeCoup}
+\begin{algorithme}
+	\signaturefonction
+	{iemeCoup}
+	{lesCoups : Coups, indice : \naturelNonNul}
+	{Coup}
+\end{algorithme}
