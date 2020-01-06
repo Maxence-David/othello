@@ -1,194 +1,288 @@
-
-\section{Signatures}
-	\subsection{affichagePlateau}
-		\begin{algorithme}
-			\signatureprocedure
-				{affichagePlateau}
-				{\paramEntree{pl : Plateau}}
-		\end{algorithme}
-	\subsection{creerPlateau}
-		\begin{algorithme}
-			\signaturefonction
-				{creerPlateau}
+		
+		\section{Conception préliminaire}
+			\subsection{Signatures des TAD}
+				\subsubsection{Couleur}
+				\begin{algorithme}
+				\type {Couleur} \{Blanc, Noir\}
+				\\
+				\signaturefonction 
+				{Blanc}
 				{}
-				{Plateau}
-		\end{algorithme}
-	\subsection{majPlateau}
-		\begin{algorithme}
-			\signaturefonction
-				{majPlateau}
-				{lePlateau : Plateau, leCoup : Coup}
-				{Plateau}
-		\end{algorithme}
-	\subsection{testLignes}
-		\begin{algorithme}
-			\signaturefonction
-				{testLignes}
-				{laPosition : Position}
-				{Position, Booleen}
-		\end{algorithme}
-	\subsection{testColonnes}
-		\begin{algorithme}
-			\signaturefonction
-				{testColonnes}
-				{laPosition : Position}
-				{Position, Booleen}
-		\end{algorithme}
-	\subsection{testDiagonales}
-		\begin{algorithme}
-			\signaturefonction
-				{testDiagonales}
-				{laPosition : Position}
-				{Position, Booleen}
-		\end{algorithme}
-	\subsection{retournerPion}
-		\begin{algorithme}
-			\signatureprocedure
-				{retournerPion}
-				{p : Pion, lePlateau : Plateau, laPosition : Position}
-		\end{algorithme}
-	\subsection{changerCouleur}
-		\begin{algorithme}
-			\signaturefonction
+				{Couleur}
+				\signaturefonction 
+				{Noir}
+				{}
+				{Couleur}
+				\signaturefonction
 				{changerCouleur}
+				{couleurActuelle : Couleur}
+				{Couleur}
+				\signaturefonction
+				{estBlanc}
+				{uneCouleur : Couleur}
+				{\booleen}
+				\signaturefonction
+				{estNoir}
+				{uneCouleur : Couleur}
+				{\booleen}
+				\end{algorithme}
+			\subsubsection{Coup}
+			\begin{algorithme}
+				\begin{enregistrement}
+				{Coup}
+				\champEnregistrement{positionDuCoup}{Position}
+				\champEnregistrement{pion}{Pion} 
+				\end{enregistrement}
+				\\
+				\signaturefonction 
+				{initCoup}
+				{position : Position, pion : Pion}
+				{Coup}
+				\signaturefonction 
+				{placerCoup}
+				{pion : Pion, positionCoup : Position}
+				{Coup}
+				\signaturefonction 
+				{obtenirPositionCoup}
+				{coup : Coup}
+				{Position}
+				\signaturefonction 
+				{obtenirPionCoup}
+				{coup : Coup}
+				{Pion}
+				\signaturefonction 
+				{coupValide}
+				{leCoup : Coup, lePlateau : Plateau}
+				{\booleen}
+				\signaturefonction 
+				{obtenirPionCoup}
+				{coup1, coup2 : Coup}
+				{\booleen}
+				\subsubsection{Coups}
+				
+				\constante{MAX}{64}
+				\\
+				\begin{enregistrement}
+					{Coups}
+					\champEnregistrement{\tableauUneDimension{MAX}{de }}{Coup}
+					\champEnregistrement{nbCoups}{\naturel} 
+				\end{enregistrement}
+				\\
+				\signaturefonction
+				{initCoups}
+				{}
+				{Coups}
+				\signaturefonction
+				{estVide}
+				{coups : Coups}
+				{\booleen}
+				\signatureprocedure
+				{ajouterCoup}
+				{{\paramEntreeSortie{coups : Coups, }}{\paramEntree{coup : Coup}}}
+				\signaturefonction
+				{nbCoups}
+				{coups : Coups}
+				{\naturel}
+				\signaturefonction
+				{estPresent}
+				{coups : Coups, coup : Coup}
+				{\booleen}	
+				\signatureprocedure
+				{supprimerCoup}
+				{\paramEntreeSortie{coups : Coups, }{\paramEntree{i : \naturel}}}
+				\signaturefonction
+				{obtenirCoupsPossible}
+				{pl : Plateau, couleurReference : Couleur}
+				{Coups}
+				\subsubsection{Pion}
+				\begin{enregistrement}
+					{Pion}
+					\champEnregistrement{couleurPion}{Couleur}
+					\champEnregistrement{etatPion}{\naturel} 
+				\end{enregistrement}
+				\\
+				\signaturefonction
+				{creerPion}
+				{couleur : Couleur}
+				{Pion}
+				\signatureprocedure
+				{changerEtat}
+				{\paramEntreeSortie{pion : Pion}}
+				\signaturefonction
+				{obtenirCouleurPion}
+				{pion : Pion}
+				{Couleur}
+				\signaturefonction
+				{obtenirEtatPion}
+				{pion : Pion}
+				{\naturel}
+				\signaturefonction
+				{egal}
+				{pion1, pion2 : Pion}
+				{\booleen}
+				\subsubsection{Plateau}
+				\constante{HAUTEUR}{8}
+				\constante{LARGEUR}{8}
+				\\
+				plateau = \tableauDeuxDimensions{HAUTEUR}{LARGEUR}{de }{Pion}
+				\\
+				\signatureprocedure
+				{quatrePionsDebut}
+				{\paramEntreeSortie{plateau : Plateau}}
+				\signatureprocedure
+				{initialiserPlateau}
+				{\paramEntreeSortie{plateau : Plateau}}
+				\signaturefonction
+				{obtenirPion}
+				{position : Position, plateau : Plateau}
+				{Pion}
+				\signatureprocedure
+				{poserPion}
+				{\paramEntreeSortie{{plateau : Plateau, }}{\paramEntree{pion : Pion, position : Position}}}
+				\signaturefonction
+				{estVide}
+				{position : Position, plateau : Plateau}
+				{\booleen}
+				\signatureprocedure
+				{viderPlateau}
+				{\paramEntreeSortie{{plateau : Plateau}}}
+				\signatureprocedure
+				{copierPlateau}
+				{\paramEntreeSortie{{plateau : Plateau, }}{\paramEntree{plateauACopier : Plateau}}}
+				\subsubsection{Position}
+				\begin{enregistrement}
+					{Position}
+					\champEnregistrement{positionX}{\caractere}
+					\champEnregistrement{positionY}{\caractere} 
+				\end{enregistrement}
+				\\
+				\signaturefonction
+				{defPosition}
+				{x,y : \caractere}
+				{Position}
+				\signaturefonction
+				{obtenirX}
+				{position : Position}
+				{\caractere}
+				\signaturefonction
+				{obtenirY}
+				{position : Position}
+				{\caractere}
+				\signaturefonction
+				{egal}
+				{pos1, pos2 : Position}
+				{\booleen}
+				
+				
+				
+			\end{algorithme}
+			\subsection{affichagePlateau}
+				\begin{algorithme}
+					\signatureprocedure
+						{affichagePlateau}		{\paramEntree{plateau : Plateau}}
+					\signaturefonction
+					{entrerCoup }					{\paramEntree {couleurJoueurCourant : Couleur}}
+					{Position}
+					\signatureprocedure
+					{entrerCoupTournoi}					{\paramEntreeSortie {position : Position, booleen : \booleen}}
+					\signatureprocedure
+					{affichageFinPartie}					{\paramEntreeSortie {couleur : Couleur}}
+				\end{algorithme}
+			\subsection{caractereEnEntier}
+				\begin{algorithme}
+					\signaturefonction
+						{chaineValide}					{\paramEntree {chaine : \caractere}}
+						{Booleen}
+					\signatureprocedure {chaineEnEntiers}
+					{\paramEntreeSortie {entier1, entier2 : \naturelNonNul}, {\paramEntree {chaine : \chaine}}}
+				\end{algorithme}
+			\subsection{coupIA}
+			\begin{algorithme}
+				\signatureprocedure
+				{obtenirCoupIA}
+				{{\paramEntree{pl : Plateau, couleurReference : Couleur}}, 
+				{\paramEntreeSortie{resultat : Coup, estPossible : \booleen}}}
+				\signaturefonction 
+				{scoreDUnCoup} 
+				{pl : Plateau, couleurReference, couleurActuelle : Couleur, profondeur : \naturelNonNul, alpha, beta : \entier}
+				{\naturel}
+				\signaturefonction 
+				{evalue} 
+				{pl : Plateau, couleurReference : Couleur}
+				{\naturel}
+			\end{algorithme}
+			\subsection{faireUnePartie}
+			\begin{algorithme}
+				\signaturefonction
+				{faireUnePartie\_J\_VS\_J}
+				{fonction affichagePlateau, fonction obtenirCoupJOUEUR}
+				{Couleur}
+				\signaturefonction
+				{faireUnePartie\_J\_VS\_IA}
+				{fonction affichagePlateau, fonction obtenirCoupJOUEUR, fonction obtenirCoupIA}
+				{Couleur}
+				\signaturefonction
+				{tournoi}
+				{fonction entrerCoupTournoi, fonction obtenirCoupIA, couleurJoueur : Couleur}
+				{Couleur}
+			\end{algorithme}
+			\subsection{majPlateau}
+				\begin{algorithme}
+					\signatureprocedure
+						{majPlateau}
+						{{\paramEntreeSortie{lePlateau : Plateau}}, 
+						{\paramEntree{leCoup : Coup}}}
+					\signatureprocedure 
+					{retournerPion}
+					{{\paramEntreeSortie{lePlateau : Plateau}}, 
+					{\paramEntree{positionDuPion : Position}}}
+				\end{algorithme}
+			\subsection{obtenirCouleurGagnant}
+				\begin{algorithme}
+					\signatureprocedure
+						{obtenirCouleurGagnant}
+						{{\paramEntreeSortie{ilYaUnGagnant : \booleen, couleurGagnant : Couleur}}, 
+						{\paramEntree{lePlateau : Plateau}}}
+				\end{algorithme}
+			\subsection{partieTerminee}
+				\begin{algorithme}
+					\signaturefonction
+					{plateauPlein}
+					{plateau : Plateau}
+					{\booleen}
+				\end{algorithme}
+				\begin{algorithme}
+					\signaturefonction
+					{plusDeCoups}
+					{plateau : Plateau, couleurJoueurCourant : Couleur}
+					{\booleen}
+				\end{algorithme}
+				\begin{algorithme}
+					\signaturefonction
+					{partieTerminee}
+					{plateau : Plateau, couleurJoueurCourant, couleurAutreJoueur : Couleur}
+					{\booleen}
+				\end{algorithme}
+			\subsection{placerCoup}
+				\begin{algorithme}
+				\type {Direction} \{HG,H,HD,D,BD,B,BG,G\}
+				\\
+				\signaturefonction
+				{definirCouleurNouveauJoueur}
 				{laCouleur : Couleur}
 				{Couleur}
-		\end{algorithme}
-
-	\subsection{placerCoup}
-		\begin{algorithme}
-			\signaturefonction
-				{placerCoup}
-				{lePion : Pion,laPosition : Position, lePlateau : Plateau}
-				{Coup}
-		\end{algorithme}
-	\subsection{definirCouleurNouveauJoueur}
-		\begin{algorithme}
-			\signaturefonction
-				{definirCouleurNouveauJoueur}
-				{dernierPionPlace : Pion}
-				{Couleur}
-		\end{algorithme}
-	\subsection{definirPosition}
-		\begin{algorithme}
-			\signaturefonction
-				{definirPosition}
-				{abcisse, ordonnee : \caractere}
-				{Postition}
-		\end{algorithme}
-	\subsection{coupValide}
-		\begin{algorithme}
-			\signaturefonction
-				{coupValide}
-				{lePion : Pion, positionCoup : Position, lePlateau : Plateau}
-				{\booleen}
-		\end{algorithme}
-	\subsection{estVide}
-		\begin{algorithme}
-			\signaturefonction
-				{estVide}
-				{pl : Plateau, positionCoup : Position}
-				{\booleen}
-		\end{algorithme}
-	\subsection{retournerAuMoinsUnPion}
-		\begin{algorithme}
-			\signaturefonction
+				\signaturefonction
 				{retournerAuMoinsUnPion}
-				{pl : Plateau, leCoup : Coup}
+				{plateau : Plateau, coup : Coup}
 				{\booleen}
-		\end{algorithme}
-	\subsection{partieTerminee}
-		\begin{algorithme}
-			\signaturefonction
-				{partieTerminee}
-				{pl : Plateau}
+				\signaturefonction
+				{testModifDirection}
+				{plateau : Plateau, coup : Coup, dir : Direction}
 				{\booleen}
-		\end{algorithme}
-	\subsection{plateauPlein}
-		\begin{algorithme}
-			\signaturefonction
-				{plateauPlein}
-				{lePlateau : Plateau}
-				{\booleen}
-		\end{algorithme}
-	\subsection{estGagnant}
-		\begin{algorithme}
-			\signaturefonction
-				{estGagnant}
-				{pl : Plateau, lePion : Pion}
-				{\booleen, Couleur}
-		\end{algorithme}
-	\subsection{obtenirCouleur}
-		\begin{algorithme}
-			\signaturefonction
-				{obtenirCouleur}
-				{p : Pion}
-				{Couleur}
-		\end{algorithme}
-	\subsection{plusDeCoups}
-		\begin{algorithme}
-			\signaturefonction
-				{plusDeCoups}
-				{pl : Plateau}
-				{\booleen}
-		\end{algorithme}
-	\subsection{faireUnePartie}
-\begin{algorithme}
-	\signaturefonction
-	{faireUnePartie}
-	{}
-	{Couleur}
-\end{algorithme}
-	\subsection{moduleIA}
-\begin{algorithme}
-	\signaturefonction
-	{moduleIA}
-	{pl : Plateau}
-	{Coup}
-\end{algorithme}
-	\subsection{scoreDUnCoup}
-\begin{algorithme}
-	\signaturefonction
-	{scoreDUnCoup}
-	{lesCoups : Coups}
-	{\naturel}
-\end{algorithme}
-	\subsection{minMax}
-\begin{algorithme}
-	\signaturefonction
-	{minMax}
-	{lesCoups : Coups}
-	{Coup}
-\end{algorithme}
-
-	\subsection{evaluer}
-\begin{algorithme}
-	\signaturefonction
-	{evaluer}
-	{leCoupAEvaluer : Coup}
-	{\naturel}
-\end{algorithme}
-
-	\subsection{coupsPossibles}
-\begin{algorithme}
-	\signaturefonction
-	{coupsPossibles}
-	{lePlateau : plateau}
-	{Coups}
-\end{algorithme}
-
-	\subsection{nbCoups}
-\begin{algorithme}
-	\signaturefonction
-	{nbCoups}
-	{lesCoups : Coups}
-	{\naturel}
-\end{algorithme}
-
-	\subsection{iemeCoup}
-\begin{algorithme}
-	\signaturefonction
-	{iemeCoup}
-	{lesCoups : Coups, indice : \naturelNonNul}
-	{Coup}
-\end{algorithme}
+				\signatureprocedure
+				{placerCoup}
+				{{\paramEntreeSortie{coup : Coup, valide : \booleen}}, 
+				{\paramEntree{fonction entrerCoup, plateau : Plateau, couleurJoueur : Couleur}}}
+				
+				\end{algorithme}
+		

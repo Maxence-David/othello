@@ -11,12 +11,12 @@
             \tadOperation{Noir}{}{\tadUnParam{Couleur}}
             \tadOperation{estNoir}{}{\tadUnParam{\booleen}}
             \tadOperation{estBlanc}{}{\tadUnParam{\booleen}}
-            \tadOperation{ChangerCouleur}{\tadUnParam{Couleur}}{\tadUnParam{Couleur}}
+            \tadOperation{changerCouleur}{\tadUnParam{Couleur}}{\tadUnParam{Couleur}}
         \end{tadOperations}
 
         \begin{tadAxiomes}
-            \tadAxiome{ChangerCouleur(Blanc)=Noir}
-            \tadAxiome{ChangeCouleur(Noir)=Blanc}
+            \tadAxiome{changerCouleur(Blanc)=Noir}
+            \tadAxiome{changeCouleur(Noir)=Blanc}
         \end{tadAxiomes}
     \end{tad}
     \subsection{Pion}
@@ -25,14 +25,15 @@
 
         \tadDependances{Couleur, Coup, \naturel}
         \begin{tadOperations}{Pion}
-            \tadOperation{CreerPion}{\tadUnParam{Couleur}}{\tadUnParam{Pion}}
-            \tadOperation{ChangerEtat}{\tadUnParam{Pion}}{\tadUnParam{Pion}}
-            \tadOperation{ObtenirCouleurPion}{\tadUnParam{Pion}}{\tadUnParam{Couleur}}
-            \tadOperation{ObtenirEtatPion}{\tadUnParam{Pion}}{\tadUnParam{\naturel}}
+            \tadOperation{creerPion}{\tadUnParam{Couleur}}{\tadUnParam{Pion}}
+            \tadOperation{changerEtat}{\tadUnParam{Pion}}{\tadUnParam{Pion}}
+            \tadOperation{obtenirCouleurPion}{\tadUnParam{Pion}}{\tadUnParam{Couleur}}
+            \tadOperation{obtenirEtatPion}{\tadUnParam{Pion}}{\tadUnParam{\naturel}}
+            \tadOperation{egal}{\tadDeuxParams{Pion}{Pion}}{\tadUnParam{\naturel}}
         \end{tadOperations}
         \begin{tadAxiomes}
-            \tadAxiome{ObtenirCouleurPion(Pion(a))=a}
-            \tadAxiome{ChangerEtatPion(ChangerEtatPion(a))=a}
+            \tadAxiome{obtenirCouleurPion(creerPion(a))=a}
+            \tadAxiome{changerEtatPion(changerEtatPion(a))=a}
         \end{tadAxiomes}
     \end{tad}
     \subsection{Position}
@@ -42,13 +43,14 @@
         \tadDependances{\caractere}
         \begin{tadOperations}{Position}
             \tadOperation{defPosition}{\tadDeuxParams{\caractere}{\caractere}}{\tadUnParam{Position}}
-            \tadOperation{ObtenirX}{\tadUnParam{Position}}{\tadUnParam{\caractere}}
-            \tadOperation{ObtenirY}{\tadUnParam{Position}}{\tadUnParam{\caractere}}
+            \tadOperation{obtenirX}{\tadUnParam{Position}}{\tadUnParam{\caractere}}
+            \tadOperation{obtenirY}{\tadUnParam{Position}}{\tadUnParam{\caractere}}
+            \tadOperation{egal}{\tadDeuxParams{Position}{Position}}{\tadUnParam{\naturel}}
           
         \end{tadOperations}
         \begin{tadAxiomes}
-            \tadAxiome{ObtenirX(defPosition(x,y))=x}
-            \tadAxiome{ObtenirY(defPosition(x,y))=y}
+            \tadAxiome{obtenirX(defPosition(x,y))=x}
+            \tadAxiome{obtenirY(defPosition(x,y))=y}
         \end{tadAxiomes}
 
     \end{tad}
@@ -56,16 +58,17 @@
     \begin{tad}
         \tadNom{Coup}
         %\tadParametres{Element,Clef}
-        \tadDependances{\booleen,Pion,Position, Plateau, Couleur}
+        \tadDependances{\booleen,Pion,Position, Plateau, Couleur, \naturel}
         \begin{tadOperations}{Coup}
-            \tadOperation{InitCoup}{\tadDeuxParams{Pion}{Position}}{\tadUnParam{Coup}}
-            \tadOperation{ObtenirPositionCoup}{\tadUnParam{Coup}}{\tadUnParam{Position}}
+            \tadOperation{initCoup}{\tadDeuxParams{Pion}{Position}}{\tadUnParam{Coup}}
+            \tadOperation{obtenirPositionCoup}{\tadUnParam{Coup}}{\tadUnParam{Position}}
             \tadOperation{obtenirPionCoup}{\tadUnParam{Coup}}{\tadUnParam{Pion}}
-            \tadOperation{ObtenirCouleurCoup}{\tadUnParam{Coup}}{\tadUnParam{Couleur}}
-            \tadOperation{CoupValide}{\tadDeuxParams{Plateau}{Coup}}{\tadUnParam{\booleen}}
+            \tadOperation{obtenirCouleurCoup}{\tadUnParam{Coup}}{\tadUnParam{Couleur}}
+            \tadOperation{coupValide}{\tadDeuxParams{Plateau}{Coup}}{\tadUnParam{\booleen}}
+            \tadOperation{egale}{\tadDeuxParams{Coup}{Coup}}{\tadUnParam{\naturel}}
         \end{tadOperations}
         \begin{tadAxiomes}
-            \tadAxiome{ObtenirPositionCoup(InitCoup(p,ps))=ps}
+            \tadAxiome{obtenirPositionCoup(initCoup(p,ps))=ps}
         \end{tadAxiomes}
    	        \end{tad}
     \subsection{Plateau}
@@ -74,10 +77,10 @@
 
         \tadDependances{\booleen,Pion,Position}
         \begin{tadOperations}{Plateau}
-            \tadOperation{InitialiserPlateau}{}{\tadUnParam{Plateau}}
-            \tadOperation{QuatrePionsDebut}{\tadUnParam{Plateau}}{\tadUnParam{Plateau}}
-            \tadOperationAvecPreconditions{ObtenirPion}{\tadDeuxParams{Position}{Plateau}}{\tadUnParam{Pion}}
-            \tadOperationAvecPreconditions{PoserPion}{\tadTroisParams{Position}{Plateau}{Pion}}{\tadUnParam{Plateau}}
+            \tadOperation{initialiserPlateau}{}{\tadUnParam{Plateau}}
+            \tadOperation{quatrePionsDebut}{\tadUnParam{Plateau}}{\tadUnParam{Plateau}}
+            \tadOperationAvecPreconditions{obtenirPion}{\tadDeuxParams{Position}{Plateau}}{\tadUnParam{Pion}}
+            \tadOperationAvecPreconditions{poserPion}{\tadTroisParams{Position}{Plateau}{Pion}}{\tadUnParam{Plateau}}
             \tadOperation{estVide}{\tadDeuxParams{Position}{Plateau}}{\tadUnParam{\booleen}}
             \tadOperation{copierPlateau}{\tadDeuxParams{Plateau}{Plateau}}{\tadUnParam{Plateau}}
         \end{tadOperations}
@@ -91,20 +94,20 @@
 	\tadNom{Coups}
 	\tadDependances{\naturel, \naturelNonNul, Plateau, Couleur, Coup, \booleen}
 	\begin{tadOperations}{Coups}
-		\tadOperation{InitCoups}{}{\tadUnParam{Coups}}
-		\tadOperation{EstVide}{\tadUnParam{Coups}}{\tadUnParam{\booleen}}
-		\tadOperation{AjouterCoup}{\tadDeuxParams{Coups}{Coup}}{\tadUnParam{Coups}}
-		\tadOperationAvecPreconditions{IemeCoup}{\tadDeuxParams{Coups}{\naturelNonNul}}{\tadUnParam{Coup}}
-		\tadOperation{NbCoups}{\tadUnParam{Coups}}{\tadUnParam{\naturel}}
-		\tadOperation{EstPresent}{\tadDeuxParams{Coup}{Coups}}{\tadUnParam{\naturel}}
-		\tadOperation{SupprimerCoup}{\tadDeuxParams{\naturelNonNul}{Coups}}{\tadUnParam{Coups}}
-		\tadOperation{ObtenirCoupsPossible}{\tadDeuxParams{Plateau}{Couleur}}{\tadUnParam{Coups}}
+		\tadOperation{initCoups}{}{\tadUnParam{Coups}}
+		\tadOperation{estVide}{\tadUnParam{Coups}}{\tadUnParam{\booleen}}
+		\tadOperation{ajouterCoup}{\tadDeuxParams{Coups}{Coup}}{\tadUnParam{Coups}}
+		\tadOperationAvecPreconditions{iemeCoup}{\tadDeuxParams{Coups}{\naturelNonNul}}{\tadUnParam{Coup}}
+		\tadOperation{nbCoups}{\tadUnParam{Coups}}{\tadUnParam{\naturel}}
+		\tadOperation{estPresent}{\tadDeuxParams{Coup}{Coups}}{\tadUnParam{\naturel}}
+		\tadOperation{supprimerCoup}{\tadDeuxParams{\naturelNonNul}{Coups}}{\tadUnParam{Coups}}
+		\tadOperation{obtenirCoupsPossible}{\tadDeuxParams{Plateau}{Couleur}}{\tadUnParam{Coups}}
 	\end{tadOperations}
 \begin{tadAxiomes}
-	\tadAxiome{estVide(InitCoups())}
-	\tadAxiome{nbCoups(InitCoups()) = 0}
-	\tadAxiome {ajouter(cs,c) = nbCoups(cs)+1}
+	\tadAxiome{estVide(initCoups())}
+	\tadAxiome{nbCoups(initCoups()) = 0}
+	\tadAxiome {ajouterCoup(cs,c) = nbCoups(cs)+1}
 \end{tadAxiomes}
-\begin{tadPreconditions}/\tadPrecondition{IemeCoup(c,i): i $\leq$ nbCoups(c)}
+\begin{tadPreconditions}/\tadPrecondition{iemeCoup(c,i): i $\leq$ nbCoups(c)}
 		\end{tadPreconditions}
 \end{tad}
