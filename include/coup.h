@@ -75,4 +75,13 @@ CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup);
  */
 int C_Coup_Valide(C_Coup leCoup, PL_Plateau lePlateau);
 
+/**
+ * \fn  int C_Egale(C_Coup coup1, C_Coup coup2)
+ * \brief Fonction de verification d'egalité entre deux coups
+ * \param C_Coup Le premier coup
+ * \param C_Coup Le second coup 
+ * \return int Un booléen
+ */
+int C_Egale(C_Coup coup1, C_Coup coup2);
+
 #endif

@@ -3,6 +3,7 @@
 #include "coup.h"
 #include "placerCoup.h"
 #include "plateau.h"
+#include "pion.h"
 
 C_Coup C_InitCoup(PO_Position position, PI_Pion pion)
 {
@@ -35,5 +36,5 @@ int C_Coup_Valide (C_Coup leCoup, PL_Plateau lePlateau){
 }
 
 int C_Egale(C_Coup coup1, C_Coup coup2) {
-	return (PI_egal(coup1.Pion,coup2.Pion) && PO_egal(coup1.positionCoup,coup2.positionCoup));
+	return (PI_Egal(coup1.Pion,coup2.Pion) && PO_Egal(coup1.positionCoup,coup2.positionCoup));
 }

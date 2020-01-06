@@ -48,4 +48,13 @@ int PO_ObtenirX(PO_Position position);
  */
 int PO_ObtenirY(PO_Position position);
 
+/**
+ * \fn  int PO_egal(PO_Position pos1, PO_Position pos2);
+ * \brief Fonction pour verifier l'égalité entre deux positions
+ * \param PO_Position La première position
+ * \param PO_Position La seconde position
+ * \return int Un booléen
+ */
+int PO_Egal(PO_Position pos1, PO_Position pos2);
+
 #endif

@@ -58,5 +58,14 @@ CO_Couleur PI_ObtenirCouleurPion(PI_Pion pion);
  */
 int PI_ObtenirEtatPion(PI_Pion pion);
 
+/**
+ * \fn  int PI_Egal(PI_Pion pion1, PI_Pion pion2)
+ * \brief Fonction pour verifier l'egalité de deux pions
+ * \param PI_Pion Le premier pion
+ * \param PI_Pion Le second pion
+ * \return int Un booléen
+ */
+int PI_Egal(PI_Pion pion1, PI_Pion pion2);
+
 #endif
 

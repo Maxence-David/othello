@@ -47,4 +47,12 @@ void OTH_entrerCoupTournoi(PO_Position* position, int* booleen);
  * \return void
  */
 void affichageFinPartie (CO_Couleur couleur);
+
+/**
+ * \fn  void affichageAide()
+ * \brief Fonction qui affiche l'aide
+ * \param 
+ * \return void
+ */
+void affichageAide();
 #endif
