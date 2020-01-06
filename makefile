@@ -13,7 +13,9 @@ CREATE = mkdir
 CFLAGS = -Wall -pedantic -g -I$(INCLUDEDIR) 
 LDFLAGS= -L$(LIBDIR) -lothello
 
-all : const $(BINDIR)/$(EXEC)
+all : const $(BINDIR)/$(EXEC) $(DOCDIR)/rapport/rapport.pdf $(DOCDIR)/html/index.html $(DOCDIR)/latex/refman.pdf $(TESTDIR)/test_affichagePlateau $(TESTDIR)/test_caractereEnEntier $(TESTDIR)/test_majPlateau $(TESTDIR)/test_obtenirCouleurGagnant $(TESTDIR)/test_partieTerminee $(TESTDIR)/testCouleur $(TESTDIR)/testCoup $(TESTDIR)/testCoups $(TESTDIR)/testPion $(TESTDIR)/testPlateau $(TESTDIR)/testPosition
+
+prg : const $(BINDIR)/$(EXEC)
 
 const :
 	@ if ! [ -d $(BINDIR) ]; then \
@@ -31,7 +33,7 @@ const :
 
 doc : $(DOCDIR)/rapport/rapport.pdf $(DOCDIR)/html/index.html $(DOCDIR)/latex/refman.pdf
 
-test : $(TESTDIR)/test_affichagePlateau $(TESTDIR)/test_caractereEnEntier $(TESTDIR)/test_majPlateau $(TESTDIR)/test_obtenirCouleurGagnant $(TESTDIR)/test_partieTerminee $(TESTDIR)/testCouleur $(TESTDIR)/testCoup $(TESTDIR)/testPion $(TESTDIR)/testPlateau $(TESTDIR)/testPosition
+tests : $(TESTDIR)/test_affichagePlateau $(TESTDIR)/test_caractereEnEntier $(TESTDIR)/test_majPlateau $(TESTDIR)/test_obtenirCouleurGagnant $(TESTDIR)/test_partieTerminee $(TESTDIR)/testCouleur $(TESTDIR)/testCoup $(TESTDIR)/testCoups $(TESTDIR)/testPion $(TESTDIR)/testPlateau $(TESTDIR)/testPosition
 
 $(TESTDIR)/% : $(SRCTESTDIR)/%.o $(LIBDIR)/libothello.a
 	$(CC) -o $@ $< $(LDFLAGS) -lcunit

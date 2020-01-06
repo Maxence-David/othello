@@ -38,7 +38,8 @@ void test_chaineEnEntiers(void){
   int resultatAttendu = 122;
   int resultatAttenduDeux = 57;
   char* chaine = "z9";
-  int* a; int *b;
+  int* a = 0;
+  int* b = 0;
   OTH_chaineEnEntiers(chaine, a, b);
   CU_ASSERT_EQUAL(resultatAttendu, a);
   CU_ASSERT_EQUAL(resultatAttenduDeux, b);
