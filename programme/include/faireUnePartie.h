@@ -18,24 +18,21 @@
 #include "coupIA.h"
 
 /**
- * \fn  CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau ,obtenirCoupJOUEUR )
+ * \fn  CO_Couleur OTH_faireUnePartie_J_VS_J( )
  * \brief Fonction principale
- * \param fonction d'affichage du plateau
- * \param la fonction d'optention d'un coup humain
  * \return CO_Couleur la couleur du joueur gagnant
  */
 
-CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau ,obtenirCoupJOUEUR );
+CO_Couleur OTH_faireUnePartie_J_VS_J();
 
 /**
- * \fn  CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a, ObtenirCoupIA b)
+ * \fn  CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain)
  * \brief Fonction principale
- * \param fonction d'affichage du plateau
- * \param la fonction d'optention d'un coup humain et ia
+ * \param CO_Couleur couleurJoueurHumain
  * \return CO_Couleur la couleur du joueur gagnant
  */
 
-CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a, ObtenirCoupIA b);
+CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain);
 
 
 /**

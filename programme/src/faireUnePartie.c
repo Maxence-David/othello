@@ -10,7 +10,7 @@
 #include "obtenirCouleurGagnant.h"
 
 
-CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a){
+CO_Couleur OTH_faireUnePartie_J_VS_J(){
 
   CO_Couleur CouleurJoueurCourant;
   int booleen;
@@ -52,7 +52,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_J(affichagePlateau OTH_affichagePlateau,obten
 
 
 
-CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obtenirCoupJOUEUR a, ObtenirCoupIA b){
+CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain){
   CO_Couleur CouleurJoueurCourant;
   int booleen;
   PL_Plateau unPlateau;
@@ -62,26 +62,47 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(affichagePlateau OTH_affichagePlateau,obte
   PL_QuatrePionsDebut(&unPlateau);
   
     while(OTH_partieTerminee(unPlateau,CouleurJoueurCourant,CO_ChangerCouleur(CouleurJoueurCourant)) ){
-
+      if (couleurJoueurHumain==NOIR){
   
-      OTH_affichagePlateau(unPlateau);
-      OTH_placerCoup( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
-      if(booleen!=0){
-        maj(&unPlateau, coupJoueur1);
-      }
-      CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+        OTH_affichagePlateau(unPlateau);
+        OTH_placerCoup( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
+        if(booleen!=0){
+          maj(&unPlateau, coupJoueur1);
+        }
+        CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
 
-      OTH_affichagePlateau(unPlateau);
-      printf("je cherche la meilleur solution pour te battre, patiente quelques instant ...\n ");
-      IA_CoupIA( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
-      
 
-  
-      if (booleen!=0){
-        maj(&unPlateau, coupDeIA);
-      
+
+        OTH_affichagePlateau(unPlateau);
+        printf("je cherche la meilleur solution pour te battre, patiente quelques instant ...\n ");
+        IA_CoupIA( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
+ 
+        if (booleen!=0){
+          maj(&unPlateau, coupDeIA);
+        }
+        CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
       }
-      CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+      else
+      {
+        OTH_affichagePlateau(unPlateau);
+        printf("je cherche la meilleur solution pour te battre, patiente quelques instant ...\n ");
+        IA_CoupIA( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
+ 
+        if (booleen!=0){
+          maj(&unPlateau, coupDeIA);
+        }
+        CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+
+
+        OTH_affichagePlateau(unPlateau);
+        OTH_placerCoup( OTH_entrerCoup, unPlateau, CouleurJoueurCourant,&coupJoueur1,&booleen);
+        if(booleen!=0){
+          maj(&unPlateau, coupJoueur1);
+        }
+        CouleurJoueurCourant = CO_ChangerCouleur(CouleurJoueurCourant);
+
+      }
+      
     }
     int ilYaUnGagnant = 0;
     CO_Couleur couleurGagnant = CO_Noir();

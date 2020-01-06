@@ -29,7 +29,7 @@ int  main(int argc, char** argv) {
                 couleurJoueur = CO_Noir();
             }
             if (strcmp(argv[1],"JoueurVSia")==0){
-                couleurGagnante = OTH_faireUnePartie_J_VS_IA(OTH_affichagePlateau,OTH_placerCoup,IA_CoupIA);
+                couleurGagnante = OTH_faireUnePartie_J_VS_IA(couleurJoueur);
                 affichageFinPartie(couleurGagnante);
             }
             else
