@@ -35,7 +35,7 @@ const :
 		$(CREATE) $(DOCDIR); \
 	fi
 
-doc : $(DOCDIR)/html/index.html $(DOCDIR)/latex/refman.pdf
+doc : $(DOCDIR)/html/index.html $(DOCDIR)/latex/refman.pdf  $(DOCDIR)/latex/refman.pdf
 
 tests : $(TESTDIR)/test_affichagePlateau $(TESTDIR)/test_caractereEnEntier $(TESTDIR)/test_majPlateau $(TESTDIR)/test_obtenirCouleurGagnant $(TESTDIR)/test_partieTerminee $(TESTDIR)/testCouleur $(TESTDIR)/testCoup $(TESTDIR)/testCoups $(TESTDIR)/testPion $(TESTDIR)/testPlateau $(TESTDIR)/testPosition
 
