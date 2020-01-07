@@ -116,7 +116,7 @@ void affichageAide()
 }
 
 
-affichagecoupTournoi(C_Coup coup , int booleen){
+void affichagecoupTournoi(C_Coup coup , int booleen){
     if (booleen==1 ){
         PO_Position position = C_Obtenir_Position_Coup(coup);
         int posX = PO_ObtenirX(position);
