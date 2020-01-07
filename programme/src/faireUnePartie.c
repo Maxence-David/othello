@@ -139,7 +139,7 @@ CO_Couleur OTH_Tournoi(CO_Couleur CouleurJoueur){
         
         CoupJoueurAdverse =C_InitCoup(positionJoueurAdverse,PI_CreerPion(CouleurJoueurAdverse) );
         
-        affichagecoupTournoi(CoupJoueurAdverse,booleenTestJA);
+        /*affichagecoupTournoi(CoupJoueurAdverse,booleenTestJA);*/
         maj(&plateau,CoupJoueurAdverse);
        
       }
