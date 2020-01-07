@@ -27,7 +27,7 @@
 				{\booleen}
 				\end{algorithme}
 			\subsubsection{Coup}
-			\begin{algorithme}
+				\begin{algorithme}
 				\begin{enregistrement}
 				{Coup}
 				\champEnregistrement{positionDuCoup}{Position}
@@ -39,9 +39,9 @@
 				{position : Position, pion : Pion}
 				{Coup}
 				\signaturefonction 
-				{placerCoup}
-				{pion : Pion, positionCoup : Position}
-				{Coup}
+				{obtenirCouleurCoup}
+				{coup : Coup}
+				{Couleur}
 				\signaturefonction 
 				{obtenirPositionCoup}
 				{coup : Coup}
@@ -58,13 +58,14 @@
 				{obtenirPionCoup}
 				{coup1, coup2 : Coup}
 				{\booleen}
+								\end{algorithme}
 				\subsubsection{Coups}
-				
+								\begin{algorithme}
 				\constante{MAX}{64}
 				\\
 				\begin{enregistrement}
 					{Coups}
-					\champEnregistrement{\tableauUneDimension{MAX}{de }}{Coup}
+					\champEnregistrement{tabCoups : \tableauUneDimension{MAX}{de}{Coup}}
 					\champEnregistrement{nbCoups}{\naturel} 
 				\end{enregistrement}
 				\\
@@ -76,17 +77,24 @@
 				{estVide}
 				{coups : Coups}
 				{\booleen}
-				\signatureprocedure
+				\signatureFonctionAvecPreconditions
+				{iemeCoup}
+				{coups : Coups, i : \naturel}
+				{Coup}
+				{i $>$0 ET i $<= $ nbCoups(coups)}
+				\signatureProcedureAvecPreconditions
 				{ajouterCoup}
 				{{\paramEntreeSortie{coups : Coups, }}{\paramEntree{coup : Coup}}}
+				{nbCoups(coups) $<$ MAX}
 				\signaturefonction
 				{nbCoups}
 				{coups : Coups}
 				{\naturel}
-				\signaturefonction
+				\signatureFonctionAvecPreconditions
 				{estPresent}
 				{coups : Coups, coup : Coup}
-				{\booleen}	
+				{\booleen}
+				{non(estVide(coups))}	
 				\signatureprocedure
 				{supprimerCoup}
 				{\paramEntreeSortie{coups : Coups, }{\paramEntree{i : \naturel}}}
@@ -94,7 +102,9 @@
 				{obtenirCoupsPossible}
 				{pl : Plateau, couleurReference : Couleur}
 				{Coups}
+								\end{algorithme}
 				\subsubsection{Pion}
+								\begin{algorithme}
 				\begin{enregistrement}
 					{Pion}
 					\champEnregistrement{couleurPion}{Couleur}
@@ -120,7 +130,9 @@
 				{egal}
 				{pion1, pion2 : Pion}
 				{\booleen}
+								\end{algorithme}
 				\subsubsection{Plateau}
+								\begin{algorithme}
 				\constante{HAUTEUR}{8}
 				\constante{LARGEUR}{8}
 				\\
@@ -136,20 +148,21 @@
 				{obtenirPion}
 				{position : Position, plateau : Plateau}
 				{Pion}
-				\signatureprocedure
+				\signatureProcedureAvecPreconditions
 				{poserPion}
 				{\paramEntreeSortie{{plateau : Plateau, }}{\paramEntree{pion : Pion, position : Position}}}
+				{estVide(position,plateau)}
 				\signaturefonction
 				{estVide}
 				{position : Position, plateau : Plateau}
 				{\booleen}
-				\signatureprocedure
-				{viderPlateau}
-				{\paramEntreeSortie{{plateau : Plateau}}}
+				
 				\signatureprocedure
 				{copierPlateau}
 				{\paramEntreeSortie{{plateau : Plateau, }}{\paramEntree{plateauACopier : Plateau}}}
+				\end{algorithme}
 				\subsubsection{Position}
+								\begin{algorithme}
 				\begin{enregistrement}
 					{Position}
 					\champEnregistrement{positionX}{\caractere}

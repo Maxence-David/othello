@@ -1,14 +1,357 @@
 
 \section{Conception détaillée}
-    \subsection{estVide}
-        \begin{algorithme}
-            \fonction
-                {estVide}
-                {pl : Plateau, positionCoup : Position}
-                {\booleen}
-                {}
-                {\retourner{etatPion(obtenirPion(positionCoup,pl))}}
-        \end{algorithme}
+\subsection{TAD}
+\subsubsection{Couleur}
+\begin{algorithme}
+
+	\fonction 
+	{Blanc}
+	{}
+	{Couleur}
+	{}
+	{\retourner{Blanc}}
+	\fonction 
+	{Noir}
+	{}
+	{Couleur}
+	{}
+	{\retourner{Noir}}
+	\fonction
+	{changerCouleur}
+	{couleurActuelle : Couleur}
+	{Couleur}
+	{}
+	{
+		\sialorssinon{couleurActuelle = Blanc}{
+			\retourner{Noir}
+		}
+			{
+				\retourner{Blanc}
+			}
+			
+	}
+	\fonction
+	{estBlanc}
+	{uneCouleur : Couleur}
+	{\booleen}
+	{}
+	{\sialorssinon{uneCouleur = Noir}
+		{\retourner{1}
+	}
+{\retourner{0}
+}
+}
+	\fonction
+	{estNoir}
+	{uneCouleur : Couleur}
+	{\booleen}
+	{}
+	{\sialorssinon{uneCouleur = Blanc}
+		{\retourner{1}
+		}
+		{\retourner{0}
+	}}
+
+\end{algorithme}
+
+\subsubsection{Coup}
+\begin{algorithme}
+	\fonction 
+	{initCoup}
+	{position : Position, pion : Pion}
+	{Coup}
+	{leCoup : Coup}
+	{\affecter{leCoup.positionCoup}{position}
+	\affecter{leCoup.Pion}{pion}
+	\retourner{leCoup}
+	}
+
+	
+	\fonction 
+	{obtenirPositionCoup}
+	{coup : Coup}
+	{Position}
+	{}
+	{\retourner{coup.positionCoup}}
+	
+	\fonction 
+	{obtenirPionCoup}
+	{coup : Coup}
+	{Pion}
+	{}
+	{\retourner{coup.Pion}}
+	
+	\fonction 
+	{obtenirCouleurCoup}
+	{coup : Coup}
+	{Couleur}
+	{}
+	{\retourner{obtenirCouleurPion(coup.Pion)}}
+	
+	
+	\fonction 
+{coupValide}
+{leCoup : Coup, lePlateau : Plateau}
+{\booleen}
+{position : Position}
+{
+	\affecter{position}{leCoup.positionCoup}
+	\retourner{(lePlateau[obtenirX(position)-1][obtenirY(position)-1].etatPion = 0) ET retournerAuMoinsUnPion(lePlateau,leCoup)}
+	
+}
+
+
+\fonction 
+{obtenirPionCoup}
+{coup1, coup2 : Coup}
+{\booleen}
+{}
+{
+	\retourner{egal(coup1.Pion,coup2.Pion) ET egal(coup1.positionCoup,coup2.positionCoup)}
+}
+
+\end{algorithme}
+\subsubsection{Coups}
+\begin{algorithme}
+\fonction
+{initCoups}
+{}
+{Coups}
+{coups : Coups}
+{\affecter{coups.nbCoups}{0}
+\retourner{coups}}
+
+\fonction
+{estVide}
+{coups : Coups}
+{\booleen}
+{}
+{\retourner{coups.nbCoups = O} }
+
+\fonctionAvecPreconditions
+{iemeCoup}
+{coups : Coups, i : \naturel}
+{Coup}
+{i $>$0 ET i $<= $ nbCoups(coups)}
+{}
+{\retourner{coups.tabCoups[i-1]} }
+
+\procedureAvecPreconditions
+{ajouterCoup}
+{{\paramEntreeSortie{coups : Coups, }}{\paramEntree{coup : Coup}}}
+{nbCoups(coups) $<$ MAX}{}
+{\affecter{tabcoups[nbCoups(coups)]}{coup}
+\affecter{nbCoups}{nbCoups+1}}
+
+
+\fonction
+{nbCoups}
+{coups : Coups}
+{\naturel}
+{}
+{\retourner{coups.nbCoups}}
+
+\fonctionAvecPreconditions
+{estPresent}
+{coups : Coups, coup : Coup}
+{\booleen}
+{non(estVide(coups))}
+{i : \naturelNonNul, test = \naturel}
+{\pour{i}{1}{coups.nbCoups}{}{
+		\sialors{obtenirX(obtenirPositionCoup(coups.tabcoups[i])) = obtenirX(obtenirPositionCoup(coup)) ET obtenirY(obtenirPositionCoup(coups.tabcoups[i])) = obtenirY(obtenirPositionCoup(coup) ET obtenirCouleurCoup(coups.tabcoups[i]) = obtenirCouleurCoup(coup) = 1}{
+			\affecter{test}{1}
+		}
+}
+\retourner{test}
+}
+	
+\procedure
+{supprimerCoup}
+{\paramEntreeSortie{coups : Coups, }{\paramEntree{i : \naturel}}}
+{j : \naturel}
+{
+	\affecter{j}{0}	
+	\pour{j}{i}{nbCoups-1}{}{
+		\affecter{tabCoups[i]}{tabCoups[i+1]}
+	}
+\affecter{nbCoups}{nbCoups-1}
+}
+
+\fonction
+{obtenirCoupsPossible}
+{pl : Plateau, couleurReference : Couleur}
+{Coups}
+{j,i : \naturel, pion : Pion, position : Position, resultat : Coups}
+{
+		\affecter{j}{0}
+		\affecter{i}{0}
+		\affecter{resultat}{initCoups()}
+		\affecter{pion}{creerPion(CouleurReference)}
+	\pour{i}{1}{8}{}{
+		\pour{j}{1}{8}{}{
+				\affecter{position}{defPosition(i,j)}
+					\affecter{coup}{initCoup(position, pion)}
+					\sialors{coupValide(coup, pl)}{
+						\instruction{ajouterCoup(resultat, coup)}
+					
+				}
+	
+}
+	
+}
+\retourner{resultat}
+}
+
+
+\end{algorithme}
+
+\subsubsection{Pion}
+\begin{algorithme}
+
+\fonction
+{creerPion}
+{couleur : Couleur}
+{Pion}
+{resultat : Pion}
+{\affecter{resultat.couleurPion}{couleur}
+\affecter{resultata.etatPion}{1}
+\retourner{resultat}}
+
+\procedure
+{changerEtat}
+{\paramEntreeSortie{pion : Pion}}
+{resultat : Pion}
+{\sialorssinon{pion.etatPion =0}
+{\affecter{resultat.etatPion}{1}
+}
+{\affecter{resultat.etatPion}{0}
+}
+}
+\fonction
+{obtenirCouleurPion}
+{pion : Pion}
+{Couleur}
+{}
+{\retourner{pion.couleurPion}}
+
+\fonction
+{obtenirEtatPion}
+{pion : Pion}
+{\naturel}
+{}
+{\retourner{pion.etatPion}}
+
+\fonction
+{egal}
+{pion1, pion2 : Pion}
+{\booleen}
+{}
+{\retourner{obtenirCouleurPion(pion1) = obtenirCouleurPion(pion2)}}
+\end{algorithme}
+
+\subsubsection{Plateau}
+\begin{algorithme}
+
+\procedure
+{quatrePionsDebut}
+{\paramEntreeSortie{plateau : Plateau}}
+{}
+{\instruction initialiserPlateau(plateau)
+	
+\instruction	poserPion(creerPion(Blanc()), \instruction defPosition(4,4), plateau)
+\instruction	poserPion(creerPion(Noir()), \instruction defPosition(4,5), plateau)
+\instruction	poserPion(creerPion(Blanc()), \instruction defPosition(5,5), plateau)
+\instruction	poserPion(creerPion(Noir()), \instruction defPosition(5,4), plateau)}
+
+\procedure
+{initialiserPlateau}
+{\paramEntreeSortie{plateau : Plateau}}
+{i, j : \naturelNonNul, position : Position}
+{\pour{i}{1}{HAUTEUR}{}{
+		\pour{j}{1}{LARGEUR}{}{
+			\affecter{position}{defPosition(i,j)}
+			\affecter{plateau)[obtenirX(position)-1][obtenirY(position)-1].etatPion}{0}
+			}
+}}
+
+\fonction
+{obtenirPion}
+{position : Position, plateau : Plateau}
+{Pion}
+{}
+{\retourner{plateau[obtenirX(position)-1][obtenirY(position)-1]}}
+
+\procedureAvecPreconditions
+{poserPion}
+{\paramEntreeSortie{{plateau : Plateau, }}{\paramEntree{pion : Pion, position : Position}}}
+{estVide(position,plateau)}
+{}
+{\affecter{plateau)[obtenirX(position)-1][obtenirY(position)-1]}{pion}}
+
+\fonction
+{estVide}
+{position : Position, plateau : Plateau}
+{\booleen}
+{}
+{\sialorssinon{obtenirEtatPion(obtenirPion(position,plateau)) = 0}{
+		\retourner{1}
+}
+{		\retourner{0}
+}
+}
+
+\procedure
+{copierPlateau}
+{\paramEntreeSortie{{plateau : Plateau, }}{\paramEntree{plateauACopier : Plateau}}}
+{i, j : \naturelNonNul, position : Position, pion : Pion }
+{\pour{i}{1}{HAUTEUR}{}{
+		\pour{j}{1}{LARGEUR}{}{
+			\affecter{position}{defPosition(i,j)}
+			\affecter{plateau)[obtenirX(position)-1][obtenirY(position)-1].etatPion}{0}
+			\affecter{pion}{obtenirPion(position, plateauACopier)}
+			\sialors{non(estVide(position,plateauACopier))}{
+				\instruction{poserPion(pion,position,plateau)}
+			}
+	}}
+}
+
+\end{algorithme}
+
+\subsubsection{Position}
+\begin{algorithme}
+\fonction
+{defPosition}
+{x,y : \caractere}
+{Position}
+{resultat : Position}
+{\affecter{resultat.positionx}{x}
+\affecter{resultat.positiony}{y}
+\retourner{resultat}
+}
+
+
+\fonction
+{obtenirX}
+{position : Position}
+{\caractere}
+{}
+{\retourner{position.positionx}}
+
+\fonction
+{obtenirY}
+{position : Position}
+{\caractere}
+{}
+{\retourner{position.positiony}}
+
+\fonction
+{egal}
+{pos1, pos2 : Position}
+{\booleen}
+{}
+{\retourner{obtenirX(pos1) = obtenirX(pos2) ET (obtenirY(pos1) = obtenirY(pos2)}}
+\end{algorithme}
+       
 
         \subsection{obtenirCouleurGagnant}
         \begin{algorithme}
