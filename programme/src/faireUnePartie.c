@@ -131,7 +131,6 @@ CO_Couleur OTH_Tournoi(CO_Couleur CouleurJoueur){
         maj(&plateau,coupJoueur);
 
       }
-      OTH_affichagePlateau(plateau);
       affichagecoupTournoi(coupJoueur,booleenTestJ);
 
 
