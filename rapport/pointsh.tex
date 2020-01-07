@@ -1,0 +1,297 @@
+\subsection{Code en C : les .h}
+\subsubsection{position.h}
+\begin{lstlisting}
+#ifndef __POSITION_OTHELLO__
+#define __POSITION_OTHELLO__
+
+typedef struct {
+int positiony; /**< position y */
+int positionx; /**< position x*/
+}PO_Position;
+
+PO_Position PO_defPosition(int y, int x);
+
+int PO_ObtenirX(PO_Position position);
+
+int PO_ObtenirY(PO_Position position);
+
+int PO_Egal(PO_Position pos1, PO_Position pos2);
+
+#endif
+
+\end{lstlisting}
+
+\subsubsection{plateau.h}
+\begin{lstlisting}*
+#ifndef __PLATEAU_OTHELLO__
+#define __PLATEAU_OTHELLO__
+
+#include "couleur.h"
+#include "position.h"
+#include "pion.h"
+
+#define HAUTEUR 8
+
+#define LARGEUR 8
+
+typedef PI_Pion PL_Plateau[LARGEUR][HAUTEUR];  
+
+void PL_QuatrePionsDebut(PL_Plateau* plateau);
+
+void PL_Initialiser_Plateau(PL_Plateau* plateau);
+
+PI_Pion PL_ObtenirPion(PO_Position position, PL_Plateau plateau);
+
+void PL_PoserPion(PI_Pion pion, PO_Position position, PL_Plateau* plateau);
+
+int PL_estVide(PO_Position position, PL_Plateau plateau);
+
+void PL_CopierPlateau(PL_Plateau* plateau,PL_Plateau plateau_a_copier);
+
+#endif
+\end{lstlisting}
+\subsubsection{pion.h}
+\begin{lstlisting}
+
+typedef struct {
+	CO_Couleur couleurPion; /**< couleur du pion*/
+	int etatPion; /**< etat du pion : 0 = inactif, autre =actif*/
+}PI_Pion;
+
+PI_Pion PI_CreerPion(CO_Couleur couleur);
+
+void PI_ChangerEtat(PI_Pion pion);
+
+CO_Couleur PI_ObtenirCouleurPion(PI_Pion pion);
+
+int PI_Egal(PI_Pion pion1, PI_Pion pion2);
+
+#endif
+
+\end{lstlisting}
+
+\subsubsection{coups.h}
+\begin{lstlisting}
+
+#ifndef __COUPS_OTHELLO__
+#define __COUPS_OTHELLO__
+
+#include "pion.h"
+#include "coup.h"
+
+#define MAX 64
+
+typedef struct  { 
+C_Coup tabcoups[MAX]; /**< tableau de coup 64 max car le plateau fait 64 cases*/
+int nbcoups; /**< nombre de coups dans le tableau */
+}CS_Coups;
+
+CS_Coups CS_InitCoups();
+
+int CS_EstVide (CS_Coups coups);
+
+void CS_AjouterCoup (CS_Coups* coups,C_Coup coup);
+
+C_Coup CS_IemeCoup (CS_Coups coups,int i);
+
+int CS_NbCoups (CS_Coups coups );
+
+int CS_EstPresent (CS_Coups coups,C_Coup coup);
+
+void CS_SupprimerCoup (CS_Coups* coups,int i);
+
+CS_Coups CS_ObtenirCoupsPossible (PL_Plateau pl, CO_Couleur CouleurReference );
+
+
+#endif
+
+\end{lstlisting}
+
+
+\subsubsection{coup.h}
+\begin{lstlisting}
+
+typedef struct {
+PO_Position positionCoup; /**< position du coup sur le plateau*/
+PI_Pion Pion; /**< pion a placer (sa couleur)*/
+}C_Coup;
+
+C_Coup C_InitCoup(PO_Position position, PI_Pion pion);
+
+C_Coup C_PlacerCoup(PI_Pion pion, PO_Position positionCoup);
+
+PO_Position C_Obtenir_Position_Coup(C_Coup Coup);
+
+PI_Pion C_obtenirPionCoup(C_Coup coup);
+
+CO_Couleur C_Obtenir_Couleur_Coup(C_Coup Coup);
+
+int C_Coup_Valide(C_Coup leCoup, PL_Plateau lePlateau);
+
+int C_Egale(C_Coup coup1, C_Coup coup2);
+
+#endif
+
+\end{lstlisting}
+
+
+\subsubsection{couleur.h}
+\begin{lstlisting}
+#ifndef __COULEUR__
+#define __COULEUR__
+
+typedef enum {BLANC,NOIR} CO_Couleur;
+
+CO_Couleur CO_Blanc();
+
+CO_Couleur CO_Noir();
+
+CO_Couleur CO_ChangerCouleur(CO_Couleur CouleurActuelle );
+
+int CO_estNoir(CO_Couleur UneCouleur);
+
+int CO_estBlanc(CO_Couleur UneCouleur);
+
+#endif
+
+\end{lstlisting}
+
+\subsubsection{affichagePlateau.h}
+\begin{lstlisting}
+#ifndef __AFFICHAGE_PLATEAU__
+#define __AFFICHAGE_PLATEAU__
+
+#include "plateau.h"
+#include "position.h"
+#include "coup.h"
+typedef void (*affichagePlateau)(PL_Plateau);
+typedef PO_Position (*entrerCoup)(CO_Couleur);
+typedef void (entrerCoupTournoi)(PO_Position*,int* );
+
+void OTH_affichagePlateau(PL_Plateau plateau);
+
+PO_Position OTH_entrerCoup(CO_Couleur couleurJoueurCourant);
+
+void OTH_entrerCoupTournoi(PO_Position* position, int* booleen);
+
+void affichageFinPartie (CO_Couleur couleur);
+
+void affichageAide();
+
+void affichagecoupTournoi(C_Coup coup , int booleen);
+#endif
+\end{lstlisting}
+\subsubsection{caractereEnEntier.h}
+\begin{lstlisting}
+#ifndef __CARACTERE_EN_ENTIER__
+#define __CARACTERE_EN_ENTIER__
+
+int OTH_chaineValide(char* chaine);
+
+void OTH_chaineEnEntiers(char* chaine, int* entier1, int* entier2);
+
+#endif
+
+\end{lstlisting}
+\subsubsection{coupIA.h}
+\begin{lstlisting}
+#ifndef __COUP_IA__
+#define __COUP_IA__
+
+#include "coups.h"
+#include "plateau.h"
+#include "coup.h"
+#include "couleur.h"
+#include "majPlateau.h"
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+void IA_CoupIA(PL_Plateau pl,CO_Couleur CouleurReference,C_Coup* Resultat, int* estPossible);
+
+int IA_scoreDUnCoup (C_Coup coup, PL_Plateau pl, CO_Couleur CouleurReference, int profondeur,int alpha , int beta  );
+
+int IA_Alpha_Beta (PL_Plateau pl, CO_Couleur CouleurReference,CO_Couleur CouleurActuel, int profondeur,int alpha , int beta  );
+
+int IA_Evalue (PL_Plateau pl, CO_Couleur CouleurReference );
+
+#endif
+\end{lstlisting}
+
+\subsubsection{faireUnePartie.h}
+\begin{lstlisting}
+#ifndef __FAIRE_UNE_PARTIE__
+#define __FAIRE_UNE_PARTIE__
+
+#include <stdio.h>
+#include "plateau.h"
+#include "coup.h"
+#include "couleur.h"
+#include "caractereEnEntier.h"
+#include "placerCoup.h"
+#include "coupIA.h"
+
+CO_Couleur OTH_faireUnePartie_J_VS_J();
+
+CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain);
+
+CO_Couleur OTH_Tournoi(CO_Couleur CouleurJoueur);
+
+#endif
+
+\end{lstlisting}
+\subsubsection{majPlateau.h}
+\begin{lstlisting}
+#ifndef __MAJ_Plateau__
+#define __MAJ_Plateau__
+
+#include "position.h"
+#include "coup.h"
+#include "plateau.h"
+#include "placerCoup.h"
+#include "position.h"
+#include "pion.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "couleur.h"
+
+void OTH_majPlateau(PL_Plateau *lePlateau, C_Coup leCoup);
+
+void OTH_retournerPion(PL_Plateau *lePlateau, PO_Position positionDuPion);
+
+void maj (PL_Plateau* plateau,C_Coup coup);
+
+#endif
+
+\end{lstlisting}
+
+\subsubsection{obtenirCouleurGagnant.h}
+\begin{lstlisting}
+
+#ifndef __OBTENIR_COULEUR_GAGNANT__
+#define __OBTENIR_COULEUR_GAGNANT__
+
+#include "couleur.h" 
+#include "plateau.h"
+
+void OTH_obtenirCouleurGagnant(PL_Plateau plateau, int* ilYaUnGagnant, CO_Couleur* couleurGagnant);
+
+#endif
+\end{lstlisting}
+\subsubsection{partieTerminee.h}
+\begin{lstlisting}
+
+#ifndef __PARTIE_TERMINEE__
+#define __PARTIE_TERMINEE__
+
+#include "couleur.h"
+#include "plateau.h"
+
+int OTH_plateauPlein(PL_Plateau plateau);
+
+int OTH_plusDeCoups(PL_Plateau plateau, CO_Couleur couleurJoueurCourant);
+
+int OTH_partieTerminee(PL_Plateau plateau, CO_Couleur couleurJoueurCourant,CO_Couleur couleurAutreJoueur);
+
+#endif
+\end{lstlisting}
