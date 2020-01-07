@@ -355,10 +355,9 @@
 
         \subsection{obtenirCouleurGagnant}
         \begin{algorithme}
-            \fonction
+            \procedure
                 {obtenirCouleurGagnant}
-                {pl : Plateau}
-                {\booleen , Couleur}
+                {\paramEntree{pl : Plateau}, \paramEntreeSortie{ilYaUnGagnant : \booleen,  couleurGagnant : Couleur}}
                 {nbPionsNoirs, nbPionsBlancs, i, j : \naturel}
                 {
                     \affecter{nbPionsNoirs}{0}
@@ -367,12 +366,12 @@
                     {
                         \pour{j}{1}{8}{}
                         {
-                            \sialorssinon{obtenirCouleur(obtenirPion(defPosition(i,j),pl))=Noir}
+                            \sialorssinon{obtenirCouleur(obtenirPion(defPosition(i,j),pl))=Noir ET obtenirEtatPion(obtenirPion(defPosition(i,j),plateau)) = 1)}
                             {
                                 \affecter{nbPionsNoirs}{nbPionsNoirs+1}   
                             }
                             {
-                                \sialors{obtenirCouleur(obtenirPion(defPosition(i,j),pl))=Blanc}
+                                \sialors{obtenirCouleur(obtenirPion(defPosition(i,j),pl))=Blan ET obtenirEtatPion(obtenirPion(defPosition(i,j),plateau)) = 1)}
                                 {
                                     \affecter{nbPionsBlancs}{nbPionsBlancs+1}
                                 }
@@ -381,15 +380,18 @@
                     }
                     \sialorssinon{nbPionsNoirs $>$ nbPionsBlancs}
                     {
-                        \retourner{FAUX , Noir}
+                        \affecter{ilYaUnGagnant}{1}
+                        \affecter{couleurGagnant}{Noir}
                     }
                     {
                         \sialorssinon{nbPionsNoirs $<$ nbPionsBlancs}
                         {
-                            \retourner{FAUX , Blanc}
+                            \affecter{ilYaUnGagnant}{1}
+                           \affecter{couleurGagnant}{Blanc}
                         }
                         {
-                            \retourner{VRAI , Blanc} $on retourne VRAI si egalite et une couleur par defaut$
+                             \affecter{ilYaUnGagnant}{0}
+                            \affecter{couleurGagnant}{Noir}
                         }
                     }
                 }
@@ -401,7 +403,7 @@
                 {plusDeCoups}
                 {pl : Plateau, couleurJoueurCourant : Couleur}
                 {\booleen}
-                {i, j : \naturelNonNul \\ coupOK : \booleen}
+                {i, j : \naturelNonNul \\ coupOK : \booleen \\ leCoup : Coup}
                 {
                     \affecter{coupOK}{FAUX}
                     \affecter{i}{1}
@@ -410,9 +412,12 @@
                         \affecter{j}{1}
                         \tantque{non(coupOK) et j $\leqslant$ 8}
                         {
+                        	\affecter{leCoup}{defPosition(i,j),creerPion(couleurJoueurCourant))}
                             \sialors{coupValide(creerPion(couleurJoueurCourant),defPosition(i,j),pl)}
                             {
+                            	
                                 \affecter{coupOK}{VRAI}
+                                \instruction{ChangerEtat(obtenirPionCoup(leCoup))}
                             }
                             \affecter{j}{j+1}
                         }
@@ -559,23 +564,6 @@
         \end{algorithme}
         
         
-     	\subsection{changerCouleur}
-     \begin{algorithme}
-     	\fonction
-     	{changerCouleur}
-     	{laCouleur : Couleur}
-     	{Couleur}
-     	{blanc, noir : Couleur}
-     	{
-     		\sialorssinon{laCouleur = blanc}
-     		{
-     			\retourner{noir}
-     		}
-     		{
-     			\retourner{blanc}
-     		}
-     	}
-     \end{algorithme}
      \subsection{definirCouleurNouveauJoueur}
      \begin{algorithme}
      	\fonction
@@ -587,64 +575,89 @@
      		\retourner{changerCouleur(obtenirCouleurPion(dernierPionPlace))}
      	}
      \end{algorithme}
-     
-     \subsection{coupValide}
-     \begin{algorithme}
-     	\fonctionAvecPreconditions
-     	{coupValide}
-     	{leCoup : Coup, lePlateau : Plateau}
-     	{\booleen}
-     	{(1 $\leqslant$ obtenirx(obtenirPosition(leCoup)) $\leqslant$ lePlateau.largeur) et (1 $\leqslant$ obteniry(obtenirPosition(leCoup)) $\leqslant$  lePlateau.hauteur)}
-     	{}
-     	{
-     		\sialorssinon{(estVide(obtenirPosition(leCoup), lePlateau)) et (retournerAuMoinsUnPion(lePlateau, leCoup))}
-     		{
-     			\retourner{VRAI}
-     		}
-     		{
-     			\retourner{FAUX}
-     		}
-     	}
-     \end{algorithme}
-     
-     \subsection{majPlateau}
-     \begin{algorithme}
-     	\procedure
-     	{majPlateau}
-     	{\paramEntreeSortie {lePlateau : Plateau}, \paramEntree {leCoup : Coup, lesDirections : Ensemble$<$Direction$>$}}
-     	{element : Direction, onRetourne : \booleen, pos : Position}
-     	{
-     		\pourchaque{element}{lesDirections}
-     		{
-     			\affecter{positionsARetourner, onRetourne}{testModifDirection(lePlateau, leCoup, element)}
-     			\sialors{onRetourne = VRAI}
-     			{
-     				
-     				\pourchaque{pos}{positionsARetourner}
-     				{
-     					\instruction{retournerPion(lePlateau, pos)}
-     				}
-     			}	
-     		}
-     	}
-     	
-     \end{algorithme}
-     
+ 
+ 	\subsection{maj}
+ 
+ \begin{algorithme}
+ 	
+ 	\procedure
+ 	{maj}
+ 	{\paramEntreeSortie{plateau : Plateau}, \paramEntree{coup : Coup}}
+ 	{}
+ 	{
+ 		\instruction{ MAJPartielle(coup,plateau,0,1)}
+ 		\instruction{ MAJPartielle(coup,plateau,0,-1)}
+ 		\instruction{ MAJPartielle(coup,plateau,1, 0)}
+ 		\instruction{ MAJPartielle(coup,plateau,-1, 0)}
+ 		\instruction{ MAJPartielle(coup,plateau,1,-1)}
+ 		\instruction{ MAJPartielle(coup,plateau,1,1)}
+ 		\instruction{ MAJPartielle(coup,plateau,-1,1)}
+ 		\instruction{ MAJPartielle(coup,plateau,-1,-1)}
+ 		\instruction{poserPion(obtenirPionCoup(coup),obtenirPositionCoup(coup),plateau)}
+ 		
+ 	}
+ 	
+ \end{algorithme}
+ 
+ 	\subsection{MAJPartielle (Privée)}
+ 	  \begin{algorithme}
+ 	\procedure
+    {MAJPartielle}
+    {\paramEntreeSortie{plateau : Plateau}, \paramEntree{coup : Coup, deplacementx, deplacementy : \naturel}}
+    {i,j,Xcoup,Ycoup,n, nbretournelment, test, test2 : \naturel, position : Position, couleurREF : Couleur}
+    {\affecter{CouleurREF}{obtenirCouleurPion(obtenirPionCoup(coup)}
+    	\affecter{Xcoup}{obtenirX(obtenirPositionCoup(coup)}
+    	\affecter{Ycoup}{otenirY(obtenirPositionCoup(coup)}
+    	\affecter{i}{Xcoup+deplacementX}
+    	\affecter{j}{Ycoup+deplacementY}
+    	\tantque{test ET (i$>$0) ET (i$<=$8) ET (j$>$0) ET (j$<=$8)}{
+    		\affecter{position}{defPosition(i,j)}
+    		\sialorssinon{estVide(position,plateau)}{
+    		\affecter{test}{0}
+    	}{
+    	
+    	\sialorssinon{obtenirCouleurPion(obtenirPion(position,plateau)) = CouleurREF}{
+    		\affecter{test2}{0}
+    		\affecter{test}{0}
+    	}
+    {
+    		\affecter{nbretournelment}{nbretournelment+1}
+    
+}
+		\affecter{i}{i + deplacementX}
+		\affecter{j}{j + deplacementY}
+    	
+    }
+    	}
+    
+    \sialors{!test2}{
+	
+	\pour{n}{1}{nbretournement}{}{
+		\affecter{position}{defPosition(Xcoup + n*deplacementX,Ycoup +n*deplacementY)}
+		\instruction{retournerPion(plateau,position)}
+	}
+	
+}
+    	
+}
+  \end{algorithme}
+
+ 
      
      \subsection{retournerPion}
-     \begin{algorithme}
-     	\procedure
-     	{retournerPion}
-     	{\paramEntreeSortie {lePlateau : Plateau},
-     		\paramEntree {positionDuPion : Position}}
-     	{lePionModifie : Pion}
-     	{
-     		\affecter {lePionModifie}{obtenirPion(lePlateau, positionDuPion)}
-     		\affecter{lePionModifie.couleurPion}{changerCouleur(obtenirCouleurPion(lePionModifie))}
-     		\instruction{poserPion(lePionModifie, positionDuPion, lePlateau)}
-     	}
-     	
-     \end{algorithme}
+\begin{algorithme}
+	\procedure
+	{retournerPion}
+	{\paramEntreeSortie {lePlateau : Plateau},
+		\paramEntree {positionDuPion : Position}}
+	{lePionModifie : Pion}
+	{
+		\affecter {lePionModifie}{obtenirPion(positionDuPion, lePlateau)}
+		\affecter{lePionModifie.couleurPion}{changerCouleur(obtenirCouleurPion(lePionModifie))}
+		\affecter{lePlateau[obtenirX(positionDuPion)-1][obtenirY(positionDuPion)-1]}{lePionModifie}
+	}
+	
+\end{algorithme}
      
      
      
@@ -652,7 +665,7 @@
      \begin{algorithme}
      	\fonctionAvecPreconditions
      	{placerCoup}
-     	{partieFinie : booleen, lePlateau : Plateau}
+     	{partieFinie : \booleen, lePlateau : Plateau}
      	{Coup}
      	{non(partieFinie)}
      	{pionAPlacer : Pion, abscisse, ordonnee : \naturel, nouveauCoup : Coup}
@@ -672,67 +685,37 @@
      \end{algorithme}
      
     
-     \subsection{defPosition}
-     \begin{algorithme}
-     	\fonctionAvecPreconditions
-     	{defPosition}
-     	{abscisse, ordonnee : entier} 
-     	{Position}
-     	{(1 $\leqslant$ abscisse $\leqslant$ lePlateau.largeur) et (1 $\leqslant$ ordonnee $\leqslant$  lePlateau.hauteur)}
-     	{laPosition : Position}
-     	{
-     		\affecter{laPosition.positionx}{abscisse}
-     		\affecter{laPosition.positiony}{ordonnee}
-     		\retourner{laPosition}
-     	}	
-     \end{algorithme}
-     
-     \subsection{obtenirPion}
-     \begin{algorithme}
-     	\fonctionAvecPreconditions
-     	{obtenirPion}
-     	{laPosition : Position, lePlateau : Plateau} 
-     	{Pion}
-     	{(1 $\leqslant$ obtenirx(laPosition) $\leqslant$ lePlateau.largeur) et (1 $\leqslant$ obteniry(laPosition) $\leqslant$  lePlateau.hauteur)}
-     	{}
-     	{
-     		\retourner{lePlateau[obtenirx(laPosition)][obteniry(laPosition)]}
-     	}	
-     \end{algorithme}
-
-
 
 
     \subsection{CoupIA}
     \begin{algorithme}
-        \fonction{CoupIA}
-        {pl : plateau, CouleurReference : Couleur }
-        {Coup}
-        {estPossible \booleen \\CoupsATester : coups \\ CoupTest,BestCoup : Coup\\ Alpha,Beta :\reel \\ BestScoreCoup, ScoreTemp : \naturel }
+        \procedure{CoupIA}
+        {\paramEntree{pl : plateau, CouleurReference : Couleur}, \paramEntreeSortie{resulat : Coup, estPossible : \booleen}}
+        {CoupsATester : Coups \\ CoupTest,BestCoup : Coup\\ Alpha,Beta :\reel \\ BestScoreCoup, ScoreTemp, profondeur : \naturel }
         {
             \affecter{CoupsATester}{ObtenirCoupPossible(pl,CouleurReference)}
-            \affecter{profondeur}{6}
+            \affecter{profondeur}{5}
             \affecter {estPossible}{non(estVide(CoupsATester))}
             \affecter {Alpha}{-infini}
             \affecter {Beta}{+infini}
+            \affecter{i}{1}
             \sialors{estPossible}
             {
-                \affecter{BestScoreCoup}{0}
-                \tantque{non(estVide(CoupsATester))}
+                \affecter{BestScoreCoup}{-7000}
+				\pour{i}{1}{nbCoups(CoupsATester)}{}
                 {
+                	\affecter{CoupTest}{iemeCoup(CoupsATester,i)}                	
                     \affecter{ScoreTemp}{ScoreDUnCoup(pl,CouleurReference,CoupTest,profondeur,Alpha,Beta)}
                     \sialors{BestScoreCoup<ScoreTemp}
                     {
                         \affecter{BestScoreCoup}{ScoreTemp}
-                        \affecter{CoupIA}{CoupTest}
+                        \affecter{resultat}{CoupTest}
 
                     }
-                    \affecter{CoupsATester}{CoupsATester-CoupTest}
 
                 }
             }
         
-            \retourner{CoupIA}
         }
     \end{algorithme}
 
@@ -742,16 +725,16 @@
         \fonction{ScoreDUnCoup}
         {pl:plateau,CouleurReference:Couleur,coup:Coup,profondeur:\naturel,Alpha:\reel, Beta:\reel}
         {\entier}
-        {TestFin : \booleen \\ GrilleTemp: plateau \\ AutreCouleur : Couleur \\ score :\entier}
+        {TestFin : \booleen \\ GrilleTemp: plateau \\ AutreCouleur : Couleur \\ score :\entier \\ GrilleTemp : Plateau}
         {
-            \affecter{GrilleTemp}{CopierGrille(pl)}
-            \affecter{AutreCouleur}{ChangerCouleur(CouleurReference)}
-            \affecter{TestFin}{(ObtenirCoupPossible(pl,CouleurReference)=0) et (ObtenirCoupPossible(pl,AutreCouleur)=0)}
-            \instruction{MiseAJourPateau(GrilleTemp,coup)}
-            \sialorssinon{(profondeur=0) et (TestFin)}
+            \affecter{AutreCouleur}{changerCouleur(CouleurReference)}
+            \affecter{TestFin}{(obtenirCoupPossible(pl,CouleurReference)=0) et (obtenirCoupPossible(pl,AutreCouleur)=0)}
+            \instruction{copierPlateau(GrilleTemp,pl)}
+            \instruction{maj(GrilleTemp, coup)}
+            \sialorssinon{(profondeur=0) OU (TestFin = 1)}
             {
-                \affecter{score}{evalue(GrilleTemp,CouleurReference)}
-                \retourner{score}
+
+                \retourner{evalue(GrilleTemp,CouleurReference)}
             }
             {
                 \retourner{AlphaBeta(GrilleTemp,CouleurReference,AutreCouleur,Alpha,Beta,profondeur-1)}
@@ -772,7 +755,7 @@
         {\entier}
         {CoupsPossible : Coups \\ res : \entier \\ score : \entier \\i : \entier}
         {
-            \affecter{CoupsPossible}{ObtenirCoupPossible(pl,CouleurActuel)}
+            \affecter{CoupsPossible}{obtenirCoupPossible(pl,CouleurActuel)}
             \sialors{non(estVide(CoupsPossible))}
             {
                 \affecter{res}{ScoreDUnCoup(pl,CouleurReference,iemeCoup(CoupsPossible,1)profondeur,Alpha,Beta)}
@@ -807,73 +790,3 @@
             \retourner{res}
         }
     \end{algorithme}
-
-
-\subsection{affichagePlateau}
-\begin{algorithme}
-	\procedure
-	{majPlateau}
-	{\paramEntree {lePlateau : Plateau}}
-	{i, j : \naturel}
-	{
-		\pour{i}{1}{lePlateau.hauteur}{}{
-			\pour{j}{1}{lePlateau.largeur}{}{
-				\instruction{ecrire(lePlateau.cases[i][j])}
-			}
-		}
-	}
-	
-\end{algorithme}
-
-\subsection{faireUnePartie}
-\begin{algorithme}
-	\fonction
-	{faireUnePartie}
-	{}
-	{Couleur}
-	{couleurDuGagnant, joueurCourant : Couleur, joueurOuIA : Booleen, unPlateau : Plateau, coupJoueur1, coupJoueur2, coupIA : Coup, lesDirections : Ensemble$<$Direction$>$}
-	{
-		\instruction{lire(joueurOuIA)}
-		\affecter{joueurCourant}{noir}
-		\affecter{unPlateau}{creerPlateau()}
-		\sialorssinon{non(JoueurContreIA)}{
-			\tantque{non(partieTerminee(unPlateau, joueurCourant))}{
-				\affecter{coupJoueur1}{placerCoup(unPlateau, non(partieTerminee(unPlateau)))}
-				\instruction{majPlateau(unPlateau, coupJoueur1, lesDirections)}
-				\instruction{affichagePlateau(unPlateau)}
-				\affecter{coupJoueur2}{placerCoup(unPlateau, non(partieTerminee(unPlateau)))}
-				\instruction{majPlateau(unPlateau, coupJoueur2, lesDirections)}
-				\instruction{affichagePlateau(unPlateau)}
-				}
-		}
-		{
-			\tantque{non(partieTerminee(unPlateau, joueurCourant))}{
-				\affecter{coupJoueur}{placerCoup(unPlateau, non(partieTerminee(unPlateau)))}
-				\instruction{majPlateau(unPlateau, coupJoueur, lesDirections)}
-				\instruction{affichagePlateau(unPlateau)}
-				\affecter{coupIA}{moduleIA(unPlateau)}
-				\instruction{majPlateau(unPlateau, coupIA, lesDirections)}
-				\instruction{affichagePlateau(unPlateau)}
-				}
-		}
-	\instruction{retourner(obtenirCouleurGagnant(unPlateau))}
-	
-	}
-	
-	\end{algorithme}
-
-    \subsection{creerPlateau}
-	\begin{algorithme}
-		\fonction{creerPlateau}
-		{}
-		{Plateau}
-		{blanc, noir : Couleur, unPlateau : Plateau}
-		{
-			\affecter{unPlateau.hauteur}{8} 
-			\affecter{unPlateau.largeur}{8} 
-			\instruction{poserPion(creerPion(Blanc), defPosition(4,4), unPlateau)}
-			\instruction{poserPion(creerPion(Noir), defPosition(4,5), unPlateau)} 
-			\instruction{poserPion(creerPion(Blanc), defPosition(5,5), unPlateau)}
-			\instruction{poserPion(creerPion(Noir), defPosition(5,4), unPlateau)}
-		}
-	\end{algorithme}
