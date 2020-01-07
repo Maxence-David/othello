@@ -74,7 +74,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain){
 
 
         OTH_affichagePlateau(unPlateau);
-        printf("je cherche la meilleur solution pour te battre, patiente quelques instant ...\n");
+        printf("Je cherche la meilleure solution pour te battre, patiente quelques instant ...\n");
         IA_CoupIA( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
  
         if (booleen!=0){
@@ -85,7 +85,7 @@ CO_Couleur OTH_faireUnePartie_J_VS_IA(CO_Couleur couleurJoueurHumain){
       else
       {
         OTH_affichagePlateau(unPlateau);
-        printf("je cherche la meilleur solution pour te battre, patiente quelques instant ...\n");
+        printf("Je cherche la meilleure solution pour te battre, patiente quelques instant ...\n");
         IA_CoupIA( unPlateau, CouleurJoueurCourant,&coupDeIA,&booleen);
  
         if (booleen!=0){
