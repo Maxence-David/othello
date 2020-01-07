@@ -30,6 +30,10 @@ const :
 		echo "Création du dossier $(TESTDIR)"; \
 		$(CREATE) $(TESTDIR); \
 	fi
+	@ if ! [ -d $(DOCDIR) ]; then \
+		echo "Création du dossier $(DOCDIR)"; \
+		$(CREATE) $(DOCDIR); \
+	fi
 
 doc : $(DOCDIR)/html/index.html $(DOCDIR)/latex/refman.pdf
 
